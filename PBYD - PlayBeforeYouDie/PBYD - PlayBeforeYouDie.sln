@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PBYD - PlayBeforeYouDie", "PBYD - PlayBeforeYouDie.csproj", "{133EE112-415D-4A40-8C97-34289C6E7C8F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayBeforeYouDie.Infrastructure", "..\PlayBeforeYouDie.Infrastructure\PlayBeforeYouDie.Infrastructure.csproj", "{E274F5F6-5D25-42D7-A4E3-FE2103798B37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayBeforeYouDie.Core", "..\PlayBeforeYouDie.Core\PlayBeforeYouDie.Core.csproj", "{DBFAD732-06AE-4752-A332-BD3367FA5D9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{712D7DF8-429B-47F8-B7D6-173E6C21DF75}"
+	ProjectSection(SolutionItems) = preProject
+		..\readme.md = ..\readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayBeforeYouDie.UniTests", "..\PlayBeforeYouDie.UniTests\PlayBeforeYouDie.UniTests.csproj", "{9CB897A5-23FE-4C21-9B3F-4532FB9753CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayBeforeYouDie.WebAPI", "..\PlayBeforeYouDie.WebAPI\PlayBeforeYouDie.WebAPI.csproj", "{280FD7F5-7EF0-44C6-B915-454E84282224}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{133EE112-415D-4A40-8C97-34289C6E7C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{133EE112-415D-4A40-8C97-34289C6E7C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{133EE112-415D-4A40-8C97-34289C6E7C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{133EE112-415D-4A40-8C97-34289C6E7C8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E274F5F6-5D25-42D7-A4E3-FE2103798B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E274F5F6-5D25-42D7-A4E3-FE2103798B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E274F5F6-5D25-42D7-A4E3-FE2103798B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E274F5F6-5D25-42D7-A4E3-FE2103798B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFAD732-06AE-4752-A332-BD3367FA5D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFAD732-06AE-4752-A332-BD3367FA5D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFAD732-06AE-4752-A332-BD3367FA5D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFAD732-06AE-4752-A332-BD3367FA5D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB897A5-23FE-4C21-9B3F-4532FB9753CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB897A5-23FE-4C21-9B3F-4532FB9753CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB897A5-23FE-4C21-9B3F-4532FB9753CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB897A5-23FE-4C21-9B3F-4532FB9753CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{280FD7F5-7EF0-44C6-B915-454E84282224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{280FD7F5-7EF0-44C6-B915-454E84282224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{280FD7F5-7EF0-44C6-B915-454E84282224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{280FD7F5-7EF0-44C6-B915-454E84282224}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99DEBBED-A976-4813-8917-160C5EFE0ED1}
+	EndGlobalSection
+EndGlobal

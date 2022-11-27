@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PlayBeforeYouDie.Infrastructure\PlayBeforeYouDie.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Models\Game\Enums\" />
+    <Folder Include="Models\Genre\" />
+    <Folder Include="Models\HowLongToBeat\" />
+    <Folder Include="Models\Mod\" />
+    <Folder Include="Models\Review\" />
+    <Folder Include="Models\PcRequirement\" />
+    <Folder Include="Models\Users\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+
+</Project>

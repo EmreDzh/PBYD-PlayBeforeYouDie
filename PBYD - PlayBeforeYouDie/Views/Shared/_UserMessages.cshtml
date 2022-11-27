@@ -1,0 +1,23 @@
+﻿@using PlayBeforeYouDie.Core.Constants.Core
+@if (TempData[MessageConstants.ErrorMessage] != null)
+{
+    <script>
+        $(function() { toastr.error('@TempData[MessageConstants.ErrorMessage].ToString()') });
+    </script>
+}
+
+
+@if (TempData[MessageConstants.WarningMessage] != null)
+{
+        <script>
+            $(function() { toastr.error('@TempData[MessageConstants.WarningMessage].ToString()') });
+        </script>
+}
+
+
+@if (TempData[MessageConstants.SuccessMessage] != null)
+{
+        <script>
+            $(function() { toastr.error('@TempData[MessageConstants.SuccessMessage].ToString()') });
+        </script>
+}

@@ -1,0 +1,1 @@
+This is a Final Project for Softuni -> Game Library PBYD-PlayBeforeYouDie with ASP.NET 6 MVC
