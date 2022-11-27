@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace PBYD___PlayBeforeYouDie.Controllers
 {
     [Authorize]
-    public class PcRequirementsController : Controller
+    public class SystemRequirementsController : Controller
     {
         private readonly ILogger logger;
 
-        public PcRequirementsController(ILogger<PcRequirementsController> _logger)
+        public SystemRequirementsController(ILogger<SystemRequirementsController> _logger)
         {
             logger = _logger;
         }

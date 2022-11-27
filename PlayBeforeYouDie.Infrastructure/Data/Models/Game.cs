@@ -26,29 +26,23 @@ public class Game
     public int GenreId { get; set; }
     public Genre Genre { get; set; }
 
-    // [Required]
-    // [ForeignKey(nameof(HowLongToBeat))] 
-    // public int HowLongToBeatId { get; set; }
+    [Required]
+    [ForeignKey(nameof(SystemRequirement))]
+    public int SystemRequirementId { get; set; }
+    public SystemRequirement SystemRequirement { get; set; }
 
-    //  public HowLongToBeat HowLongToBeat { get; set; }
+    [Required]
+    [ForeignKey(nameof(HowLongToBeat))] 
+    public int HowLongToBeatId { get; set; }
+    public HowLongToBeat HowLongToBeat { get; set; }
 
-    //[Required]
-    // [ForeignKey(nameof(PcRequirement))]
-    // public int PcRequirementId { get; set; }
-
-    // public PcRequirement PcRequirement { get; set; }
-
-    //[Required]
-    //[ForeignKey(nameof(Review))]
-    //public int ReviewId { get; set; }
-    //public Review Review { get; set; }
-
+    
     //[Required]
     //[ForeignKey(Mod)]
     //public int ModId { get; set; }
 
     //public Mod Mod { get; set; }
 
-    public bool IsActiveGame { get; set; } = true;
+    public bool IsGameActive { get; set; } = true;
 
 }

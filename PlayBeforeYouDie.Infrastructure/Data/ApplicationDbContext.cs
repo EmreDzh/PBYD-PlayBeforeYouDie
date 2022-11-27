@@ -18,6 +18,8 @@ namespace PlayBeforeYouDie.Infrastructure.Data
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new GameConfiguration());
             builder.ApplyConfiguration(new GenreConfiguration());
+            builder.ApplyConfiguration(new SystemRequirementConfiguration());
+            builder.ApplyConfiguration(new HowLongToBeatConfiguration());
 
 
             builder.Entity<ApplicationUser>()

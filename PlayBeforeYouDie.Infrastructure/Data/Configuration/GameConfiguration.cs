@@ -25,26 +25,11 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                     "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_3ds_25/SI_3DS_TheLegendofZeldaOcarinaofTime3D_image1600w.jpg",
                 Rating = 99,
                 GenreId = 3,
-                //HowLongToBeatId = 1',
-                //PcRequirementId = 1,
-                //ReviewId = 1,
+                SystemRequirementId = 1,
+                HowLongToBeatId = 1,
                 //ModId = 1
             },
-            new Game()
-            {
-                Id = 2,
-                GameTitle = "Tony Hawk's Pro Skater 2",
-                Summary =
-                    "As most major publishers' development efforts shift to any number of next-generation platforms, Tony Hawk 2 will likely stand as one of the last truly fantastic games to be released on the PlayStation.",
-                ImageUrl =
-                    "https://m.media-amazon.com/images/I/51WZSJJ2GGL.jpg",
-                Rating = 98,
-                GenreId = 7,
-                //HowLongToBeatId = 1',
-                //PcRequirementId = 1,
-                //ReviewId = 1,
-                //ModId = 1
-            },
+            
             new Game()
             {
                 Id = 3,
@@ -55,9 +40,8 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                     "https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2018/03/13/0e032ffe-1b30-4ee4-876e-e31f6a894447/gta-iv",
                 Rating = 98,
                 GenreId = 2,
-                //HowLongToBeatId = 1',
-                //PcRequirementId = 1,
-                //ReviewId = 1,
+                SystemRequirementId = 2,
+                HowLongToBeatId = 2,
                 //ModId = 1
             },
             new Game()
@@ -70,9 +54,8 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                     "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperMarioGalaxy_image1600w.jpg",
                 Rating = 97,
                 GenreId = 3,
-                //HowLongToBeatId = 1',
-                //PcRequirementId = 1,
-                //ReviewId = 1,
+                SystemRequirementId = 3,
+                HowLongToBeatId = 3,
                 //ModId = 1
             },
             new Game()
@@ -85,9 +68,8 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                     "https://s1.gaming-cdn.com/images/products/5679/orig-fallback-v1/red-dead-redemption-2-pc-spiel-rockstar-cover.jpg?v=1647026658",
                 Rating = 97,
                 GenreId = 2,
-                //HowLongToBeatId = 1',
-                //PcRequirementId = 1,
-                //ReviewId = 1,
+                SystemRequirementId = 4,
+                HowLongToBeatId = 4,
                 //ModId = 1
             },
             new Game()
@@ -100,9 +82,8 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                     "http://www.tomshw.it/data/images/5/9/4/1/03e512f6782d046f428fe2446f14187c6.jpg",
                 Rating = 93,
                 GenreId = 2,
-                //HowLongToBeatId = 1',
-                //PcRequirementId = 1,
-                //ReviewId = 1,
+                SystemRequirementId = 5,
+                HowLongToBeatId = 5,
                 //ModId = 1
             }
 
