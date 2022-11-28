@@ -27,7 +27,7 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 GenreId = 3,
                 SystemRequirementId = 1,
                 HowLongToBeatId = 1,
-                //ModId = 1
+                ModId = 1
             },
             
             new Game()
@@ -42,7 +42,7 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 GenreId = 2,
                 SystemRequirementId = 2,
                 HowLongToBeatId = 2,
-                //ModId = 1
+                ModId = 2
             },
             new Game()
             {
@@ -56,7 +56,7 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 GenreId = 3,
                 SystemRequirementId = 3,
                 HowLongToBeatId = 3,
-                //ModId = 1
+                ModId = 3
             },
             new Game()
             {
@@ -70,7 +70,7 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 GenreId = 2,
                 SystemRequirementId = 4,
                 HowLongToBeatId = 4,
-                //ModId = 1
+                ModId = 4
             },
             new Game()
             {
@@ -84,7 +84,7 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 GenreId = 2,
                 SystemRequirementId = 5,
                 HowLongToBeatId = 5,
-                //ModId = 1
+                ModId = 5
             }
 
         };

@@ -31,6 +31,20 @@ internal class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
 
         users.Add(user);
 
+        user = new ApplicationUser()
+        {
+            Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
+            UserName = "Admin@mail.com",
+            NormalizedUserName = "Admin@mail.com",
+            Email = "Admin@mail.com",
+            NormalizedEmail = "Admin@mail.com"
+        };
+
+        user.PasswordHash =
+            hasher.HashPassword(user, "admin123");
+
+        users.Add(user);
+
 
         user = new ApplicationUser()
         {

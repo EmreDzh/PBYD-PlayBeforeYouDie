@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
 
 namespace PlayBeforeYouDie.Infrastructure.Data.Models;
 
@@ -12,7 +13,8 @@ public class Genre
     [Key]
     public int Id { get; set; }
 
-    [Required] 
+    [Required]
+    [MaxLength(ModelsConstants.CategoryMaxLength)]
     public string Category { get; set; } = null!;
 
     public List<Game> Games { get; set; }

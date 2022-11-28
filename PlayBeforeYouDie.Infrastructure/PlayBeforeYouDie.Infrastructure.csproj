@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Constants.Infrastructure\" />
     <Folder Include="Data\Configuration\" />
     <Folder Include="Data\Models\Users\" />
     <Folder Include="Migrations\" />

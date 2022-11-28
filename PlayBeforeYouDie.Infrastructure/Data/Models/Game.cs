@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
 
 namespace PlayBeforeYouDie.Infrastructure.Data.Models;
 
@@ -9,10 +9,12 @@ public class Game
     [Key]
     public int Id { get; set; }
 
-    [Required] 
+    [Required]
+    [MaxLength(ModelsConstants.GameTitleMaxLength)]
     public string GameTitle { get; set; } = null!;
 
-    [Required] 
+    [Required]
+    [MaxLength(ModelsConstants.SummaryMaxLength)]
     public string Summary { get; set; } = null!;
 
     [Required]
@@ -36,12 +38,10 @@ public class Game
     public int HowLongToBeatId { get; set; }
     public HowLongToBeat HowLongToBeat { get; set; }
 
-    
-    //[Required]
-    //[ForeignKey(Mod)]
-    //public int ModId { get; set; }
-
-    //public Mod Mod { get; set; }
+    [Required]
+    [ForeignKey(nameof(Mod))]
+    public int ModId { get; set; }
+    public Mod Mod { get; set; }
 
     public bool IsGameActive { get; set; } = true;
 
