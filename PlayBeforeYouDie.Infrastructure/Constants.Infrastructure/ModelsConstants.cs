@@ -9,6 +9,8 @@ public class ModelsConstants
     public const int SummaryMaxLength = 10000;
     public const int SummaryMinLength = 20;
 
+    public const int RatingMaxValue = 100;
+
 
     //Genre Constants
     public const int CategoryMaxLength = 100;

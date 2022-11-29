@@ -1,0 +1,63 @@
+﻿@model GameModel
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <input type="hidden" asp-for="@Model.Id" />
+            <div class="form-group">
+                <label asp-for="GameTitle"></label>
+                <input asp-for="GameTitle" class="form-control" placeholder="Title...">
+                <span asp-validation-for="GameTitle" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Summary"></label>
+                <input asp-for="Summary" class="form-control" placeholder="Address...">
+                <span asp-validation-for="Summary" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Your fine URL here...">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating"></label>
+                <input asp-for="Rating" class="form-control">
+                <span asp-validation-for="Rating" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GenreId"></label>
+                <select asp-for="GenreId" class="form-control">
+                    @foreach (var genre in Model.Genres)
+                    {
+                        <option value="@genre.Id">@genre.Category</option>
+                    }
+                </select>
+                <span asp-validation-for="GenreId" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ModId"></label>
+                <select asp-for="ModId" class="form-control">
+                    @foreach (var mods in Model.Mods)
+                    {
+                        <option value="@mods.Id">@mods.ModName</option>
+
+                        <option value="@mods.Id">@mods.Description</option>
+
+                        <option value="@mods.Id">@mods.ModImage</option>
+
+                        <option value="@mods.Id">@mods.DownloadModLink</option>
+
+                    }
+                </select>
+                <span asp-validation-for="ModId" class="small text-danger"></span>
+            </div>
+
+
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Save"/>
+            </div>
+        </form>
+    </div>
+</div>

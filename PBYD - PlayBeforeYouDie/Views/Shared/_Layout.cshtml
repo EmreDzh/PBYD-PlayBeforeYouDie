@@ -36,7 +36,7 @@
 
                                 @if (User?.Identity?.IsAuthenticated ?? false)
                                 {
-                                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">My Games</a>
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Game" asp-action="All">My Games</a>
                                     <li><hr class="dropdown-divider"></li>
                                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">How Long To Beat</a>
                                     <li><hr class="dropdown-divider"></li>
@@ -64,7 +64,7 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">VR</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item active" asp-area="" asp-controller="Home" asp-action="Index">Top Rated Games According to Metacritic</a></li>
+                                <li><a class="dropdown-item active" asp-area="" asp-controller="Game" asp-action="All">Top Rated Games According to Metacritic</a></li>
                                 
                             </ul>
                         </div>
