@@ -29,7 +29,7 @@ public class GameService : IGameService
                 ImageUrl = g.ImageUrl,
                 Rating = g.Rating
             })
-            .Take(3)
+            .Take(6)
             .ToListAsync();
     }
 

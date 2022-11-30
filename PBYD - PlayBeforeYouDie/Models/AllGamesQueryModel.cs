@@ -5,7 +5,7 @@ namespace PBYD___PlayBeforeYouDie.Models;
 
 public class AllGamesQueryModel
 {
-    public const int HousesPerPage = 3;
+    public const int HousesPerPage = 6;
 
     public int CurrentPage { get; init; } = 1;
 
