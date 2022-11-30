@@ -1,30 +1,32 @@
-﻿@model IEnumerable<GameServiceModel>
-
-@{
-    ViewBag.Title = "All Games";
-}
+﻿@model GameServiceModel
 
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
-
-<div class="text-center row">
-    @foreach (var game in Model)
-    {
-        <div class="card col-4" style="width: 20rem; ">
-            <img class="card-img-top" style="width: 18rem;"
-                 src="@game.ImageUrl" alt="Book Image">
+<div class="col-md-4">
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <img class="card-img-top "
+                 src="@Model.ImageUrl" alt="Game Image">
             <div class="card-body">
 
-                    <h5 class="card-title mt-1">@game.GameTitle</h5>
-                    <p class="mb-0">Summary: @game.Summary</p>
-                <p class="mb-0">Rating: @game.Rating</p>
+                <h5 class="card-title mt-1">@Model.GameTitle</h5>
+                <p class="m-1">MetaCritic Rating: @Model.Rating</p>
                 
-            </div>
+                <div style="min-height: 15px;">
+                    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                        <div class="card card-body" style="width: 350px;">
+                            @Model.Summary
+                        </div>
+                    </div>
+                </div>
 
-            <form class="input-group-sm" asp-controller="Mod" asp-action="AllMods" asp-route-bookId="@game.Id">
-                <input type="submit" value="Add to Collection" class="fs-6 btn btn-success mb-3 p-2" />
-            </form>
+            </div>
+            
+            <a asp-controller="Mod" asp-action="ModsAll" asp-route-id="@Model.Id"
+               class="fs-6 btn btn-success mb-3 p-2">Mods</a>
+            <a asp-controller="HowLongToBeat" asp-action="HowLongToBeatAll" asp-route-id="@Model.Id"
+               class="fs-6 btn btn-success mb-3 p-2">HowLongToBeat</a>
+
         </div>
-    }
+    </div>
+    
 </div>

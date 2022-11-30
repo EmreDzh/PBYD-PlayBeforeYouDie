@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PBYD___PlayBeforeYouDie.Models;
 using PlayBeforeYouDie.Core.Contracts;
 
 namespace PBYD___PlayBeforeYouDie.Controllers
@@ -23,11 +24,16 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllGamesQueryModel query)
         {
-            var result = await gameService.GetAll();
+            var result = await gameService.All(
+                query.CurrentPage,
+                AllGamesQueryModel.HousesPerPage);
 
-            return View(result);
+            query.TotalGamesCount = result.TotalGamesCount;
+            query.Games = result.Games;
+
+            return View(query);
         }
     }
 }
