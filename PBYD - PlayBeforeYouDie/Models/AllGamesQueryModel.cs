@@ -11,7 +11,7 @@ public class AllGamesQueryModel
 
     public int TotalGamesCount { get; set; }
 
-    [Display(Name = "Search game")]
+    [Display(Name = "Search games name or rating")]
     public string? SearchGame { get; init; }
 
     public IEnumerable<GameServiceModel> Games { get; set; } = new List<GameServiceModel>();

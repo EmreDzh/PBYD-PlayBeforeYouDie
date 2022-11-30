@@ -45,7 +45,7 @@ public class GameService : IGameService
 
             games = games
                 .Where(h => EF.Functions.Like(h.GameTitle.ToLower(), searchTerm) ||
-                            EF.Functions.Like(h.Summary.ToLower(), searchTerm));
+                            EF.Functions.Like(h.Rating.ToString(), searchTerm));
 
         }
 

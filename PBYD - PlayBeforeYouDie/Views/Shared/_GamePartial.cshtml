@@ -8,7 +8,7 @@
             <div class="card-body">
 
                 <h5 class="card-title mt-1">@Model.GameTitle</h5>
-                <p class="m-1" style="color:red;">MetaCritic Rating: @Model.Rating</p>
+                <p class="m-1" style="color:red;">Metacritic Rating: @Model.Rating</p>
                 
                 <div style="min-height: 15px;">
                     <div class="collapse collapse-horizontal" id="collapseWidthExample">
@@ -22,8 +22,10 @@
             
             <a asp-controller="Mod" asp-action="ModsAll" asp-route-id="@Model.Id"
                class="fs-6 btn btn-success mb-3 p-2">Mods</a>
+
             <a asp-controller="HowLongToBeat" asp-action="HowLongToBeatAll" asp-route-id="@Model.Id"
                class="fs-6 btn btn-success mb-3 p-2">HowLongToBeat</a>
+
             <a asp-controller="SystemRequirements" asp-action="SystemRequirementsAll" asp-route-id="@Model.Id"
                class="fs-6 btn btn-success mb-3 p-2" style="background-color: #b58900">System Requirements</a>
 
