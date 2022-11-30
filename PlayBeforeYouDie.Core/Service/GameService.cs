@@ -33,11 +33,21 @@ public class GameService : IGameService
             .ToListAsync();
     }
 
-    public async Task<GamesQueryModel> All(int currentPage = 1, int gamePerPage = 1)
+    public async Task<GamesQueryModel> All(string? searchTerm = null, int currentPage = 1, int gamePerPage = 1)
     {
         var result = new GamesQueryModel();
         var games = repo.AllReadonly<Game>()
             .Where(g => g.IsGameActive);
+
+        if (string.IsNullOrEmpty(searchTerm) == false)
+        {
+            searchTerm = $"%{searchTerm.ToLower()}%";
+
+            games = games
+                .Where(h => EF.Functions.Like(h.GameTitle.ToLower(), searchTerm) ||
+                            EF.Functions.Like(h.Summary.ToLower(), searchTerm));
+
+        }
 
         result.Games = await games
             .Skip((currentPage - 1) * gamePerPage)

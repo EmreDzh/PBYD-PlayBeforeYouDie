@@ -6,6 +6,6 @@ public interface IGameService
 {
     Task<IEnumerable<GameServiceModel>> GetAll();
 
-    Task<GamesQueryModel> All(int currentPage = 1,
+    Task<GamesQueryModel> All(string? searchTerm = null, int currentPage = 1,
         int gamePerPage = 1);
 }

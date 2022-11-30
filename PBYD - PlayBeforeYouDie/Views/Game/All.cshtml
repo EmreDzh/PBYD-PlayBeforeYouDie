@@ -1,26 +1,32 @@
 ﻿@model AllGamesQueryModel
 
 @{
-    ViewBag.Title = "All Games";
+    ViewBag.Title = "Games Library";
 }
 
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <h2 class="text-center">@ViewBag.Rating</h2> 
-<h2 class="text-center">
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-            View Games Summary
-        </button>
-    </p>
-    <div style="min-height: 15px;">
-        <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            @ViewBag.Summary
-            
-        </div>
-    </div>
-</h2>
+
 <hr />
+
+
+<form method="get">
+    <div class="row" style="width: 130%; display: flex; justify-content: center;">
+
+        <div class="form-group col-md-3">
+            <label asp-for="SearchGame"></label>
+            <input asp-for="SearchGame" class="form-control" placeholder="...">
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group mt-4 p-2">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+</form>
 
 @{
     var previousPage = Model.CurrentPage - 1;
@@ -53,10 +59,23 @@
            asp-controller="Game"
            asp-action="All"
            asp-route-currentPage="@(Model.CurrentPage + 1)"
-           >>></a>
+        >>></a>
     </div>
 </div>
 
+<h2 class="text-center">
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+            View Games Summary
+        </button>
+    </p>
+    <div style="min-height: 15px;">
+        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            @ViewBag.Summary
+
+        </div>
+    </div>
+</h2>
 
 @if (!Model.Games.Any())
 {
