@@ -20,13 +20,13 @@
 
             </div>
             
-            <a asp-controller="Mod" asp-action="ModsAll" asp-route-id="@Model.Id"
+            <a asp-area="" asp-controller="Mod" asp-action="ModsAll" asp-route-id="@Model.Id"
                class="fs-6 btn btn-success mb-3 p-2">Mods</a>
 
-            <a asp-controller="HowLongToBeat" asp-action="HowLongToBeatAll" asp-route-id="@Model.Id"
+            <a asp-area="" asp-controller="HowLongToBeat" asp-action="HowLongToBeatAll" asp-route-id="@Model.Id"
                class="fs-6 btn btn-success mb-3 p-2">HowLongToBeat</a>
 
-            <a asp-controller="SystemRequirements" asp-action="SystemRequirementsAll" asp-route-id="@Model.Id"
+            <a asp-area="" asp-controller="SystemRequirements" asp-action="SystemRequirementsAll" asp-route-id="@Model.Id"
                class="fs-6 btn btn-success mb-3 p-2" style="background-color: #b58900">System Requirements</a>
 
         </div>

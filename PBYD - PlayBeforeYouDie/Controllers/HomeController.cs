@@ -2,6 +2,7 @@
 using PBYD___PlayBeforeYouDie.Models;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
+using PlayBeforeYouDie.Core.Constants.Core.AdminAreaConstants;
 
 namespace PBYD___PlayBeforeYouDie.Controllers
 {
@@ -19,7 +20,18 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            if (User.IsInRole(AdminConstants.AdminRoleName))
+            {
+                return RedirectToAction("Index", "Admin", new { area = "Admin" });
+            }
+
             return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
     }
