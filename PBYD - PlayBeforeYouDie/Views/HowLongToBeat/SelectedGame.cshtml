@@ -1,0 +1,54 @@
+﻿@model HowLongToBeatModel
+
+<div class="col-md-4">
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <img class="card-img-top "
+                 src="@Model.ImageUrl" alt="Game Image">
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">@Model.GamesTitle</h5>
+                
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th scope="col">How Long To Beat Chart</th>
+        <th scope="col">Main Story</th>
+        <th scope="col">Main + Sides</th>
+        <th scope="col">Completionist</th>
+        <th scope="col">Speedrun</th>
+        <th scope="col">Speedrun 100%</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>@Model.MainStory</td>
+        <td>@Model.MainPlusSides</td>
+        <td>@Model.HundredPercentComplete</td>
+        <td>@Model.SpeedRunAny</td>
+        <td>@Model.SpeedRunOneHundredPercent</td>
+    </tr>
+    </tbody>
+</table>
+
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="HowLongToBeat" asp-action="Submit">Submit your playtime!</a>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg" asp-controller="User" asp-action="Login">Please login to submit your playtime!</a>
+    </div>
+
+}
+

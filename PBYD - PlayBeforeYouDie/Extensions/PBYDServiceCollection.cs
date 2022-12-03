@@ -11,7 +11,9 @@ public static class PBYDServiceCollection
     {
         services.AddScoped<IGuard, Guard>();
         services.AddScoped<IRepository, Repository>();
+       
         services.AddScoped<IGameService, GameService>();
+        services.AddScoped<IHowLongToBeatService, HowLongToBeatService>();
 
         return services;
     }

@@ -66,4 +66,16 @@ public class GameService : IGameService
         return result;
 
     }
+
+    public async Task<bool> Exists(int id)
+    {
+        return await repo.AllReadonly<Game>()
+            .AnyAsync(g => g.Id == id && g.IsGameActive);
+    }
+
+    public async Task<int> GetGameId(int gameId)
+    {
+        return (await repo.AllReadonly<Game>()
+            .FirstOrDefaultAsync(g => g.Id == gameId))?.Id ?? 0;
+    }
 }

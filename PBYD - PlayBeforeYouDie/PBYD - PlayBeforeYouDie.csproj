@@ -26,7 +26,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\Mod\" />
-    <Folder Include="Views\HowLongToBeat\" />
     <Folder Include="Views\UserBenchmark\" />
   </ItemGroup>
 

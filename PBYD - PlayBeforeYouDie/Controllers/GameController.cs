@@ -24,7 +24,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> All([FromQuery]AllGamesQueryModel query)
+        public async Task<IActionResult> AllGames([FromQuery]AllGamesQueryModel query)
         {
             var result = await gameService.All(
                 query.SearchGame,

@@ -42,7 +42,7 @@
     <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
         <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
            asp-controller="Game"
-           asp-action="All"
+           asp-action="AllGames"
            asp-route-currentPage="@previousPage"
         ><<</a>
     </div>
@@ -56,7 +56,7 @@
         <a class="btn btn-primary 
            @(shouldButtonBeDisabled ? "disabled" : string.Empty)"
            asp-controller="Game"
-           asp-action="All"
+           asp-action="AllGames"
            asp-route-currentPage="@(Model.CurrentPage + 1)"
         >>></a>
     </div>

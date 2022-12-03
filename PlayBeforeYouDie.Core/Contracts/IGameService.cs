@@ -8,4 +8,8 @@ public interface IGameService
 
     Task<GamesQueryModel> All(string? searchTerm = null, int currentPage = 1,
         int gamePerPage = 1);
+
+    Task<bool> Exists(int id);
+
+    Task<int> GetGameId(int gameId);
 }

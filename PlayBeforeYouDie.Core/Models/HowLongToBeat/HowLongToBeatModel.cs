@@ -7,6 +7,11 @@ public class HowLongToBeatModel
 {
     public int Id { get; set; }
 
+    [StringLength(ModelsConstants.GameTitleMaxLength, MinimumLength = ModelsConstants.GameTitleMinLength)]
+    public string? GamesTitle { get; set; } 
+
+    public string? ImageUrl { get; set; } 
+
     [Required]
     [StringLength(ModelsConstants.MainStoryMaxLength, MinimumLength = ModelsConstants.MainStoryMinLength)]
     public string MainStory { get; set; } = null!;
@@ -24,4 +29,5 @@ public class HowLongToBeatModel
 
     [StringLength(ModelsConstants.SpeedRunOneHundredPercentMaxLength, MinimumLength = ModelsConstants.SpeedRunOneHundredPercentMinLength)]
     public string? SpeedRunOneHundredPercent { get; set; }
+    
 }

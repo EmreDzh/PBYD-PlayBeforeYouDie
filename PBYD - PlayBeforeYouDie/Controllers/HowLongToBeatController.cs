@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PBYD___PlayBeforeYouDie.Extensions;
+using PlayBeforeYouDie.Core.Contracts;
+using PlayBeforeYouDie.Core.Models.HowLongToBeat;
 
 namespace PBYD___PlayBeforeYouDie.Controllers
 {
@@ -8,15 +11,56 @@ namespace PBYD___PlayBeforeYouDie.Controllers
     {
 
         private readonly ILogger logger;
+        private readonly IHowLongToBeatService howLongToBeat;
+        private readonly IGameService gameService;
 
-        public HowLongToBeatController(ILogger<HowLongToBeatController> _logger)
+
+        public HowLongToBeatController(
+            ILogger<HowLongToBeatController> _logger, IHowLongToBeatService _howLongToBeat, IGameService _gameService)
         {
             logger = _logger;
+            howLongToBeat = _howLongToBeat;
+            gameService = _gameService;
         }
 
-        public IActionResult Index()
+        [AllowAnonymous]
+        public async Task<IActionResult> SelectedGame(int id)
         {
-            return View();
+            if (await gameService.Exists(id) == false)
+            {
+                return RedirectToAction("AllGames", "Game");
+            }
+
+            var model = await howLongToBeat.GameHowLongToBeatById(id);
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> Submit()
+        {
+            var model = new HowLongToBeatModel();
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Submit(HowLongToBeatModel model, int ids)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            int howLongToBeatId = await howLongToBeat.GetHowLongToBeatId(ids);
+
+            int id = await howLongToBeat.SubmitPlayTime(model, 1);
+
+            return RedirectToAction("SelectedGame", new
+            {
+                id
+            });
         }
     }
 }
