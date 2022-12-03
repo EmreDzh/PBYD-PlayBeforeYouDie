@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlayBeforeYouDie.Core.Contracts;
+using PlayBeforeYouDie.Core.Models.Game;
 using PlayBeforeYouDie.Core.Models.HowLongToBeat;
+using PlayBeforeYouDie.Infrastructure.Data;
 using PlayBeforeYouDie.Infrastructure.Data.Common;
 using PlayBeforeYouDie.Infrastructure.Data.Models;
 
@@ -9,12 +11,13 @@ namespace PlayBeforeYouDie.Core.Service;
 public class HowLongToBeatService : IHowLongToBeatService
 {
     private readonly IRepository repo;
-    
+    private readonly ApplicationDbContext context;
 
-    public HowLongToBeatService(IRepository _repo)
+
+    public HowLongToBeatService(IRepository _repo, ApplicationDbContext _context)
     {
         repo = _repo;
-       
+        context = _context;
     }
 
     public async Task<HowLongToBeatModel> GameHowLongToBeatById(int id)
@@ -37,18 +40,22 @@ public class HowLongToBeatService : IHowLongToBeatService
             .FirstAsync();
     }
 
-    public async Task<int> SubmitPlayTime(HowLongToBeatModel model, int howLongToBeatId)
+    public async Task<int> SubmitPlayTime(HowLongToBeatModel model, int gameId)
     {
 
-        var howLongToBeat = new HowLongToBeat()
+        var howLongToBeat = new Game()
         {
-            Id = howLongToBeatId,
-            HundredPercentComplete = model.HundredPercentComplete,
-            MainPlusSides = model.MainPlusSides,
-            MainStory = model.MainStory,
-            SpeedRunAny = model.SpeedRunAny,
-            SpeedRunOneHundredPercent = model.SpeedRunOneHundredPercent,
+            Id = gameId,
+            HowLongToBeat = new HowLongToBeat()
+            {
+                HundredPercentComplete = model.HundredPercentComplete,
+                MainPlusSides = model.MainPlusSides,
+                MainStory = model.MainStory,
+                SpeedRunAny = model.SpeedRunAny,
+                SpeedRunOneHundredPercent = model.SpeedRunOneHundredPercent
+            }
         };
+        
         
         try
         {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PBYD___PlayBeforeYouDie.Extensions;
 using PlayBeforeYouDie.Core.Contracts;
+using PlayBeforeYouDie.Core.Models.Game;
 using PlayBeforeYouDie.Core.Models.HowLongToBeat;
 
 namespace PBYD___PlayBeforeYouDie.Controllers
@@ -24,7 +25,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> SelectedGame(int id)
+        public async Task<IActionResult> SelectedHowLong(int id)
         {
             if (await gameService.Exists(id) == false)
             {
@@ -53,11 +54,11 @@ namespace PBYD___PlayBeforeYouDie.Controllers
             {
                 return View(model);
             }
-            int howLongToBeatId = await howLongToBeat.GetHowLongToBeatId(ids);
+           // int howLongToBeatId = await howLongToBeat.GetHowLongToBeatId();
 
-            int id = await howLongToBeat.SubmitPlayTime(model, 1);
+            int id = await howLongToBeat.SubmitPlayTime(model, 0);
 
-            return RedirectToAction("SelectedGame", new
+            return RedirectToAction(nameof(SelectedHowLong), new
             {
                 id
             });

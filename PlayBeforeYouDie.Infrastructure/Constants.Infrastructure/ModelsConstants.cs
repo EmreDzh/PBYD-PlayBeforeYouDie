@@ -17,20 +17,21 @@ public class ModelsConstants
     public const int CategoryMinLength = 3;
 
     //HowLongToBeat Constants
-    public const int MainStoryMaxLength = 15;
-    public const int MainStoryMinLength = 3;
+    public const int MainStoryMaxLength = 11;
+    public const int MainStoryMinLength = 8;
 
-    public const int MainPlusSidesMaxLength = 15;
-    public const int MainPlusSidesMinLength = 3;
+    public const int MainPlusSidesMaxLength = 11;
+    public const int MainPlusSidesMinLength = 8;
 
-    public const int HundredPercentCompleteMaxLength = 15;
-    public const int HundredPercentCompleteMinLength = 3;
+    public const int HundredPercentCompleteMaxLength = 11;
+    public const int HundredPercentCompleteMinLength = 8;
 
-    public const int SpeedRunMaxLength = 15;
-    public const int SpeedRunMinLength = 3;
+    public const int SpeedRunMaxLength = 11;
+    public const int SpeedRunMinLength = 8;
 
-    public const int SpeedRunOneHundredPercentMaxLength = 15;
-    public const int SpeedRunOneHundredPercentMinLength = 3;
+    public const int SpeedRunOneHundredPercentMaxLength = 11;
+    public const int SpeedRunOneHundredPercentMinLength = 8;
+
 
     //Mod Link Constants
     public const int ModNameMaxLength = 300;
@@ -60,4 +61,6 @@ public class ModelsConstants
 
     public const int AdditionalNotesMaxLength = 100000;
     public const int AdditionalNotesMinLength = 30;
+
+    
 }

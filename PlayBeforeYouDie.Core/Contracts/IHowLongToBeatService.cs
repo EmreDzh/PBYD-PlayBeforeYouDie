@@ -1,4 +1,5 @@
-﻿using PlayBeforeYouDie.Core.Models.HowLongToBeat;
+﻿using PlayBeforeYouDie.Core.Models.Game;
+using PlayBeforeYouDie.Core.Models.HowLongToBeat;
 
 namespace PlayBeforeYouDie.Core.Contracts;
 

@@ -13,6 +13,7 @@ public class HowLongToBeat
     [Key]
     public int Id { get; set; }
 
+
     [Required]
     [MaxLength(ModelsConstants.MainStoryMaxLength)]
     public string MainStory { get; set; } = null!;
