@@ -10,7 +10,8 @@ public class SystemRequirement
         Games = new List<Game>();
     }
 
-    [Key] public int Id { get; set; }
+    [Key] 
+    public int Id { get; set; }
 
     [Required]
     [MaxLength(ModelsConstants.OsMaxLength)]

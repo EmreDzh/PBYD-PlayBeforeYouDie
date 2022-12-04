@@ -1,0 +1,61 @@
+﻿@model SystemRequirementsModel
+
+<div class="col-md-4" style="width:700px; margin:0 auto;">
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <img class="img-fluid"
+                 src="@Model.ImageUrl" alt="Game Image">
+            <div class="text-center">
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="SystemRequirements" asp-action="Edit">Edit System Requirements</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h2>@Model.GamesTitle <strong>System Requirements</strong></h2>
+    <div class="row-cols-auto">
+        <div class="col-form-label">Platform:</div>
+        <div class="text-bg-primary"><strong>@Model.Os</strong></div>
+    </div>
+    
+    <div class="row-cols-auto">
+        <div class="col-form-label">Processor:</div>
+        <div class="text-bg-primary"><strong>@Model.Processor</strong></div>
+    </div>
+    
+    <div class="row-cols-auto">
+        <div class="col-form-label">Memory:</div>
+        <div class="text-bg-primary"><strong>@Model.Memory</strong></div>
+    </div>
+    
+    <div class="row-cols-auto">
+        <div class="col-form-label">Graphics:</div>
+        <div class="text-bg-primary"><strong>@Model.Graphics</strong></div>
+    </div>
+    
+    <div class="row-cols-auto">
+        <div class="col-form-label">Network:</div>
+        <div class="text-bg-primary"><strong>@Model.Network</strong></div>
+    </div>
+    
+    <div class="row-cols-auto">
+        <div class="col-form-label">Storage:</div>
+        <div class="text-bg-primary"><strong>@Model.Storage</strong></div>
+    </div>
+    
+</div>
+
+<li><hr class="dropdown-divider"></li>
+
+<div class="list-group" style="width:700px; margin: 100px;  margin:0 auto;">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Additional Information</h5>
+        </div>
+        <p class="mb-1">@Model.AdditionalNotes</p>
+        
+    </a>
+    
+</div>
+   

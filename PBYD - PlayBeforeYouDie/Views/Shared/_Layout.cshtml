@@ -38,15 +38,17 @@
                                 {
                                     <a class="nav-link text-light" asp-area="" asp-controller="Game" asp-action="AllGames">My Games</a>
                                     <li><hr class="dropdown-divider"></li>
-                                    <a class="nav-link text-light" asp-area="" asp-controller="HowLongToBeat" asp-action="SelectedHowLong">How Long To Beat</a>
-                                    <li><hr class="dropdown-divider"></li>
                                     <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Mods</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <a class="nav-link text-light" asp-area="" asp-controller="HowLongToBeat" asp-action="HowLongToBeatView">How Long To Beat</a>
                                 }
                                 else
                                 {
                                     <li>
                                         <a class="dropdown-item active" asp-controller="User" asp-action="Login">Please login to view your games and mods!</a>
                                     </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <a class="nav-link text-light" asp-area="" asp-controller="HowLongToBeat" asp-action="HowLongToBeatView">How Long To Beat</a>
                                 }
 
                             </ul>

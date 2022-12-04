@@ -1,0 +1,20 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-image: url(../lib/images/elden-ring-from-software-screen-shot-artwork-hd-wallpaper-4b2b0587cdf26dec13e576e7983c980b.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

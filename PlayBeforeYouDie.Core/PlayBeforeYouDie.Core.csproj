@@ -17,7 +17,7 @@
     <Folder Include="Models\HowLongToBeat\" />
     <Folder Include="Models\Mod\" />
     <Folder Include="Models\Review\" />
-    <Folder Include="Models\PcRequirement\" />
+    <Folder Include="Models\SystemRequirement\" />
     <Folder Include="Models\Users\" />
   </ItemGroup>
 

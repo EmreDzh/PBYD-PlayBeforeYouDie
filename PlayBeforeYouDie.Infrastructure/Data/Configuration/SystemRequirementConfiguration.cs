@@ -38,7 +38,7 @@ public class SystemRequirementConfiguration : IEntityTypeConfiguration<SystemReq
                 Graphics = "256MB Nvidia 7900 / 256MB ATI X1900",
                 Network = "N/A",
                 Storage = "32GB of Hard Disc Space",
-                AdditionalNotes = "Initial activation requires internet connection; Online play requires log-in to Games For Windows - Live and Rockstar Games Social Club ("
+                AdditionalNotes = "Initial activation requires internet connection; Online play requires log-in to Games For Windows - Live and Rockstar Games Social Club"
 
             },
 

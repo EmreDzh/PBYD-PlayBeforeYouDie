@@ -25,6 +25,12 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         }
 
         [AllowAnonymous]
+        public  IActionResult HowLongToBeatView()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
         public async Task<IActionResult> SelectedHowLong(int id)
         {
             if (await gameService.Exists(id) == false)

@@ -1,0 +1,31 @@
+﻿
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/CSS/images.css" />
+</head>
+<body >
+<p class="fs-1" style="color: white" >HowLongToBeat</p>
+<p class="fs-3" style="color: white">Track what you're playing, discover new games.</p>
+
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Game" asp-action="AllGames">Explore Games!</a>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="User" asp-action="Register">Join Our Community!</a>
+    </div>
+
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="User" asp-action="Login">Log In</a>
+    </div>
+
+    
+}
+
+</body>
+
