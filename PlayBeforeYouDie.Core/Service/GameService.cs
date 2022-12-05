@@ -16,6 +16,22 @@ public class GameService : IGameService
 
     }
 
+    public async Task<IEnumerable<GameHomeModel>> GetInitialGames()
+    {
+        return await repo.AllReadonly<Game>()
+            .Where(g => g.IsGameActive)
+            .OrderByDescending(g => g.Id)
+            .Select(h => new GameHomeModel()
+            {
+                Id = h.Id,
+                GameTitle = h.GameTitle,
+                ImageUrl = h.ImageUrl,
+                Summary = h.Summary
+            })
+            .ToListAsync();
+
+    }
+
     public async Task<IEnumerable<GameServiceModel>> GetAll()
     {
         return await repo.AllReadonly<Game>()

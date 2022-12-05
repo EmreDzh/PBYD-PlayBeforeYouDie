@@ -1,0 +1,65 @@
+﻿@model IEnumerable<GameHomeModel>
+
+@{
+    bool first = true;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/CSS/images2.css" />
+</head>
+<body >
+<p class="fs-1" style="color: white" >Mods</p>
+<p class="fs-3" style="color: white">The Mods is a page which allows users to view and download "mods" (modifications) for computer games.</p>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+            @foreach (var games in Model)
+            {
+                <div class="carousel-item @(first ? "active" : string.Empty)">
+
+                    <img class="d-block w-100" style="width:150px; margin:0 auto;"
+                     src="@games.ImageUrl" alt="@games.GameTitle">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>
+                            <a class="btn btn-primary" asp-controller="Mod" asp-action="ModsGame" asp-route-id="@games.Id"
+                           asp-route-id="@games.Id">
+                                @games.GameTitle - Mods</a>
+                        </h5>
+                    </div>
+                </div>
+
+                @(first = false)
+            }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <div class="text-center" style="color: aquamarine">
+            <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Game" asp-action="AllGames">Explore Games!</a>
+        </div>
+    }
+    else
+    {
+        <div class="text-center" style="color: aquamarine">
+            <a class="btn btn-primary btn-lg" asp-area="" asp-controller="User" asp-action="Register">Join Our Community!</a>
+        </div>
+
+        <div class="text-center" style="color: aquamarine">
+            <a class="btn btn-primary btn-lg" asp-area="" asp-controller="User" asp-action="Login">Log In</a>
+        </div>
+
+    }
+
+</body>

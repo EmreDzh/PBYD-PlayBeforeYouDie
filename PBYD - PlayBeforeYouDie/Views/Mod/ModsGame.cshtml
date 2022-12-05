@@ -1,0 +1,54 @@
+﻿@model ModModel
+<h1 align="center">Mods</h1>
+<div class="col-md-4" style="width:700px; margin:0 auto;">
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <h5 class="card-title mt-1">@Model.ModName for <strong>@Model.GamesTitle</strong></h5>
+            <img class="card-img-top "
+                 src="@Model.ModImage" alt="Game Image">
+            <div class="card-body">
+                <dl class="row">
+                    
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Download Mod Link</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Youtube Video Comparison</button>
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">ABOUT THIS MOD</button>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        @if (Model.DownloadModLink == null)
+        {
+            <h2>No mods available for @Model.GamesTitle</h2>
+        }
+        else
+        {
+            <a href="@Model.DownloadModLink" target="_blank">Download and Install @Model.ModName</a>
+        }
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        @if (Model.YoutubeVideoModComparison == null)
+        {
+            <h2>No videos available for @Model.GamesTitle</h2>
+        }
+        else
+        {
+            <iframe width="1400" height="500" src="@Model.YoutubeVideoModComparison" frameborder="0" allowfullscreen></iframe>
+        }
+        
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <h2>Description</h2>
+        <p>@Model.Description</p>
+    </div>
+
+</div>
+

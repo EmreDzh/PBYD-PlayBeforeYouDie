@@ -65,7 +65,7 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 Summary =
                     "Developed by the creators of Grand Theft Auto V and Red Dead Redemption, Red Dead Redemption 2 is an epic tale of life in America’s unforgiving heartland. The game’s vast and atmospheric world also provides the foundation for a brand new online multiplayer experience. America, 1899. The end of the Wild West era has begun. After a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang has to rob, steal and fight their way across the rugged heartland of America in order to survive. As deepening internal fissures threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang that raised him. [Rockstar]",
                 ImageUrl =
-                    "https://s1.gaming-cdn.com/images/products/5679/orig-fallback-v1/red-dead-redemption-2-pc-spiel-rockstar-cover.jpg?v=1647026658",
+                    "https://assets1.ignimgs.com/2016/10/18/red-dead-redemption-2-buttonjpg-f9ad35.jpg",
                 Rating = 97,
                 GenreId = 2,
                 SystemRequirementId = 4,
@@ -79,7 +79,7 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 Summary =
                     "With the Empire attacking the Kingdoms of the North and the Wild Hunt, a cavalcade of ghastly riders, breathing down your neck, the only way to survive is to fight back. As Geralt of Rivia, a master swordsman and monster hunter, leave none of your enemies standing. Explore a gigantic open world, slay beasts and decide the fates of whole communities with your actions, all in a genuine next generation format.",
                 ImageUrl =
-                    "http://www.tomshw.it/data/images/5/9/4/1/03e512f6782d046f428fe2446f14187c6.jpg",
+                    "https://static.giga.de/15/68/17/cbb82352a0e62e5ad8c613c207_AzE4Yzg1MDJhYzMw_thewitcher3.jpg",
                 Rating = 93,
                 GenreId = 2,
                 SystemRequirementId = 5,

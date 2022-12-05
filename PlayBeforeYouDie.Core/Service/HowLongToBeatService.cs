@@ -11,13 +11,12 @@ namespace PlayBeforeYouDie.Core.Service;
 public class HowLongToBeatService : IHowLongToBeatService
 {
     private readonly IRepository repo;
-    private readonly ApplicationDbContext context;
+    
 
-
-    public HowLongToBeatService(IRepository _repo, ApplicationDbContext _context)
+    public HowLongToBeatService(IRepository _repo)
     {
         repo = _repo;
-        context = _context;
+        
     }
 
     public async Task<HowLongToBeatModel> GameHowLongToBeatById(int id)

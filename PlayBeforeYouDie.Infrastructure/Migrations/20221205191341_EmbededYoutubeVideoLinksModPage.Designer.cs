@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayBeforeYouDie.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221205191341_EmbededYoutubeVideoLinksModPage")]
+    partial class EmbededYoutubeVideoLinksModPage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,7 +259,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             GameTitle = "Red Dead Redemption 2",
                             GenreId = 2,
                             HowLongToBeatId = 4,
-                            ImageUrl = "https://assets1.ignimgs.com/2016/10/18/red-dead-redemption-2-buttonjpg-f9ad35.jpg",
+                            ImageUrl = "https://s1.gaming-cdn.com/images/products/5679/orig-fallback-v1/red-dead-redemption-2-pc-spiel-rockstar-cover.jpg?v=1647026658",
                             IsGameActive = true,
                             ModId = 4,
                             Rating = 97m,
@@ -270,7 +272,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             GameTitle = "The Witcher 3: Wild Hund",
                             GenreId = 2,
                             HowLongToBeatId = 5,
-                            ImageUrl = "https://static.giga.de/15/68/17/cbb82352a0e62e5ad8c613c207_AzE4Yzg1MDJhYzMw_thewitcher3.jpg",
+                            ImageUrl = "http://www.tomshw.it/data/images/5/9/4/1/03e512f6782d046f428fe2446f14187c6.jpg",
                             IsGameActive = true,
                             ModId = 5,
                             Rating = 93m,
@@ -441,6 +443,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DownloadModLink")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModImage")
@@ -464,9 +467,10 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = 1,
                             Description = "Theres no mods available for The Legend of Zelda: Ocarina of Time, since its a Nintendo only title",
+                            DownloadModLink = "N/A",
                             ModImage = "https://cdn11.bigcommerce.com/s-2m627o4amu/products/722/images/4096/Playstation-4-PS4-Empty-Custom-Replacement-Case-Box__50578.1507926933.500.750.png?c=2",
                             ModName = "The Legend of Zelda: Ocarina of Time",
-                            YoutubeVideoModComparison = "https://youtube.com/embed/WZK19L2JUGc"
+                            YoutubeVideoModComparison = "https://youtu.be/embed/WZK19L2JUGc"
                         },
                         new
                         {
@@ -475,12 +479,13 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             DownloadModLink = "https://www.nexusmods.com/gta4/mods/238",
                             ModImage = "https://staticdelivery.nexusmods.com/mods/253/images/238/238-1669288616-1834557289.png",
                             ModName = "Photorealistic Visuals ReShade",
-                            YoutubeVideoModComparison = "https://youtube.com/embed/btiYnR848RU"
+                            YoutubeVideoModComparison = "https://youtu.be/embed/btiYnR848RU"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Theres no mods available for Super Mario Galaxy, since its an old title and no longer supported and fit for mods",
+                            DownloadModLink = "N/A",
                             ModImage = "https://s3.amazonaws.com/colorslive/png/60685-OcB6fsTJVHR82033.png",
                             ModName = "Super Mario Galaxy"
                         },
@@ -490,8 +495,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Description = "In an effort to add something small to the community that enrichens this game so much, here are some horses to honor National Native American Heritage Day. I wanted to see more horses influenced by Native Indian Culture. Not meant to be \"realistic\" or even \"immersive\", just respectful and what I like.\r\nHope some of you like it too. Enjoy.",
                             DownloadModLink = "https://www.nexusmods.com/reddeadredemption2/mods/1811",
                             ModImage = "https://staticdelivery.nexusmods.com/mods/3024/images/1811/1811-1669436382-504851999.png",
-                            ModName = "Native American Horses",
-                            YoutubeVideoModComparison = "https://youtube.com/embed/PA-gd8DBR8o"
+                            ModName = "Native American Horses"
                         },
                         new
                         {
@@ -500,7 +504,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             DownloadModLink = "https://www.nexusmods.com/witcher3/mods/1021",
                             ModImage = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600548166-1660518323.jpeg",
                             ModName = "The Witcher 3 HD Reworked Project",
-                            YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0"
+                            YoutubeVideoModComparison = "https://youtu.be/embed/YNKlpvKvKl0"
                         });
                 });
 
@@ -676,15 +680,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "64d0e9ee-523e-4bcb-8afa-af610ec64e43",
+                            ConcurrencyStamp = "77af3e20-7a97-46fd-8e25-8aab83ed2cfa",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK5P4UC76j9mltvS9icr+OiC8/lgnuz7hq6Khh1xMlxv1XmRr1KYLSe+mpro6SkgGw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO+NGiGC5IyBcgzlnhpLdi8hAqDhpQ+Q6m6/8QpF6tjHh1IVluzxT1jpWpMC/mv9BA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2d3fc984-3f00-432c-8e9b-30e9ed1afd59",
+                            SecurityStamp = "0c6249a0-ab2d-4526-903c-5bc1243a21fa",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -692,15 +696,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "76debe20-935d-4bcb-a8c2-983295bbb307",
+                            ConcurrencyStamp = "0dd7833b-bda5-43c8-8250-3b31ee3a796a",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ8qEemq+6/LUTt9NbR74R4iRn5/wrXSChb8pVrS5tzh8KEjWQ96yhzspkadJ+Jmiw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECQjP//9MGC1YHVDUYVFGuVB6sEGPzQamMeJfSsKtWFMugLZU+ZWVgTDk8yiJ4+27Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "129b7b05-525c-46f4-8216-5a9560661ed7",
+                            SecurityStamp = "f7c0e81c-a76f-4c6f-baa5-d123294f1376",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -708,15 +712,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d2de48b9-cc50-45f3-b847-4723a60f575b",
+                            ConcurrencyStamp = "fc636e99-e85c-4c45-a931-fc33bcbadab8",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEISSOEaviuDDzR67Ory3AASDfFFXgaNm1aWgqdbxbcQOvc5dax9CPfjHLSBzJUo6ug==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMBxF6CL9Q8zcqBpArSbxjVYoAc3CB0CTls8nT7NxV1DlQQrsM4/GGaoFktICmTTQw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "af72ff38-35ab-4814-8561-2e7d7d69c04e",
+                            SecurityStamp = "f324b293-dbf7-45f1-8ce7-d261a77a5dcb",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });

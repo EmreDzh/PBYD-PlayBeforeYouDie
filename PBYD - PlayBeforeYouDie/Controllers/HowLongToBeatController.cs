@@ -25,13 +25,15 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         }
 
         [AllowAnonymous]
-        public  IActionResult HowLongToBeatView()
+        public async  Task<IActionResult> HowLongToBeatView()
         {
-            return View();
+            var model = await gameService.GetInitialGames();
+
+            return View(model);
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> SelectedHowLong(int id)
+        public async Task<IActionResult> HowLongGame(int id)
         {
             if (await gameService.Exists(id) == false)
             {
@@ -64,7 +66,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
             int id = await howLongToBeat.SubmitPlayTime(model, 0);
 
-            return RedirectToAction(nameof(SelectedHowLong), new
+            return RedirectToAction(nameof(HowLongGame), new
             {
                 id
             });

@@ -1,12 +1,48 @@
-﻿
+﻿@model IEnumerable<GameHomeModel>
+
+@{
+    bool first = true;
+}
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link rel="stylesheet" href="~/CSS/images.css" />
+    <link rel="stylesheet" href="~/CSS/images1.css" />
 </head>
 <body >
 <p class="fs-1" style="color: white" >HowLongToBeat</p>
 <p class="fs-3" style="color: white">Track what you're playing, discover new games.</p>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @foreach(var games in Model)
+        {
+            <div class="carousel-item @(first ? "active" : string.Empty)">
+               
+                <img class="d-block w-100" style="width:150px; margin:0 auto;"
+                     src="@games.ImageUrl" alt="@games.GameTitle">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>
+                        <a class="btn btn-primary" asp-controller="HowLongToBeat" asp-action="HowLongGame" asp-route-id="@games.Id"
+                           asp-route-id="@games.Id">
+                            @games.GameTitle - How Long To Beat</a>
+                    </h5>
+                </div>
+            </div>
+
+            @(first = false)
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
 
 @if (User?.Identity?.IsAuthenticated ?? false)
 {
@@ -24,7 +60,6 @@ else
         <a class="btn btn-primary btn-lg" asp-area="" asp-controller="User" asp-action="Login">Log In</a>
     </div>
 
-    
 }
 
 </body>

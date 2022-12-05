@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
 
 namespace PlayBeforeYouDie.Infrastructure.Data.Models;
@@ -21,11 +23,12 @@ public class Mod
     [MaxLength(ModelsConstants.ModDescriptionMaxLength)]
     public string Description { get; set; } = null!;
 
+    public string? DownloadModLink { get; set; } 
+
     [Required] 
     public string ModImage { get; set; } = null!;
 
-    [Required] 
-    public string DownloadModLink { get; set; } = null!;
+    public string? YoutubeVideoModComparison { get; set; }
 
     public List<Game> Games { get; set; } 
 }

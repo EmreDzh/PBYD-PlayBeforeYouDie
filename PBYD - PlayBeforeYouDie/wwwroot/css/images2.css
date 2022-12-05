@@ -1,0 +1,20 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-image: url(../lib/images/cj-.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

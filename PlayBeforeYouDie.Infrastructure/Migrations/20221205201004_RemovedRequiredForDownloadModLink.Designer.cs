@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayBeforeYouDie.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221205201004_RemovedRequiredForDownloadModLink")]
+    partial class RemovedRequiredForDownloadModLink
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,7 +259,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             GameTitle = "Red Dead Redemption 2",
                             GenreId = 2,
                             HowLongToBeatId = 4,
-                            ImageUrl = "https://assets1.ignimgs.com/2016/10/18/red-dead-redemption-2-buttonjpg-f9ad35.jpg",
+                            ImageUrl = "https://s1.gaming-cdn.com/images/products/5679/orig-fallback-v1/red-dead-redemption-2-pc-spiel-rockstar-cover.jpg?v=1647026658",
                             IsGameActive = true,
                             ModId = 4,
                             Rating = 97m,
@@ -270,7 +272,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             GameTitle = "The Witcher 3: Wild Hund",
                             GenreId = 2,
                             HowLongToBeatId = 5,
-                            ImageUrl = "https://static.giga.de/15/68/17/cbb82352a0e62e5ad8c613c207_AzE4Yzg1MDJhYzMw_thewitcher3.jpg",
+                            ImageUrl = "http://www.tomshw.it/data/images/5/9/4/1/03e512f6782d046f428fe2446f14187c6.jpg",
                             IsGameActive = true,
                             ModId = 5,
                             Rating = 93m,
@@ -676,15 +678,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "64d0e9ee-523e-4bcb-8afa-af610ec64e43",
+                            ConcurrencyStamp = "134f3411-f832-4705-a8e4-66b6aad28ba8",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK5P4UC76j9mltvS9icr+OiC8/lgnuz7hq6Khh1xMlxv1XmRr1KYLSe+mpro6SkgGw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENdHUVWrAwXD/P8fCAsmo2jns90MEOjHyX0k1+cAAvLDqJo9A+zvdNhWZohe9U+6ZQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2d3fc984-3f00-432c-8e9b-30e9ed1afd59",
+                            SecurityStamp = "ad297ecd-f84d-47ba-a8ac-50da3c818e3a",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -692,15 +694,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "76debe20-935d-4bcb-a8c2-983295bbb307",
+                            ConcurrencyStamp = "f0c6da5b-fa6e-4ac8-8b14-b39c0571a4fc",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ8qEemq+6/LUTt9NbR74R4iRn5/wrXSChb8pVrS5tzh8KEjWQ96yhzspkadJ+Jmiw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEANnjIc16xIL3kdCV5d6oxZ0924LaBdkNBT9w79/szQ3kl0EtmHL+tsWqNw5cNChqA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "129b7b05-525c-46f4-8216-5a9560661ed7",
+                            SecurityStamp = "07a6ed0b-963d-40d2-9030-290c13115ef9",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -708,15 +710,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d2de48b9-cc50-45f3-b847-4723a60f575b",
+                            ConcurrencyStamp = "a59f057c-1749-45ab-a24e-99b4ec52107c",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEISSOEaviuDDzR67Ory3AASDfFFXgaNm1aWgqdbxbcQOvc5dax9CPfjHLSBzJUo6ug==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI+OelpxBwz3BWLDgxqqbNyLRc3g0bWlsNQ/9W7ukGyg/WPB132uFxxpMn79gJz9ig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "af72ff38-35ab-4814-8561-2e7d7d69c04e",
+                            SecurityStamp = "5178cefb-78f3-411e-8bf6-d26588f6768d",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
