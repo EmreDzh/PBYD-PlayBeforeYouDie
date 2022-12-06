@@ -1,16 +1,32 @@
-# Welcome to StackEdit!
+# Welcome to Play Before You Die!
 
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
+Play Before You Die is a ASP.NET Application that stores Games with all their details, data, information and modifications to make the selected game understandable to play! The idea of this project came from me because as a gamer: before you play any game you have to research it, see if its playable on your platform and check a lot of websites for a specific mod that might improve the game by alot. This makes the process a lot easier and sums up everything in 1 application.
 
 
-# Files
+# Technical Documentation
 
-StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
+The application uses SqlServer DbContext + Identity for the user control.
+The application uses Repository pattern for getting data from the database.
 
-## Create files and folders
 
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
 
-## Switch to another file
+## Tech Stack:
 
-All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
+- API
+ - ASP.Net Core 6.0
+ - EntityFramework Core 6.0.1
+ - Z.EntityFramework.Extensions.EFCore 6.16.1
+ - LinqKit 1.2.2
+ - Microsoft.AspNetCore.Identity 6.0.1
+ - Microsoft.AspNetCore.Authentication.JwtBearer 6.0.9
+
+- Front End
+ - Razor Pages 
+ - TypeScript 4.6.4
+
+- Database
+ - MSSQL Server
+
+- Git tools
+ - GitHub
+ - GitHub Desktop/Tortoise Git
