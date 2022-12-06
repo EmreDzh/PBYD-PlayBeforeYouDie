@@ -20,4 +20,6 @@ public class GameServiceModel
     [Display(Name = "Game Rating")]
     
     public decimal Rating { get; set; }
+
+    
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PBYD___PlayBeforeYouDie.Extensions;
 using PBYD___PlayBeforeYouDie.Models;
 using PlayBeforeYouDie.Core.Contracts;
 
@@ -35,6 +36,44 @@ namespace PBYD___PlayBeforeYouDie.Controllers
             query.Games = result.Games;
 
             return View(query);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> AddToCollection(int id)
+        {
+            if (await gameService.Exists(id) == false)
+            {
+                return RedirectToAction(nameof(AllGames));
+            }
+
+            await gameService.AddGameToMyLibrary(id, User.Id());
+
+            return RedirectToAction(nameof(AllGames));
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> MyGamesLibrary()
+        {
+            var userId = User.Id();
+            var model = await gameService.GetMyLibraryAsync(userId);
+
+            return View("MyGamesLibrary", model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> RemoveGameLibrary(int id)
+        {
+            if (await gameService.Exists(id) == false)
+            {
+                return RedirectToAction(nameof(AllGames));
+            }
+
+            await gameService.RemoveGameFromLibrary(id, User.Id());
+
+            return RedirectToAction(nameof(MyGamesLibrary));
         }
     }
 }

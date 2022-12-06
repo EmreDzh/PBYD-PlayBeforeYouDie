@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "My Library of Games";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var game in Model)
+    {
+        if (game == null)
+        {
+            <h3 class="text-center">You have no games added yet!</h3>
+        }
+
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <img class="card-img-top "
+                     src="@game.ImageUrl" alt="Game Image">
+                <div class="card-body">
+
+                    <h5 class="card-title mt-1">@game.GameTitle</h5>
+                    <p class="m-1" style="color: red;">Metacritic Rating: @game.Rating</p>
+
+                    <div style="min-height: 15px;">
+                        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                            <div class="card card-body" style="width: 350px;">
+                                @game.Summary
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a asp-area="" asp-controller="Mod" asp-action="ModsGame" asp-route-id="@game.Id"
+                   class="fs-6 btn btn-success mb-3 p-2">Mods</a>
+
+                <a asp-area="" asp-controller="HowLongToBeat" asp-action="HowLongGame" asp-route-id="@game.Id"
+                   class="fs-6 btn btn-success mb-3 p-2">HowLongToBeat</a>
+
+                <a asp-area="" asp-controller="SystemRequirements" asp-action="SystemRequirementsGame" asp-route-id="@game.Id"
+                   class="fs-6 btn btn-success mb-3 p-2" style="background-color: #b58900">System Requirements</a>
+
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <form asp-controller="Game" asp-area="" asp-action="RemoveGameLibrary"
+                          asp-route-id="@game.Id" method="post">
+                        <input class="btn btn-primary btn-sm" type="submit" value="Remove Game From Library"/>
+                    </form>
+                }
+                else
+                {
+                    
+                }
+
+            </div>
+        </div>
+    }
+
+</div>

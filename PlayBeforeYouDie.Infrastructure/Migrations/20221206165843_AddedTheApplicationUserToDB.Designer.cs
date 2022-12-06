@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayBeforeYouDie.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221206165843_AddedTheApplicationUserToDB")]
+    partial class AddedTheApplicationUserToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -739,15 +741,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "57cb6a02-d3cf-4f50-9efd-01c6888ebd09",
+                            ConcurrencyStamp = "ac1db208-7ad6-421b-977a-9a5a4839df0e",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO+keFy34bVX1wdtyRhEaXwV5L1T/xe1AhLjmIJpenYx2GJQsfS5e1fvHfOepHpdQA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB5T/LvLXsQKkRxBSmtgmGf+jyPz928GV5v95hFC8f5NGlBnqh1AiofTY0fZvWfn5A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d5933a2c-3c1a-4925-8ac2-c40144794a50",
+                            SecurityStamp = "39d33653-d25a-4b18-8d31-e14eb62b3a7e",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -755,15 +757,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "005d7c21-7394-47fa-9a64-baa743fc1fd1",
+                            ConcurrencyStamp = "d8f9b4eb-ae3a-4fdf-a436-66a063452ee1",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEBNk7r19P4WpNCrxHeFvTBYWMLoCH1mvv0PTMegsKMTU7eOVRw7qzkADtEMAoXj6g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN+ngpEfbznK8W5HhlgGbKevByPYLy+XGZv7s5CQXB1S9B/ESIxHVP2QDqf/lhql8A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a2016da-b2fa-4aeb-bdc6-cbf4e828d868",
+                            SecurityStamp = "1ed84cc4-9427-4e9a-bcb5-21b74359c064",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -771,15 +773,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7fb3c57-5d1c-40a1-8203-f61ceaf9c9c9",
+                            ConcurrencyStamp = "db9164f3-b8a2-465d-b150-134d13f05c56",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEgMlJ8NStzS/Q35/YT37aEmgxZLIkPl76M6+bcDE8pC6x/mLYzYK89k3ZPW3U4vBg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJzWOJ6KgPU/WXV3c7wkZOx2ARlnGZEwOObB1/OvVEg6DRHZbgS3oQC/TJUjuiKXgQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8a4728b1-5042-46fe-bf06-f12dbc3788f7",
+                            SecurityStamp = "0ae8b4e4-39da-4222-9943-5aa426a76737",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -900,7 +902,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Users.ApplicationUserGame", b =>
                 {
                     b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Users.ApplicationUser", "ApplicationUser")
-                        .WithMany("ApplicationUserGames")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -939,11 +941,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.SystemRequirement", b =>
                 {
                     b.Navigation("Games");
-                });
-
-            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Users.ApplicationUser", b =>
-                {
-                    b.Navigation("ApplicationUserGames");
                 });
 #pragma warning restore 612, 618
         }

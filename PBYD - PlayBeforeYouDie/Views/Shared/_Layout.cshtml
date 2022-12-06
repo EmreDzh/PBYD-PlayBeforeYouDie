@@ -36,7 +36,7 @@
 
                                 @if (User?.Identity?.IsAuthenticated ?? false)
                                 {
-                                    <a class="nav-link text-light" asp-area="" asp-controller="Game" asp-action="AllGames">My Games</a>
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Game" asp-action="MyGamesLibrary">My Games</a>
                                     <li><hr class="dropdown-divider"></li>
                                     <a class="nav-link text-light" asp-area="" asp-controller="Mod" asp-action="ModsView">Mods</a>
                                     <li><hr class="dropdown-divider"></li>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="dropdown">
                             <button style="margin:5px" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-                                Genres
+                                Genres - Games
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                                 <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">MMOs</a></li>

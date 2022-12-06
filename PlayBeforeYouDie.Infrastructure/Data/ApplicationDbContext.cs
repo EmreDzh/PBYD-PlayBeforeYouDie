@@ -36,6 +36,11 @@ namespace PlayBeforeYouDie.Infrastructure.Data
             builder.ApplyConfiguration(new ModConfiguration());
             builder.ApplyConfiguration(new ModPictureConfiguration());
 
+            builder.Entity<ApplicationUserGame>()
+                .HasKey(x => new
+                {
+                    x.ApplicationUserId, x.GameId
+                });
 
             builder.Entity<ApplicationUser>()
                 .Property(u => u.UserName)

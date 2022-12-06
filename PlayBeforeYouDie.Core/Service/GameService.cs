@@ -1,19 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;
+using PlayBeforeYouDie.Infrastructure.Data;
 using PlayBeforeYouDie.Infrastructure.Data.Common;
 using PlayBeforeYouDie.Infrastructure.Data.Models;
+using PlayBeforeYouDie.Infrastructure.Data.Models.Users;
 
 namespace PlayBeforeYouDie.Core.Service;
 
 public class GameService : IGameService
 {
     private readonly IRepository repo;
+    private readonly ApplicationDbContext context;
 
-    public GameService(IRepository _repo)
+    public GameService(IRepository _repo, ApplicationDbContext _context)
     {
         repo = _repo;
-
+        context = _context;
     }
 
     public async Task<IEnumerable<GameHomeModel>> GetInitialGames()
@@ -93,5 +96,103 @@ public class GameService : IGameService
     {
         return (await repo.AllReadonly<Game>()
             .FirstOrDefaultAsync(g => g.Id == gameId))?.Id ?? 0;
+    }
+    
+    public async Task AddGameToMyLibrary(int id, string userId)
+    {
+        var user = await context.Users
+            .Where(u => u.Id == userId)
+            .Include(u => u.ApplicationUserGames)
+            .FirstOrDefaultAsync();
+
+        if (user == null)
+        {
+            throw new ArgumentException("Invalid user Id");
+        }
+
+        var game = await repo.GetByIdAsync<Game>(id);
+
+        if (game == null)
+        {
+            throw new ArgumentException("Invalid Game Id");
+        }
+
+        if (!user.ApplicationUserGames.Any(g => g.GameId == id))
+        {
+            user.ApplicationUserGames.Add(new ApplicationUserGame()
+            {
+                GameId = game.Id,
+                ApplicationUserId = user.Id,
+                Game = game,
+                ApplicationUser = user
+            });
+
+            try
+            {
+                await repo.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Database is down or failed to submit the info", e);
+            }
+        }
+    }
+    
+    
+
+    public async Task<IEnumerable<GameServiceModel>> GetMyLibraryAsync(string userId)
+    {
+        var user = await context.Users
+            .Where(u => u.Id == userId)
+            .Include(u => u.ApplicationUserGames)
+            .ThenInclude(gm => gm.Game)
+            .FirstOrDefaultAsync();
+
+        if (user == null)
+        {
+            throw new ArgumentException("Invalid user Id");
+        }
+
+        return user.ApplicationUserGames
+            .Select(g => new GameServiceModel()
+            {
+                Id = g.Game.Id,
+                GameTitle = g.Game.GameTitle,
+                ImageUrl = g.Game.ImageUrl,
+                Rating = g.Game.Rating,
+                Summary = g.Game.Summary
+
+            });
+    }
+
+    public async Task RemoveGameFromLibrary(int gameId, string userId)
+    {
+        var user = await context.Users
+            .Where(u => u.Id == userId)
+            .Include(u => u.ApplicationUserGames)
+            .FirstOrDefaultAsync();
+
+        if (user == null)
+        {
+            throw new ArgumentException("Invalid user Id");
+        }
+
+        var game = user.ApplicationUserGames.FirstOrDefault(g => g.GameId == gameId);
+
+        if (game != null)
+        {
+            try
+            {
+                user.ApplicationUserGames.Remove(game);
+
+                await context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Database is down or failed to submit the info", e);
+            }
+        }
+
+
     }
 }

@@ -28,7 +28,15 @@
 
             <a asp-area="" asp-controller="SystemRequirements" asp-action="SystemRequirementsGame" asp-route-id="@Model.Id"
                class="fs-6 btn btn-success mb-3 p-2" style="background-color: #b58900">System Requirements</a>
-
+            
+            @if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                <form class="input-group-sm" asp-area="" asp-controller="Game"
+                      asp-action="AddToCollection" asp-route-id="@Model.Id" method="post">
+                    <input class="btn btn-primary" type="submit" value="AddToCollection" />
+                </form>
+            }
+            
         </div>
     </div>
     

@@ -14,4 +14,10 @@ public interface IGameService
     Task<bool> Exists(int id);
 
     Task<int> GetGameId(int gameId);
+
+    Task AddGameToMyLibrary(int gameId, string userId);
+
+    Task<IEnumerable<GameServiceModel>> GetMyLibraryAsync(string userId);
+
+    Task RemoveGameFromLibrary(int gameId, string userId);
 }
