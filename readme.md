@@ -1,22 +1,16 @@
-This is a Final Project for Softuni -> Game Library PBYD-PlayBeforeYouDie with ASP.NET 6 MVC
+# Welcome to StackEdit!
 
-API:
-
-ASP.Net Core 6.0
-EntityFramework Core 6.0
-Z.EntityFramework.Extension.EFcore 6.16.1
-LinqKit
+Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
 
 
-Tests:
+# Files
 
+StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
 
-Front-End:
+## Create files and folders
 
-Razor
+The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
 
+## Switch to another file
 
-Git tools:
-
-GitHub
-GitHub Desktop/Tortoise Git
+All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
