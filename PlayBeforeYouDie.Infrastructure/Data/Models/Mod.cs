@@ -25,10 +25,13 @@ public class Mod
 
     public string? DownloadModLink { get; set; } 
 
-    [Required] 
-    public string ModImage { get; set; } = null!;
-
     public string? YoutubeVideoModComparison { get; set; }
+
+    [Required]
+    [ForeignKey(nameof(ModPicture))]
+    public int ModPictureId { get; set; }
+
+    public ModPicture ModPicture { get; set; }
 
     public List<Game> Games { get; set; } 
 }

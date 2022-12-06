@@ -15,7 +15,6 @@
     <Folder Include="Models\Game\Enums\" />
     <Folder Include="Models\Genre\" />
     <Folder Include="Models\HowLongToBeat\" />
-    <Folder Include="Models\Mod\" />
     <Folder Include="Models\Review\" />
     <Folder Include="Models\SystemRequirement\" />
     <Folder Include="Models\Users\" />

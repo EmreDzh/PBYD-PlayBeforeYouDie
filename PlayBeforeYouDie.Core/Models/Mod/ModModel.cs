@@ -1,5 +1,6 @@
 ﻿using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
 using System.ComponentModel.DataAnnotations;
+using PlayBeforeYouDie.Infrastructure.Data.Models;
 
 namespace PlayBeforeYouDie.Core.Models.Mod;
 
@@ -17,12 +18,18 @@ public class ModModel
     [Required]
     [StringLength(ModelsConstants.ModDescriptionMaxLength, MinimumLength = ModelsConstants.ModDescriptionMinLength)]
     public string Description { get; set; } = null!;
-
-    [Required]
-    public string ModImage { get; set; } = null!;
-
+    
     [Required]
     public string DownloadModLink { get; set; } = null!;
 
     public string? YoutubeVideoModComparison { get; set; }
+
+    [Required] 
+    public string ModImageOne { get; set; } = null!;
+
+    public string? ModImageTwo { get; set; }
+
+    public string? ModImageThree { get; set; }
+
+    public string? ModImageFour { get; set; }
 }

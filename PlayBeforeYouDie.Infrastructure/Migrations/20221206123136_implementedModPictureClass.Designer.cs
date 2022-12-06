@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayBeforeYouDie.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221206123136_implementedModPictureClass")]
+    partial class implementedModPictureClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -739,15 +741,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b400b3e5-d39e-4259-99f4-8769215dbccc",
+                            ConcurrencyStamp = "fb5e5a7c-0a00-4032-a493-9c834d84a300",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAECcZz1uidPCqyD4x2nH3yUzyShk2YQxAtPiN43O+GzgaP4Z9YBOyM3PC6A5gAeFMLg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKwMZgc9np72spNRCDIxcvhOL3qXK4K5r709r72SyikTUuXg+6BER9R2rM9/lCF9Cw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d513ceb6-a3d9-4859-a100-5ab52aa775a3",
+                            SecurityStamp = "8f36568d-386a-437b-82fe-77c0ede87489",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -755,15 +757,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "35731853-11cd-4079-bbbc-fd644501d272",
+                            ConcurrencyStamp = "dc9b2312-999f-49f8-b621-535dcfcb64ba",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEINkhcrWUKZAuklWrqgClRYxwtObPHHl7JUJSMN94uQGxmcocNYDqMHH1/m2ez42jQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBZpZ5w8SSlE1ZF3Rr4vMPBWyIwjsxfwiJ/prVvwIig6vGFHBGtNzNVy1bphRAnyQQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7c812185-c154-47fd-93a4-9fd34d304e6b",
+                            SecurityStamp = "a17e9957-65c6-438c-8c0e-f66b75a868fc",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -771,15 +773,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0f86c867-38d3-4434-8369-5f816e029995",
+                            ConcurrencyStamp = "9ddc60f0-a67e-4dde-aa89-df139387fbef",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF/E5kZF1HEgXaAiUG9WvFMB6UGedf8VGIGbeWanS3suZClT1QIU7RFkhdSJy7r5ew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELG9Q9D+/PZk6yYnUtRA8XO0cOHB6W7mQkrGmEZ/wQY6tpVplELAjCrociz6kxCihw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b490dde4-668d-4c8b-9180-f196013d34e0",
+                            SecurityStamp = "0c2a92d1-e214-4abc-aeec-1f7f44bbbbf0",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });

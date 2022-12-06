@@ -23,6 +23,8 @@ namespace PlayBeforeYouDie.Infrastructure.Data
 
         public DbSet<SystemRequirement> SystemRequirements { get; set; }
 
+        public DbSet<ModPicture> ModPictures { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -32,6 +34,7 @@ namespace PlayBeforeYouDie.Infrastructure.Data
             builder.ApplyConfiguration(new SystemRequirementConfiguration());
             builder.ApplyConfiguration(new HowLongToBeatConfiguration());
             builder.ApplyConfiguration(new ModConfiguration());
+            builder.ApplyConfiguration(new ModPictureConfiguration());
 
 
             builder.Entity<ApplicationUser>()

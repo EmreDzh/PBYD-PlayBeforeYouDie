@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlayBeforeYouDie.Core.Contracts;
+using PlayBeforeYouDie.Core.Models.Mod;
 
 
 namespace PBYD___PlayBeforeYouDie.Controllers
@@ -27,9 +28,9 @@ namespace PBYD___PlayBeforeYouDie.Controllers
             return View(model);
         }
 
-
+        [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ModsGame(int id)
+        public async Task<IActionResult> ModsGame(int id, ModModel modModel)
         {
             if (await gameService.Exists(id) == false)
             {

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayBeforeYouDie.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221206131345_ModImageListToIEnumerable")]
+    partial class ModImageListToIEnumerable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,6 +159,21 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("ModModPicture", b =>
+                {
+                    b.Property<int>("ModPictureId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ModPictureId", "ModsId");
+
+                    b.HasIndex("ModsId");
+
+                    b.ToTable("ModModPicture");
                 });
 
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Game", b =>
@@ -456,8 +473,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ModPictureId");
-
                     b.ToTable("Mods");
 
                     b.HasData(
@@ -739,15 +754,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b400b3e5-d39e-4259-99f4-8769215dbccc",
+                            ConcurrencyStamp = "90ee1f3d-efca-44ba-8320-ce75bae36e08",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAECcZz1uidPCqyD4x2nH3yUzyShk2YQxAtPiN43O+GzgaP4Z9YBOyM3PC6A5gAeFMLg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECCbE1xG/0hT5IdSiXPPuucF0S9Y4VosiCcwQJA7iodiJeN2hV74wPGsSIZqixgoZw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d513ceb6-a3d9-4859-a100-5ab52aa775a3",
+                            SecurityStamp = "ecddd6b0-f7d7-4e5f-9085-c79664015aa9",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -755,15 +770,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "35731853-11cd-4079-bbbc-fd644501d272",
+                            ConcurrencyStamp = "0107fed2-8ec7-4b72-8e8c-f99cb1514a34",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEINkhcrWUKZAuklWrqgClRYxwtObPHHl7JUJSMN94uQGxmcocNYDqMHH1/m2ez42jQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJzLjvNRytlpsKWjtMPWQk2fEivgvxKfT+sTuvdb1M+XTkHqiENXEcW4mBUXOAsxZQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7c812185-c154-47fd-93a4-9fd34d304e6b",
+                            SecurityStamp = "473f7fbf-7a8d-478f-914e-89d27fc3222b",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -771,15 +786,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0f86c867-38d3-4434-8369-5f816e029995",
+                            ConcurrencyStamp = "92a12cca-ba3c-4387-b323-4b7f765858ac",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF/E5kZF1HEgXaAiUG9WvFMB6UGedf8VGIGbeWanS3suZClT1QIU7RFkhdSJy7r5ew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEOpgQvgxqD3OnzGwDzuHaZLAq5J8f+0mTO0F3J2FzK0eIWBWSAKWuFnMrP5IdKjkw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b490dde4-668d-4c8b-9180-f196013d34e0",
+                            SecurityStamp = "e20389a9-4ae5-43ff-ad7e-25191dc5909b",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
@@ -836,6 +851,21 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ModModPicture", b =>
+                {
+                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.ModPicture", null)
+                        .WithMany()
+                        .HasForeignKey("ModPictureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Mod", null)
+                        .WithMany()
+                        .HasForeignKey("ModsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Game", b =>
                 {
                     b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Genre", "Genre")
@@ -871,17 +901,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                     b.Navigation("SystemRequirement");
                 });
 
-            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Mod", b =>
-                {
-                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.ModPicture", "ModPicture")
-                        .WithMany("Mods")
-                        .HasForeignKey("ModPictureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ModPicture");
-                });
-
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Genre", b =>
                 {
                     b.Navigation("Games");
@@ -895,11 +914,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Mod", b =>
                 {
                     b.Navigation("Games");
-                });
-
-            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.ModPicture", b =>
-                {
-                    b.Navigation("Mods");
                 });
 
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.SystemRequirement", b =>
