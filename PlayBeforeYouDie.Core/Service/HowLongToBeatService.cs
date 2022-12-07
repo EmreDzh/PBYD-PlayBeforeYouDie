@@ -5,8 +5,10 @@ using PlayBeforeYouDie.Core.Models.HowLongToBeat;
 using PlayBeforeYouDie.Infrastructure.Data;
 using PlayBeforeYouDie.Infrastructure.Data.Common;
 using PlayBeforeYouDie.Infrastructure.Data.Models;
+using PlayBeforeYouDie.Infrastructure.Data.Models.Users;
 
 namespace PlayBeforeYouDie.Core.Service;
+
 
 public class HowLongToBeatService : IHowLongToBeatService
 {
@@ -18,43 +20,48 @@ public class HowLongToBeatService : IHowLongToBeatService
         repo = _repo;
         
     }
-
-    public async Task<HowLongToBeatModel> GameHowLongToBeatById(int id)
+    
+    public async Task<List<HowLongToBeatModel>> GameHowLongToBeatById(int id)
     {
-        return await repo.AllReadonly<Game>()
-            .Where(g => g.IsGameActive)
-            .Where(g => g.Id == id)
+        
+        var game = await repo.AllReadonly<Game>()
             .Include(g => g.HowLongToBeat)
+            .FirstOrDefaultAsync(g => g.Id == id);
+
+        var howLongToBeatCollection = game.HowLongToBeat
             .Select(h => new HowLongToBeatModel()
             {
-                Id = h.HowLongToBeat.Id,
-                GamesTitle = h.GameTitle,
-                ImageUrl = h.ImageUrl,
-                HundredPercentComplete = h.HowLongToBeat.HundredPercentComplete,
-                MainPlusSides = h.HowLongToBeat.MainPlusSides,
-                MainStory = h.HowLongToBeat.MainStory,
-                SpeedRunAny = h.HowLongToBeat.SpeedRunAny,
-                SpeedRunOneHundredPercent = h.HowLongToBeat.SpeedRunOneHundredPercent,
+                Id = h.Id,
+                GamesTitle = h.Game.GameTitle,
+                ImageUrl = h.Game.ImageUrl,
+                HundredPercentComplete = h.HundredPercentComplete,
+                MainPlusSides = h.MainPlusSides,
+                MainStory = h.MainStory,
+                SpeedRunAny = h.SpeedRunAny,
+                SpeedRunOneHundredPercent = h.SpeedRunOneHundredPercent,
+                GameId = h.GameId
             })
-            .FirstAsync();
+            .ToList();
+
+        return howLongToBeatCollection;
+
+
     }
 
-    public async Task<int> SubmitPlayTime(HowLongToBeatModel model, int gameId)
+    public async Task SubmitPlayTime(HowLongToBeatModel model)
     {
-
-        var howLongToBeat = new Game()
-        {
-            Id = gameId,
-            HowLongToBeat = new HowLongToBeat()
-            {
-                HundredPercentComplete = model.HundredPercentComplete,
-                MainPlusSides = model.MainPlusSides,
-                MainStory = model.MainStory,
-                SpeedRunAny = model.SpeedRunAny,
-                SpeedRunOneHundredPercent = model.SpeedRunOneHundredPercent
-            }
-        };
         
+        var howLongToBeat = new HowLongToBeat()
+        {
+            Id = model.Id,
+            HundredPercentComplete = model.HundredPercentComplete,
+            MainPlusSides = model.MainPlusSides,
+            MainStory = model.MainStory,
+            SpeedRunAny = model.SpeedRunAny,
+            SpeedRunOneHundredPercent = model.SpeedRunOneHundredPercent,
+            GameId = model.GameId
+
+        };
         
         try
         {
@@ -66,13 +73,12 @@ public class HowLongToBeatService : IHowLongToBeatService
             throw new ApplicationException("Database is down or failed to submit the info", e);
         }
 
-        return howLongToBeat.Id;
-
     }
 
-    public async Task<int> GetHowLongToBeatId(int id)
+    public async Task<int> GetHowLongToBeatId(string userId)
     {
-        return (await repo.AllReadonly<HowLongToBeat>()
-            .FirstOrDefaultAsync(g => g.Id == id))?.Id ?? 0;
+        return (await repo.AllReadonly<ApplicationUserGame>()
+            .FirstOrDefaultAsync(x => x.ApplicationUserId == userId))?.GameId ?? 0;
     }
+    
 }

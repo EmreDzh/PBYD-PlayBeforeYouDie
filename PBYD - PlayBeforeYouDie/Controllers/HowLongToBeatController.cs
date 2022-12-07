@@ -47,29 +47,29 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Submit()
+        public async Task<IActionResult> Submit(int gameId)
         {
             var model = new HowLongToBeatModel();
+
+            model.GameId = gameId;
 
             return View(model);
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Submit(HowLongToBeatModel model, int ids)
+        public async Task<IActionResult> Submit(HowLongToBeatModel model)
         {
+            
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-           // int howLongToBeatId = await howLongToBeat.GetHowLongToBeatId();
+           
+            await howLongToBeat.SubmitPlayTime(model);
 
-            int id = await howLongToBeat.SubmitPlayTime(model, 0);
+            return RedirectToAction(nameof(HowLongGame));
 
-            return RedirectToAction(nameof(HowLongGame), new
-            {
-                id
-            });
         }
     }
 }

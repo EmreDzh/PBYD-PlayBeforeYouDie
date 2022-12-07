@@ -1,5 +1,6 @@
 ﻿using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
 using System.ComponentModel.DataAnnotations;
+using PlayBeforeYouDie.Core.Models.Game;
 
 namespace PlayBeforeYouDie.Core.Models.HowLongToBeat;
 
@@ -7,10 +8,11 @@ public class HowLongToBeatModel
 {
     public int Id { get; set; }
 
-    [StringLength(ModelsConstants.GameTitleMaxLength, MinimumLength = ModelsConstants.GameTitleMinLength)]
-    public string? GamesTitle { get; set; } 
 
-    public string? ImageUrl { get; set; } 
+    [StringLength(ModelsConstants.GameTitleMaxLength, MinimumLength = ModelsConstants.GameTitleMinLength)]
+    public string? GamesTitle { get; set; } = null!;
+
+    public string? ImageUrl { get; set; }
 
     [Required]
     [StringLength(ModelsConstants.MainStoryMaxLength, MinimumLength = ModelsConstants.MainStoryMinLength)]
@@ -34,5 +36,7 @@ public class HowLongToBeatModel
     [StringLength(ModelsConstants.SpeedRunOneHundredPercentMaxLength, MinimumLength = ModelsConstants.SpeedRunOneHundredPercentMinLength)]
     [Display(Name = "Speedrun 100%")]
     public string? SpeedRunOneHundredPercent { get; set; }
-    
+
+    public int GameId { get; set; }
+
 }

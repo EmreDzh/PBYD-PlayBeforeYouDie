@@ -6,6 +6,12 @@ namespace PlayBeforeYouDie.Infrastructure.Data.Models;
 
 public class Game
 {
+    public Game()
+    {
+        HowLongToBeat = new List<HowLongToBeat>();
+        Mods = new List<Mod>();
+    }
+
     [Key]
     public int Id { get; set; }
 
@@ -23,6 +29,10 @@ public class Game
     [Required]
     public decimal Rating { get; set; }
 
+    public List<HowLongToBeat> HowLongToBeat { get; set; }
+
+    public List<Mod> Mods { get; set; }
+
     [Required]
     [ForeignKey(nameof(Genre))]
     public int GenreId { get; set; }
@@ -32,17 +42,7 @@ public class Game
     [ForeignKey(nameof(SystemRequirement))]
     public int SystemRequirementId { get; set; }
     public SystemRequirement SystemRequirement { get; set; }
-
-    [Required]
-    [ForeignKey(nameof(HowLongToBeat))] 
-    public int HowLongToBeatId { get; set; }
-    public HowLongToBeat HowLongToBeat { get; set; }
-
-    [Required]
-    [ForeignKey(nameof(Mod))]
-    public int ModId { get; set; }
-    public Mod Mod { get; set; }
-
+    
     public bool IsGameActive { get; set; } = true;
 
 }

@@ -7,10 +7,7 @@ namespace PlayBeforeYouDie.Infrastructure.Data.Models;
 
 public class Mod
 {
-    public Mod()
-    {
-        Games = new List<Game>();
-    }
+   
 
     [Key]
     public int Id { get; set; }
@@ -33,5 +30,9 @@ public class Mod
 
     public ModPicture ModPicture { get; set; }
 
-    public List<Game> Games { get; set; } 
+
+    [ForeignKey(nameof(Game))]
+    public int GameId { get; set; }
+
+    public Game Game { get; set; }
 }

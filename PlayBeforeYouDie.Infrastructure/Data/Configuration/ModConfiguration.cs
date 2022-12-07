@@ -21,7 +21,8 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 ModName = "The Legend of Zelda: Ocarina of Time",
                 Description = "Theres no mods available for The Legend of Zelda: Ocarina of Time, since its a Nintendo only title",
                 ModPictureId = 1,
-                YoutubeVideoModComparison = "https://youtube.com/embed/WZK19L2JUGc"
+                YoutubeVideoModComparison = "https://youtube.com/embed/WZK19L2JUGc",
+                GameId = 1
 
             },
             new Mod()
@@ -31,14 +32,16 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 Description = "Photorealistic ReShade I've been working on for some time, taking out what's best from the great old Grand Theft Auto IV...Adds Anti-Aliasing, Bloom, Color Changes, Sharpness, Shadows, Optional Borders, Depth of Field and SSR.",
                 DownloadModLink = "https://www.nexusmods.com/gta4/mods/238",
                 ModPictureId = 2,
-                YoutubeVideoModComparison = "https://youtube.com/embed/btiYnR848RU"
+                YoutubeVideoModComparison = "https://youtube.com/embed/btiYnR848RU",
+                GameId = 3
             },
             new Mod()
             {
                 Id = 3,
                 ModName = "Super Mario Galaxy",
                 Description = "Theres no mods available for Super Mario Galaxy, since its an old title and no longer supported and fit for mods",
-                ModPictureId = 3
+                ModPictureId = 3,
+                GameId = 4
                 
             },
             new Mod()
@@ -48,7 +51,8 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 Description = "In an effort to add something small to the community that enrichens this game so much, here are some horses to honor National Native American Heritage Day. I wanted to see more horses influenced by Native Indian Culture. Not meant to be \"realistic\" or even \"immersive\", just respectful and what I like.\r\nHope some of you like it too. Enjoy.",
                 DownloadModLink = "https://www.nexusmods.com/reddeadredemption2/mods/1811",
                 ModPictureId = 4,
-                YoutubeVideoModComparison = "https://youtube.com/embed/PA-gd8DBR8o"
+                YoutubeVideoModComparison = "https://youtube.com/embed/PA-gd8DBR8o",
+                GameId = 5
 
             },
             new Mod()
@@ -58,7 +62,8 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 Description = "This Project aims to improve the graphics by reworking models and textures to better quality preserving the original style",
                 DownloadModLink = "https://www.nexusmods.com/witcher3/mods/1021",
                 ModPictureId = 5,
-                YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0"
+                YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0",
+                GameId = 6
             }
 
         };

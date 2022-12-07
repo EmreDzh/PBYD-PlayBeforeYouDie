@@ -41,5 +41,31 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
             return View(model);
         }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Create(int gameId)
+        {
+            var model = new ModModel();
+
+            model.GameId = gameId;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Create(ModModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            await modService.SubmitMod(model);
+
+            return RedirectToAction(nameof(ModsGame));
+        }
     }
 }

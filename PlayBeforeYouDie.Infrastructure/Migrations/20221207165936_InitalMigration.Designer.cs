@@ -12,8 +12,8 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221205193203_fixedYoutubeModLinks")]
-    partial class fixedYoutubeModLinks
+    [Migration("20221207165936_InitalMigration")]
+    partial class InitalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -177,9 +177,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
 
-                    b.Property<int>("HowLongToBeatId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -205,8 +202,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.HasIndex("HowLongToBeatId");
-
                     b.HasIndex("ModId");
 
                     b.HasIndex("SystemRequirementId");
@@ -219,7 +214,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 1,
                             GameTitle = "The Legend of Zelda: Ocarina of Time",
                             GenreId = 3,
-                            HowLongToBeatId = 1,
                             ImageUrl = "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_3ds_25/SI_3DS_TheLegendofZeldaOcarinaofTime3D_image1600w.jpg",
                             IsGameActive = true,
                             ModId = 1,
@@ -232,7 +226,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 3,
                             GameTitle = "Grand Theft Auto IV",
                             GenreId = 2,
-                            HowLongToBeatId = 2,
                             ImageUrl = "https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2018/03/13/0e032ffe-1b30-4ee4-876e-e31f6a894447/gta-iv",
                             IsGameActive = true,
                             ModId = 2,
@@ -245,7 +238,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 4,
                             GameTitle = "Super Mario Galaxy",
                             GenreId = 3,
-                            HowLongToBeatId = 3,
                             ImageUrl = "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperMarioGalaxy_image1600w.jpg",
                             IsGameActive = true,
                             ModId = 3,
@@ -258,8 +250,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 5,
                             GameTitle = "Red Dead Redemption 2",
                             GenreId = 2,
-                            HowLongToBeatId = 4,
-                            ImageUrl = "https://s1.gaming-cdn.com/images/products/5679/orig-fallback-v1/red-dead-redemption-2-pc-spiel-rockstar-cover.jpg?v=1647026658",
+                            ImageUrl = "https://assets1.ignimgs.com/2016/10/18/red-dead-redemption-2-buttonjpg-f9ad35.jpg",
                             IsGameActive = true,
                             ModId = 4,
                             Rating = 97m,
@@ -271,8 +262,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 6,
                             GameTitle = "The Witcher 3: Wild Hund",
                             GenreId = 2,
-                            HowLongToBeatId = 5,
-                            ImageUrl = "http://www.tomshw.it/data/images/5/9/4/1/03e512f6782d046f428fe2446f14187c6.jpg",
+                            ImageUrl = "https://static.giga.de/15/68/17/cbb82352a0e62e5ad8c613c207_AzE4Yzg1MDJhYzMw_thewitcher3.jpg",
                             IsGameActive = true,
                             ModId = 5,
                             Rating = 93m,
@@ -354,6 +344,9 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
                     b.Property<string>("HundredPercentComplete")
                         .IsRequired()
                         .HasMaxLength(11)
@@ -379,12 +372,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GameId");
+
                     b.ToTable("HowLongToBeat");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            GameId = 1,
                             HundredPercentComplete = "37h 48m",
                             MainPlusSides = "30h 36m",
                             MainStory = "26h 13m",
@@ -394,6 +390,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
+                            GameId = 3,
                             HundredPercentComplete = "77h 11m",
                             MainPlusSides = "41h 27m",
                             MainStory = "27h 35m",
@@ -403,6 +400,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
+                            GameId = 4,
                             HundredPercentComplete = "36h 53m",
                             MainPlusSides = "22h 14m",
                             MainStory = "13h 41m",
@@ -412,6 +410,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
+                            GameId = 5,
                             HundredPercentComplete = "184h 12m",
                             MainPlusSides = "84h 27m",
                             MainStory = "49h 44m",
@@ -421,6 +420,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 5,
+                            GameId = 6,
                             HundredPercentComplete = "179h 56m",
                             MainPlusSides = "106h 16m",
                             MainStory = "52h 33m",
@@ -443,11 +443,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DownloadModLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ModImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModName")
@@ -455,10 +450,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
+                    b.Property<int>("ModPictureId")
+                        .HasColumnType("int");
+
                     b.Property<string>("YoutubeVideoModComparison")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ModPictureId");
 
                     b.ToTable("Mods");
 
@@ -467,9 +467,8 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = 1,
                             Description = "Theres no mods available for The Legend of Zelda: Ocarina of Time, since its a Nintendo only title",
-                            DownloadModLink = "N/A",
-                            ModImage = "https://cdn11.bigcommerce.com/s-2m627o4amu/products/722/images/4096/Playstation-4-PS4-Empty-Custom-Replacement-Case-Box__50578.1507926933.500.750.png?c=2",
                             ModName = "The Legend of Zelda: Ocarina of Time",
+                            ModPictureId = 1,
                             YoutubeVideoModComparison = "https://youtube.com/embed/WZK19L2JUGc"
                         },
                         new
@@ -477,35 +476,96 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 2,
                             Description = "Photorealistic ReShade I've been working on for some time, taking out what's best from the great old Grand Theft Auto IV...Adds Anti-Aliasing, Bloom, Color Changes, Sharpness, Shadows, Optional Borders, Depth of Field and SSR.",
                             DownloadModLink = "https://www.nexusmods.com/gta4/mods/238",
-                            ModImage = "https://staticdelivery.nexusmods.com/mods/253/images/238/238-1669288616-1834557289.png",
                             ModName = "Photorealistic Visuals ReShade",
+                            ModPictureId = 2,
                             YoutubeVideoModComparison = "https://youtube.com/embed/btiYnR848RU"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Theres no mods available for Super Mario Galaxy, since its an old title and no longer supported and fit for mods",
-                            DownloadModLink = "N/A",
-                            ModImage = "https://s3.amazonaws.com/colorslive/png/60685-OcB6fsTJVHR82033.png",
-                            ModName = "Super Mario Galaxy"
+                            ModName = "Super Mario Galaxy",
+                            ModPictureId = 3
                         },
                         new
                         {
                             Id = 4,
                             Description = "In an effort to add something small to the community that enrichens this game so much, here are some horses to honor National Native American Heritage Day. I wanted to see more horses influenced by Native Indian Culture. Not meant to be \"realistic\" or even \"immersive\", just respectful and what I like.\r\nHope some of you like it too. Enjoy.",
                             DownloadModLink = "https://www.nexusmods.com/reddeadredemption2/mods/1811",
-                            ModImage = "https://staticdelivery.nexusmods.com/mods/3024/images/1811/1811-1669436382-504851999.png",
                             ModName = "Native American Horses",
-                            YoutubeVideoModComparison = "https://youtube.com/PA-gd8DBR8o"
+                            ModPictureId = 4,
+                            YoutubeVideoModComparison = "https://youtube.com/embed/PA-gd8DBR8o"
                         },
                         new
                         {
                             Id = 5,
                             Description = "This Project aims to improve the graphics by reworking models and textures to better quality preserving the original style",
                             DownloadModLink = "https://www.nexusmods.com/witcher3/mods/1021",
-                            ModImage = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600548166-1660518323.jpeg",
                             ModName = "The Witcher 3 HD Reworked Project",
+                            ModPictureId = 5,
                             YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0"
+                        });
+                });
+
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.ModPicture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ModImageFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModImageOne")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModImageThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModImageTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ModPictures");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ModImageOne = "https://cdn11.bigcommerce.com/s-2m627o4amu/products/722/images/4096/Playstation-4-PS4-Empty-Custom-Replacement-Case-Box__50578.1507926933.500.750.png?c=2"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ModImageFour = "https://staticdelivery.nexusmods.com/mods/253/images/238/238-1669740976-2124795078.png",
+                            ModImageOne = "https://staticdelivery.nexusmods.com/mods/253/images/238/238-1669288616-1834557289.png",
+                            ModImageThree = "https://staticdelivery.nexusmods.com/mods/253/images/238/238-1669740973-1427404846.png",
+                            ModImageTwo = "https://staticdelivery.nexusmods.com/mods/253/images/238/238-1669668228-1945410031.png"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ModImageOne = "https://s3.amazonaws.com/colorslive/png/60685-OcB6fsTJVHR82033.png"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ModImageFour = "https://staticdelivery.nexusmods.com/mods/3024/images/1811/1811-1669435927-1894312792.png",
+                            ModImageOne = "https://staticdelivery.nexusmods.com/mods/3024/images/1811/1811-1669436382-504851999.png",
+                            ModImageThree = "https://staticdelivery.nexusmods.com/mods/3024/images/1811/1811-1669435747-1676982520.png",
+                            ModImageTwo = "https://staticdelivery.nexusmods.com/mods/3024/images/1811/1811-1669436162-343965417.png"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ModImageFour = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600612171-1839423964.jpeg",
+                            ModImageOne = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600548166-1660518323.jpeg",
+                            ModImageThree = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600594030-2005225404.jpeg",
+                            ModImageTwo = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600594032-1731970147.jpeg"
                         });
                 });
 
@@ -681,15 +741,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "de1cd28b-4e1d-44eb-aabf-8a20887c18a9",
+                            ConcurrencyStamp = "c23cdca5-5b88-450c-acc1-3e98fe76c6f1",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPF8qn9x8q61lgn7PIfDmH8D1+pGEXpAHTBc+mKQW2yPnnieGwxhupgqAkKhFQGE6w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMIV6n4eRAp/vftLJh1W7y3ve5w8EsMba2yaRby0ZwrVwsG3WV+IS0EyksyqayOaiw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "74eafd6b-7dbf-48a9-a134-68b6c91ff79d",
+                            SecurityStamp = "969f8786-1d5b-4762-91dd-a291690f328d",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -697,15 +757,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "09162c95-3bd5-458e-a4a8-ee9190ea631c",
+                            ConcurrencyStamp = "81694569-5b66-40be-8a89-1cf48f711cb0",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB6YjKPPpNjWzkAcAECyY8uPnU3PmGKUNtREf9JvpEkaEVtMtRdgT1wm4k+u+G2PTQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOFEktcIMkp50dsxNmKsG0xNRKzgp+ZuiC7EavGreY7lWPvhXbVnfK7k2KEg/LCnFg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1401cbc4-726a-4ba3-99f6-3925f1ab46d9",
+                            SecurityStamp = "ccb8704c-a017-460a-a652-18d23161cc39",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -713,18 +773,33 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "31571e29-4e59-453c-8121-a850352be7a7",
+                            ConcurrencyStamp = "70853159-28ef-4091-afb3-74cba5727ab7",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMqaXhMCK50NDw3sIRIODF3ZAIHvO9rPIA6eq7G/1QId0iNkjD8P1N35a7htgHMHDw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJbBm+l6RyyJ7XKBvd0ssXMMsqkskfg1AfMJk1zeU++Xpy3hH0NQtj9sWQeQwGLQWQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0a98e000-9caa-4ea5-bf4b-e5d6992f67a9",
+                            SecurityStamp = "03084221-5d97-4235-871b-b6aea5ac1816",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
+                });
+
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Users.ApplicationUserGame", b =>
+                {
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ApplicationUserId", "GameId");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("ApplicationUserGame");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -786,12 +861,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.HowLongToBeat", "HowLongToBeat")
-                        .WithMany("Games")
-                        .HasForeignKey("HowLongToBeatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Mod", "Mod")
                         .WithMany("Games")
                         .HasForeignKey("ModId")
@@ -806,19 +875,58 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
 
                     b.Navigation("Genre");
 
-                    b.Navigation("HowLongToBeat");
-
                     b.Navigation("Mod");
 
                     b.Navigation("SystemRequirement");
                 });
 
-            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Genre", b =>
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.HowLongToBeat", b =>
                 {
-                    b.Navigation("Games");
+                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Game", "Game")
+                        .WithMany("HowLongToBeat")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Game");
                 });
 
-            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.HowLongToBeat", b =>
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Mod", b =>
+                {
+                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.ModPicture", "ModPicture")
+                        .WithMany("Mods")
+                        .HasForeignKey("ModPictureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ModPicture");
+                });
+
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Users.ApplicationUserGame", b =>
+                {
+                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Users.ApplicationUser", "ApplicationUser")
+                        .WithMany("ApplicationUserGames")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Game");
+                });
+
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Game", b =>
+                {
+                    b.Navigation("HowLongToBeat");
+                });
+
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Genre", b =>
                 {
                     b.Navigation("Games");
                 });
@@ -828,9 +936,19 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                     b.Navigation("Games");
                 });
 
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.ModPicture", b =>
+                {
+                    b.Navigation("Mods");
+                });
+
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.SystemRequirement", b =>
                 {
                     b.Navigation("Games");
+                });
+
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Users.ApplicationUser", b =>
+                {
+                    b.Navigation("ApplicationUserGames");
                 });
 #pragma warning restore 612, 618
         }

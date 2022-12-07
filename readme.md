@@ -1,6 +1,6 @@
 # Welcome to Play Before You Die!
 
-Play Before You Die is a ASP.NET Application that stores Games with all their details, data, information and modifications to make the selected game understandable to play! 
+Play Before You Die is a ASP.NET MVC Application that stores Games with all their details, data, information and modifications to make the selected game understandable to play! 
  > The idea of this project came from me because as a gamer: before you play any game you have to research it, see if its playable on your platform and check a lot of websites for a specific mod that might improve the game by alot. This makes the process a lot easier and sums up everything in 1 application.
 
 

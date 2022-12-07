@@ -5,9 +5,13 @@ namespace PlayBeforeYouDie.Core.Contracts;
 
 public interface IHowLongToBeatService
 {
-    Task<HowLongToBeatModel> GameHowLongToBeatById(int id);
+    Task<List<HowLongToBeatModel>> GameHowLongToBeatById(int id);
 
-    Task<int> SubmitPlayTime(HowLongToBeatModel model, int gameId);
+    Task SubmitPlayTime(HowLongToBeatModel model);
 
-    Task<int> GetHowLongToBeatId(int id);
+    Task<int> GetHowLongToBeatId(string userId);
+
+
+
+
 }

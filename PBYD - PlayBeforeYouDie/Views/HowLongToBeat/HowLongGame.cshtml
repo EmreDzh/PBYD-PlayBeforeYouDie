@@ -1,17 +1,23 @@
-﻿@model HowLongToBeatModel
+﻿@model IEnumerable<HowLongToBeatModel>
+
+@{
+    int number = 1;
+}
+
+
 <h1 align="center">How Long To Beat</h1>
 <div class="col-md-4" style="width:550px; margin:0 auto;">
     <div class="card mb-3">
         <div class="card-body text-center">
             <img class="card-img-top "
-                 src="@Model.ImageUrl" alt="Game Image">
+                 src="@Model.FirstOrDefault().ImageUrl" alt="Game Image">
             <div class="card-body">
 
-                <h5 class="card-title mt-1">@Model.GamesTitle</h5>
+                <h5 class="card-title mt-1">@Model.FirstOrDefault().GamesTitle)</h5>
                 
                 <div class="text-center" style="color:white">
-                    When focusing on the main objectives, <strong>@Model.GamesTitle</strong> is about <strong>@Model.MainStory</strong> in length. 
-                    If you're a gamer that strives to see all aspects of the game, you are likely to spend around <strong>@Model.HundredPercentComplete</strong> to obtain 100% completion.
+                    When focusing on the main objectives, <strong>@Model.FirstOrDefault().GamesTitle</strong> is about <strong>@Model.FirstOrDefault().MainStory</strong> in length. 
+                    If you're a gamer that strives to see all aspects of the game, you are likely to spend around <strong>@Model.FirstOrDefault().HundredPercentComplete</strong> to obtain 100% completion.
                 </div>
                 
             </div>
@@ -20,28 +26,37 @@
     </div>
 </div>
 
-<table class="table table-dark table-strijh ulo0-p]ped">
-    <thead>
-    <tr>
-        <th scope="col">How Long To Beat Chart</th>
-        <th scope="col">Main Story</th>
-        <th scope="col">Main + Sides</th>
-        <th scope="col">Completionist</th>
-        <th scope="col">Speedrun</th>
-        <th scope="col">Speedrun 100%</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>@Model.MainStory</td>
-        <td>@Model.MainPlusSides</td>
-        <td>@Model.HundredPercentComplete</td>
-        <td>@Model.SpeedRunAny</td>
-        <td>@Model.SpeedRunOneHundredPercent</td>
-    </tr>
-    </tbody>
-</table>
+@foreach (var howLongToBeat in Model)
+{
+    
+
+    <table class="table table-dark table-strijh ulo0-p]ped">
+        <thead>
+        <tr>
+            <th scope="col">How Long To Beat Chart</th>
+            <th scope="col">Main Story</th>
+            <th scope="col">Main + Sides</th>
+            <th scope="col">Completionist</th>
+            <th scope="col">Speedrun</th>
+            <th scope="col">Speedrun 100%</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">@number</th>
+            <td>@howLongToBeat.MainStory</td>
+            <td>@howLongToBeat.MainPlusSides</td>
+            <td>@howLongToBeat.HundredPercentComplete</td>
+            <td>@howLongToBeat.SpeedRunAny</td>
+            <td>@howLongToBeat.SpeedRunOneHundredPercent</td>
+        </tr>
+        </tbody>
+    </table>
+
+    number++;
+
+}
+
 
 <style>
     .chart-container {
@@ -91,7 +106,7 @@
 @if (User?.Identity?.IsAuthenticated ?? false)
 {
     <div class="text-center">
-        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="HowLongToBeat" asp-action="Submit">Submit Your Time</a>
+        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="HowLongToBeat" asp-action="Submit" asp-route-gameId="@Model.FirstOrDefault().GameId">Submit Your Time</a>
     </div>
 }
 else

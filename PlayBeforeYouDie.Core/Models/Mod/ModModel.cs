@@ -1,5 +1,6 @@
 ﻿using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using PlayBeforeYouDie.Infrastructure.Data.Models;
 
 namespace PlayBeforeYouDie.Core.Models.Mod;
@@ -24,6 +25,8 @@ public class ModModel
 
     public string? YoutubeVideoModComparison { get; set; }
 
+    public int ModImageId { get; set; }
+
     [Required] 
     public string ModImageOne { get; set; } = null!;
 
@@ -32,4 +35,6 @@ public class ModModel
     public string? ModImageThree { get; set; }
 
     public string? ModImageFour { get; set; }
+
+    public int GameId { get; set; }
 }

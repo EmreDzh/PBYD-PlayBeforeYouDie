@@ -1,7 +1,5 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PlayBeforeYouDie.Core.Contracts;
-using PlayBeforeYouDie.Core.Models.Game;
 using PlayBeforeYouDie.Core.Models.Mod;
 using PlayBeforeYouDie.Infrastructure.Data.Common;
 using PlayBeforeYouDie.Infrastructure.Data.Models;
@@ -32,28 +30,62 @@ public class ModService : IModService
 
     }
 
-    public async Task<ModModel> ModsByGameById(int id)
+    public async Task<List<ModModel>> ModsByGameById(int id)
     {
-        return await repo.AllReadonly<Game>()
-            .Where(g => g.IsGameActive)
-            .Where(g => g.Id == id)
-            .Include(g => g.Mod)
-            .Include(p => p.Mod.ModPicture)
-            .Select(m => new ModModel()
-                {
-                    Id = m.Id,
-                    GamesTitle = m.GameTitle,
-                    ModName = m.Mod.ModName,
-                    Description = m.Mod.Description,
-                    DownloadModLink = m.Mod.DownloadModLink,
-                    YoutubeVideoModComparison = m.Mod.YoutubeVideoModComparison,
-                    ModImageOne = m.Mod.ModPicture.ModImageOne,
-                    ModImageTwo = m.Mod.ModPicture.ModImageTwo,
-                    ModImageThree = m.Mod.ModPicture.ModImageThree,
-                    ModImageFour = m.Mod.ModPicture.ModImageFour
-                }
-            )
-            .FirstAsync();
+        var game = await repo.AllReadonly<Game>()
+            .Include(g => g.Mods)
+            .ThenInclude(g => g.ModPicture)
+            .FirstOrDefaultAsync(g => g.Id == id);
+
+        var modsCollection = game.Mods
+            .Select(g => new ModModel()
+            {
+                Id = g.Id,
+                GamesTitle = g.Game.GameTitle,
+                ModName = g.ModName,
+                Description = g.Description,
+                DownloadModLink = g.DownloadModLink!,
+                YoutubeVideoModComparison = g.YoutubeVideoModComparison,
+                ModImageOne = g.ModPicture.ModImageOne,
+                ModImageTwo = g.ModPicture.ModImageTwo,
+                ModImageThree = g.ModPicture.ModImageThree,
+                ModImageFour = g.ModPicture.ModImageFour,
+                GameId = g.GameId
+            })
+            .ToList();
+
+        return modsCollection;
+    }
+
+    public async Task SubmitMod(ModModel model)
+    {
+        var mods = new Mod()
+        {
+            Id = model.Id,
+            Description = model.Description,
+            DownloadModLink = model.DownloadModLink,
+            ModName = model.ModName,
+            YoutubeVideoModComparison = model.YoutubeVideoModComparison,
+            GameId = model.GameId,
+            ModPicture = new ModPicture()
+            {
+                Id = model.ModImageId,
+                ModImageOne = model.ModImageOne,
+                ModImageTwo = model.ModImageTwo,
+                ModImageThree = model.ModImageThree,
+                ModImageFour = model.ModImageFour
+            }
+        };
+
+        try
+        {
+            await repo.AddAsync(mods);
+            await repo.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to submit the info!", e);
+        }
     }
 }   
 

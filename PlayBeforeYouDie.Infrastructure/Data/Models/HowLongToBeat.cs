@@ -1,18 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
 
 namespace PlayBeforeYouDie.Infrastructure.Data.Models;
 
 public class HowLongToBeat
 {
-    public HowLongToBeat()
-    {
-        Games = new List<Game>();
-    }
-
+    
     [Key]
     public int Id { get; set; }
-
 
     [Required]
     [MaxLength(ModelsConstants.MainStoryMaxLength)]
@@ -32,7 +28,10 @@ public class HowLongToBeat
     [MaxLength(ModelsConstants.SpeedRunOneHundredPercentMaxLength)]
     public string? SpeedRunOneHundredPercent { get; set; }
 
-    public List<Game> Games { get; set; }
+    
+    [ForeignKey(nameof(Game))]
+    public int GameId { get; set; }
+    public Game Game { get; set; }
 
     //[Required]
     //[ForeignKey(nameof(Review))]

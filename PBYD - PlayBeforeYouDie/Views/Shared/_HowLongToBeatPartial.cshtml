@@ -1,5 +1,6 @@
 ﻿@model HowLongToBeatModel
 
+
 <div class="col-md-4" style="width:550px; margin:0 auto;">
     <div class="card mb-3">
         <div class="card-body text-center">
@@ -17,6 +18,7 @@
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form method="post">
             <input type="hidden" asp-for="@Model.Id" />
+            
             <div class="form-group">
                 <label asp-for="MainStory"></label>
                 <input asp-for="MainStory" class="form-control" placeholder="00h 00m 00s...">
@@ -44,7 +46,7 @@
             </div>
             
             <div class="text-center">
-                <input class="btn btn-primary mt-3" type="submit" value="Add"/>
+                <input class="btn btn-primary mt-3" type="submit" value="Save"/>
             </div>
         </form>
     </div>

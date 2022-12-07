@@ -4,7 +4,6 @@
     ViewBag.Title = "Games Library";
 }
 
-
 <h2 class="text-center">@ViewBag.Title</h2>
 <h2 class="text-center">@ViewBag.Rating</h2> 
 
@@ -18,8 +17,8 @@
             <input asp-for="SearchGame" class="form-control" placeholder="...">
         </div>
 
-        <div class="col-md-3">
-            <div class="form-group mt-4 p-2">
+        <div class="col-md-3" style="display: flex; align-items: end; padding-bottom: 0px">
+            <div class="form-group mt-4 p-2" style="padding: 0 !important">
                 <input type="submit" value="Search" class="btn btn-primary" />
             </div>
         </div>

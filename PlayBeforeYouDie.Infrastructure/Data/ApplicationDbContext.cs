@@ -29,10 +29,10 @@ namespace PlayBeforeYouDie.Infrastructure.Data
         {
 
             builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new HowLongToBeatConfiguration());
             builder.ApplyConfiguration(new GameConfiguration());
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new SystemRequirementConfiguration());
-            builder.ApplyConfiguration(new HowLongToBeatConfiguration());
             builder.ApplyConfiguration(new ModConfiguration());
             builder.ApplyConfiguration(new ModPictureConfiguration());
 
@@ -51,6 +51,17 @@ namespace PlayBeforeYouDie.Infrastructure.Data
                 .Property(u => u.Email)
                 .HasMaxLength(60)
                 .IsRequired();
+
+
+            builder.Entity<HowLongToBeat>()
+                .HasOne(h => h.Game)
+                .WithMany(g => g.HowLongToBeat)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Mod>()
+                .HasOne(m => m.Game)
+                .WithMany(g => g.Mods)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
             base.OnModelCreating(builder);
