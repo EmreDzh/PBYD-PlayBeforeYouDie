@@ -38,5 +38,8 @@ public class SystemRequirementsModel
     public string Storage { get; set; } = null!;
 
     [StringLength(ModelsConstants.AdditionalNotesMaxLength, MinimumLength = ModelsConstants.AdditionalNotesMinLength)]
+    [Display(Name = "Additional Notes for games Requirements")]
     public string? AdditionalNotes { get; set; }
+
+    
 }

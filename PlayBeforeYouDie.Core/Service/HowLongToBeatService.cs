@@ -9,7 +9,6 @@ using PlayBeforeYouDie.Infrastructure.Data.Models.Users;
 
 namespace PlayBeforeYouDie.Core.Service;
 
-
 public class HowLongToBeatService : IHowLongToBeatService
 {
     private readonly IRepository repo;

@@ -65,7 +65,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
             await modService.SubmitMod(model);
 
-            return RedirectToAction(nameof(ModsGame));
+            return RedirectToAction(nameof(ModsGame), new { id = model.Id });
         }
     }
 }

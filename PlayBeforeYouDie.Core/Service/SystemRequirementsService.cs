@@ -38,4 +38,52 @@ public class SystemRequirementsService : ISystemRequirementsService
             )
             .FirstAsync();
     }
+
+    public async Task<SystemRequirementsDetails> SystemRequirementsDetailsById(int id)
+    {
+        return await repo.AllReadonly<SystemRequirement>()
+            .Where(g => g.Id == id)
+            .Select(s => new SystemRequirementsDetails()
+                {
+                    Id = s.Id,
+                    Graphics = s.Graphics,
+                    Memory = s.Memory,
+                    Network = s.Network,
+                    Os = s.Os,
+                    Processor = s.Processor,
+                    Storage = s.Storage,
+                    AdditionalNotes = s.AdditionalNotes
+                }
+            )
+            .FirstAsync();
+    }
+
+    public async Task Edit(int systemRequirementsId, SystemRequirementsModel model)
+    {
+        var systemRequirement = await repo.GetByIdAsync<SystemRequirement>(systemRequirementsId);
+
+        systemRequirement.Os = model.Os;
+        systemRequirement.Graphics = model.Graphics;
+        systemRequirement.Processor = model.Processor;
+        systemRequirement.Storage = model.Storage;
+        systemRequirement.Memory = model.Memory;
+        systemRequirement.Network = model.Network;
+        systemRequirement.AdditionalNotes = model.AdditionalNotes;
+        
+
+        try
+        {
+            await repo.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to submit the info", e);
+        }
+    }
+
+    public async Task<bool> Exists(int systemRequirementsId)
+    {
+        return await repo.AllReadonly<SystemRequirement>()
+            .AnyAsync(h => h.Id == systemRequirementsId);
+    }
 }

@@ -16,7 +16,6 @@
     <Folder Include="Models\Genre\" />
     <Folder Include="Models\HowLongToBeat\" />
     <Folder Include="Models\Review\" />
-    <Folder Include="Models\SystemRequirement\" />
     <Folder Include="Models\Users\" />
   </ItemGroup>
 

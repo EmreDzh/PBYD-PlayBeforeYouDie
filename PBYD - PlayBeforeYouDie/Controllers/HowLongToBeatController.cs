@@ -68,7 +68,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
            
             await howLongToBeat.SubmitPlayTime(model);
 
-            return RedirectToAction(nameof(HowLongGame));
+            return RedirectToAction(nameof(HowLongGame), new { id = model.Id });
 
         }
     }

@@ -33,7 +33,7 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 DownloadModLink = "https://www.nexusmods.com/gta4/mods/238",
                 ModPictureId = 2,
                 YoutubeVideoModComparison = "https://youtube.com/embed/btiYnR848RU",
-                GameId = 3
+                GameId = 2
             },
             new Mod()
             {
@@ -41,7 +41,7 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 ModName = "Super Mario Galaxy",
                 Description = "Theres no mods available for Super Mario Galaxy, since its an old title and no longer supported and fit for mods",
                 ModPictureId = 3,
-                GameId = 4
+                GameId = 3
                 
             },
             new Mod()
@@ -52,7 +52,7 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 DownloadModLink = "https://www.nexusmods.com/reddeadredemption2/mods/1811",
                 ModPictureId = 4,
                 YoutubeVideoModComparison = "https://youtube.com/embed/PA-gd8DBR8o",
-                GameId = 5
+                GameId = 4
 
             },
             new Mod()
@@ -63,7 +63,7 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 DownloadModLink = "https://www.nexusmods.com/witcher3/mods/1021",
                 ModPictureId = 5,
                 YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0",
-                GameId = 6
+                GameId = 5
             }
 
         };

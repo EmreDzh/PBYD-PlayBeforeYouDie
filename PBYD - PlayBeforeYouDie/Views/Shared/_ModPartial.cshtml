@@ -4,7 +4,10 @@
 <div class="col-md-4" style="width:550px; margin:0 auto;">
     <div class="card mb-3">
         <div class="card-body text-center">
-            
+            <p>
+                You can research your mods from: 
+                <a href="https://www.nexusmods.com/" target="_blank">Nexus Mods</a>
+            </p>
         </div>
     </div>
 </div>
@@ -26,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="DownloadModLink"></label>
-                <input asp-for="DownloadModLink" class="form-control" placeholder="DownloadModLink...">
+                <input asp-for="DownloadModLink" class="form-control" placeholder="Download Mod Link...">
                 <span asp-validation-for="DownloadModLink" class="small text-danger"></span>
             </div>
             <div class="form-group">
@@ -36,23 +39,34 @@
             </div>
             <div class="form-group">
                 <label asp-for="ModImageOne"></label>
-                <input asp-for="ModImageOne" class="form-control" placeholder="Mod Image One...">
+                <input asp-for="ModImageOne" class="form-control" placeholder="Mod Image One Link...">
                 <span asp-validation-for="ModImageOne" class="small text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ModImageTwo"></label>
-                <input asp-for="ModImageTwo" class="form-control" placeholder="Optional Mod Image Two...">
-                <span asp-validation-for="ModImageTwo" class="small text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModImageThree"></label>
-                <input asp-for="ModImageThree" class="form-control" placeholder="Optional Mod Image Three...">
-                <span asp-validation-for="ModImageThree" class="small text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModImageFour"></label>
-                <input asp-for="ModImageFour" class="form-control" placeholder="Optional Mod Image Four...">
-                <span asp-validation-for="ModImageFour" class="small text-danger"></span>
+
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleOne" aria-expanded="false" aria-controls="collapseExample">
+                    Click to Add optional images for the Mod!
+                </button>
+            </p>
+
+            <div class="collapse" id="collapseExampleOne">
+                <div class="card card-body">
+                    <div class="form-group">
+                        <label asp-for="ModImageTwo"></label>
+                        <input asp-for="ModImageTwo" class="form-control" placeholder="Optional Mod Image Two Link...">
+                        <span asp-validation-for="ModImageTwo" class="small text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ModImageThree"></label>
+                        <input asp-for="ModImageThree" class="form-control" placeholder="Optional Mod Image Three Link...">
+                        <span asp-validation-for="ModImageThree" class="small text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ModImageFour"></label>
+                        <input asp-for="ModImageFour" class="form-control" placeholder="Optional Mod Image Four Link...">
+                        <span asp-validation-for="ModImageFour" class="small text-danger"></span>
+                    </div>
+                </div>
             </div>
 
             <div class="text-center">

@@ -34,7 +34,7 @@ public class HowLongToBeatConfiguration : IEntityTypeConfiguration<HowLongToBeat
                 HundredPercentComplete = "77h 11m",
                 SpeedRunAny = "10h 40m 40s",
                 SpeedRunOneHundredPercent = "15h 54m 44s",
-                GameId = 3
+                GameId = 2
                 //ReviewId = 1
             },
             new HowLongToBeat()
@@ -45,7 +45,7 @@ public class HowLongToBeatConfiguration : IEntityTypeConfiguration<HowLongToBeat
                 HundredPercentComplete = "36h 53m",
                 SpeedRunAny = "3h 52m 24s",
                 SpeedRunOneHundredPercent = "8h 33m 50s",
-                GameId = 4
+                GameId = 3
                 //ReviewId = 1
             },
             new HowLongToBeat()
@@ -56,7 +56,7 @@ public class HowLongToBeatConfiguration : IEntityTypeConfiguration<HowLongToBeat
                 HundredPercentComplete = "184h 12m",
                 SpeedRunAny = "14h 4m 32s",
                 SpeedRunOneHundredPercent = "35h 13m 26s",
-                GameId = 5
+                GameId = 4
                 //ReviewId = 1
             },
             new HowLongToBeat()
@@ -67,7 +67,7 @@ public class HowLongToBeatConfiguration : IEntityTypeConfiguration<HowLongToBeat
                 HundredPercentComplete = "179h 56m",
                 SpeedRunAny = "16h 48m 48s",
                 SpeedRunOneHundredPercent = "63h 20m",
-                GameId = 6
+                GameId = 5
                 //ReviewId = 1
             }
         };

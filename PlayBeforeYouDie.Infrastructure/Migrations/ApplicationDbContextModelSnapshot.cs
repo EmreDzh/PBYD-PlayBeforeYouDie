@@ -215,7 +215,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 2,
                             GameTitle = "Grand Theft Auto IV",
                             GenreId = 2,
                             ImageUrl = "https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2018/03/13/0e032ffe-1b30-4ee4-876e-e31f6a894447/gta-iv",
@@ -226,7 +226,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 3,
                             GameTitle = "Super Mario Galaxy",
                             GenreId = 3,
                             ImageUrl = "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperMarioGalaxy_image1600w.jpg",
@@ -237,7 +237,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 4,
                             GameTitle = "Red Dead Redemption 2",
                             GenreId = 2,
                             ImageUrl = "https://assets1.ignimgs.com/2016/10/18/red-dead-redemption-2-buttonjpg-f9ad35.jpg",
@@ -248,7 +248,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 5,
                             GameTitle = "The Witcher 3: Wild Hund",
                             GenreId = 2,
                             ImageUrl = "https://static.giga.de/15/68/17/cbb82352a0e62e5ad8c613c207_AzE4Yzg1MDJhYzMw_thewitcher3.jpg",
@@ -378,7 +378,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            GameId = 3,
+                            GameId = 2,
                             HundredPercentComplete = "77h 11m",
                             MainPlusSides = "41h 27m",
                             MainStory = "27h 35m",
@@ -388,7 +388,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            GameId = 4,
+                            GameId = 3,
                             HundredPercentComplete = "36h 53m",
                             MainPlusSides = "22h 14m",
                             MainStory = "13h 41m",
@@ -398,7 +398,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            GameId = 5,
+                            GameId = 4,
                             HundredPercentComplete = "184h 12m",
                             MainPlusSides = "84h 27m",
                             MainStory = "49h 44m",
@@ -408,7 +408,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         new
                         {
                             Id = 5,
-                            GameId = 6,
+                            GameId = 5,
                             HundredPercentComplete = "179h 56m",
                             MainPlusSides = "106h 16m",
                             MainStory = "52h 33m",
@@ -470,7 +470,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 2,
                             Description = "Photorealistic ReShade I've been working on for some time, taking out what's best from the great old Grand Theft Auto IV...Adds Anti-Aliasing, Bloom, Color Changes, Sharpness, Shadows, Optional Borders, Depth of Field and SSR.",
                             DownloadModLink = "https://www.nexusmods.com/gta4/mods/238",
-                            GameId = 3,
+                            GameId = 2,
                             ModName = "Photorealistic Visuals ReShade",
                             ModPictureId = 2,
                             YoutubeVideoModComparison = "https://youtube.com/embed/btiYnR848RU"
@@ -479,7 +479,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = 3,
                             Description = "Theres no mods available for Super Mario Galaxy, since its an old title and no longer supported and fit for mods",
-                            GameId = 4,
+                            GameId = 3,
                             ModName = "Super Mario Galaxy",
                             ModPictureId = 3
                         },
@@ -488,7 +488,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 4,
                             Description = "In an effort to add something small to the community that enrichens this game so much, here are some horses to honor National Native American Heritage Day. I wanted to see more horses influenced by Native Indian Culture. Not meant to be \"realistic\" or even \"immersive\", just respectful and what I like.\r\nHope some of you like it too. Enjoy.",
                             DownloadModLink = "https://www.nexusmods.com/reddeadredemption2/mods/1811",
-                            GameId = 5,
+                            GameId = 4,
                             ModName = "Native American Horses",
                             ModPictureId = 4,
                             YoutubeVideoModComparison = "https://youtube.com/embed/PA-gd8DBR8o"
@@ -498,7 +498,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 5,
                             Description = "This Project aims to improve the graphics by reworking models and textures to better quality preserving the original style",
                             DownloadModLink = "https://www.nexusmods.com/witcher3/mods/1021",
-                            GameId = 6,
+                            GameId = 5,
                             ModName = "The Witcher 3 HD Reworked Project",
                             ModPictureId = 5,
                             YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0"
@@ -739,15 +739,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e99042c7-b1b1-462d-b693-74b3946fc614",
+                            ConcurrencyStamp = "c54c9514-e4ff-4677-9238-1be1c3c10666",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIC/ABa0aad4jmTTuyss76qeAnu0NDVEtwtU0f3SkaGy8KDOuWc6mzzJ1C0WVdV0yg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOOW6DuYdY8qWeoiH8/7BeK2eSFPNETpYxFRLn2srHv6z8AHbFMb8JRZ8UwyrF+XRw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aad7370e-4f7c-48d3-86de-6c39bd09ce5b",
+                            SecurityStamp = "47d78190-0378-462e-9e80-48778e766897",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -755,15 +755,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f9dbb65-480b-4f08-a760-861fd9576c91",
+                            ConcurrencyStamp = "719d74ba-c558-44dd-80e2-fb5ea4c6f870",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOa6YMAds9hkrVKVkfaWAPYKlTzsBYOWrHDUpTxAw+OQ1mloQzOsGlpd/QSNPI8mng==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEQTvKPOCR4FXUMOl2bR+1LW6W2c7BBD8D4O4CJMm+0q+yiPjJvHoQVZuda2EXJQmw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a41ef7dc-a9b6-43d0-9763-ed296920b8cb",
+                            SecurityStamp = "bc5a569a-079a-4d66-a3af-07d04bd53d0c",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -771,15 +771,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "53f28724-61c0-47ae-913d-c4fd3a68d155",
+                            ConcurrencyStamp = "f02ecda8-18a3-470e-b619-6c4a76507b16",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAECY1B1S5nhGzBXjcyFFqdNk3HzIla9ugpZqsZphuswntQanPo97kkrG+9xQwsrqS2w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAl0KolmY3IR2V84XgJWKO30JBJj++BLbsyYoLd8neyLz/A2PuRBhbww8bjdw27dVQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9c9c0761-63e1-4828-bfa3-af98cbd953a7",
+                            SecurityStamp = "87318398-8ffb-425d-8a0e-bb055cab373b",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });

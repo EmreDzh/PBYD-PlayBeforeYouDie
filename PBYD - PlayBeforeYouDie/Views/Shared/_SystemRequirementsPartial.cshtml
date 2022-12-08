@@ -1,0 +1,62 @@
+﻿@model SystemRequirementsModel
+
+
+<div class="col-md-4" style="width:550px; margin:0 auto;">
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <img src="lib/images/Edit.jpg" alt="Sample Photo"/>
+            <div class="card-body">
+                <h5 class="card-title mt-1">@Model.GamesTitle</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post">
+            <input type="hidden" asp-for="@Model.Id" />
+
+            <div class="form-group">
+                <label asp-for="Os"></label>
+                <input asp-for="Os" class="form-control" placeholder="Platform...">
+                <span asp-validation-for="Os" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Processor"></label>
+                <input asp-for="Processor" class="form-control" placeholder="Processor...">
+                <span asp-validation-for="Processor" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Memory"></label>
+                <input asp-for="Memory" class="form-control" placeholder="Memory...">
+                <span asp-validation-for="Memory" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Graphics"></label>
+                <input asp-for="Graphics" class="form-control" placeholder="Graphics...">
+                <span asp-validation-for="Graphics" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Network"></label>
+                <input asp-for="Network" class="form-control" placeholder="Network...">
+                <span asp-validation-for="Network" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Storage"></label>
+                <input asp-for="Storage" class="form-control" placeholder="Storage...">
+                <span asp-validation-for="Storage" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalNotes"></label>
+                <input asp-for="AdditionalNotes" class="form-control" placeholder="AdditionalNotes...">
+                <span asp-validation-for="AdditionalNotes" class="small text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-primary mt-3" type="submit" value="Save"/>
+            </div>
+        </form>
+    </div>
+</div>

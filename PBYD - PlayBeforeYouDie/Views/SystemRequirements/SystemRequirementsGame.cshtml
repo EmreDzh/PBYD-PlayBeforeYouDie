@@ -6,7 +6,7 @@
             <img class="img-fluid"
                  src="@Model.ImageUrl" alt="Game Image">
             <div class="text-center">
-                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="SystemRequirements" asp-action="Edit">Edit System Requirements</a>
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="SystemRequirements" asp-action="Edit" asp-route-systemRequirementsId="@Model.Id">Edit the requirements!</a>
             </div>
         </div>
     </div>

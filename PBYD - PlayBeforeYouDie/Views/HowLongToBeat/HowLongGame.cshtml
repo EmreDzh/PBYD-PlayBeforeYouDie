@@ -13,7 +13,7 @@
                  src="@Model.FirstOrDefault().ImageUrl" alt="Game Image">
             <div class="card-body">
 
-                <h5 class="card-title mt-1">@Model.FirstOrDefault().GamesTitle)</h5>
+                <h5 class="card-title mt-1">@Model.FirstOrDefault().GamesTitle</h5>
                 
                 <div class="text-center" style="color:white">
                     When focusing on the main objectives, <strong>@Model.FirstOrDefault().GamesTitle</strong> is about <strong>@Model.FirstOrDefault().MainStory</strong> in length. 
@@ -30,7 +30,7 @@
 {
     
 
-    <table class="table table-dark table-strijh ulo0-p]ped">
+    <table class="table table-dark table-hover">
         <thead>
         <tr>
             <th scope="col">How Long To Beat Chart</th>
@@ -39,7 +39,7 @@
             <th scope="col">Completionist</th>
             <th scope="col">Speedrun</th>
             <th scope="col">Speedrun 100%</th>
-        </tr>
+        </tr>tb
         </thead>
         <tbody>
         <tr>
@@ -84,10 +84,10 @@
           labels: ["MainStory", "MainPlusSides", "HundredPercentComplete", "SpeedRunAny",
           "SpeedRunOneHundredPercent"],
           datasets: [{
-            label: 'Played overall',
+            label: 'Avarage Played Overall',
             backgroundColor: 'rgba(161, 198, 247, 1)',
             borderColor: 'rgb(47, 128, 237)',
-            data: [20, 25, 35, 40, 56],
+            data: [35, 40, 50, 60, 80],
           }]
         },
         options: {
