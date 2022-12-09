@@ -52,7 +52,7 @@ public class GameService : IGameService
             .ToListAsync();
     }
 
-    public async Task<GamesQueryModel> All(string? searchTerm = null, int currentPage = 1, int gamePerPage = 1)
+    public async Task<GamesQueryModel> All(string? genre, string? searchTerm = null, int currentPage = 1, int gamePerPage = 1)
     {
         var result = new GamesQueryModel();
         var games = repo.AllReadonly<Game>()
@@ -65,8 +65,14 @@ public class GameService : IGameService
             games = games
                 .Where(h => EF.Functions.Like(h.GameTitle.ToLower(), searchTerm) ||
                             EF.Functions.Like(h.Rating.ToString(), searchTerm));
-
+            
         }
+
+        if (string.IsNullOrEmpty(genre) == false)
+        {
+            games = games.Where(g => g.Genre.Category == genre);
+        }
+        
 
         result.Games = await games
             .Skip((currentPage - 1) * gamePerPage)
@@ -84,6 +90,14 @@ public class GameService : IGameService
 
         return result;
 
+    }
+
+    public async Task<IEnumerable<string>> AllGenreNames()
+    {
+        return await repo.AllReadonly<Genre>()
+            .Select(g => g.Category)
+            .Distinct()
+            .ToListAsync();
     }
 
     public async Task<bool> Exists(int id)

@@ -27,12 +27,13 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> AllGames([FromQuery]AllGamesQueryModel query)
         {
-            var result = await gameService.All(
+            var result = await gameService.All(query.Genre,
                 query.SearchGame,
                 query.CurrentPage,
                 AllGamesQueryModel.HousesPerPage);
 
             query.TotalGamesCount = result.TotalGamesCount;
+            query.Genres = await gameService.AllGenreNames();
             query.Games = result.Games;
 
             return View(query);

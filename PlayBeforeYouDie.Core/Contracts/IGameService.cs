@@ -8,8 +8,10 @@ public interface IGameService
 
     Task<IEnumerable<GameServiceModel>> GetAll();
 
-    Task<GamesQueryModel> All(string? searchTerm = null, int currentPage = 1,
+    Task<GamesQueryModel> All(string? genre, string? searchTerm = null, int currentPage = 1,
         int gamePerPage = 1);
+
+    Task<IEnumerable<string>> AllGenreNames();
 
     Task<bool> Exists(int id);
 

@@ -42,6 +42,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("MyPolicy", policy =>
     {
         policy.RequireAuthenticatedUser();
+        policy.RequireRole("SubmittedPcParts");
         policy.RequireRole("Admin");
     });
 });
