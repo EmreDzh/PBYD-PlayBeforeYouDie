@@ -76,6 +76,16 @@ public class SystemRequirementConfiguration : IEntityTypeConfiguration<SystemReq
                 Network = "N/A",
                 Storage = "35 GB available space",
                 
+            },
+            new SystemRequirement()
+            {
+                Id = 10,
+                Os = "Windows 10",
+                Processor = "INTEL CORE I5-8400 or AMD RYZEN 3 3300X",
+                Memory = "12 GB RAM",
+                Graphics = "NVIDIA GEFORCE GTX 1060 3 GB or AMD RADEON RX 580 4 GB.",
+                Network = "N/A",
+                Storage = "60 GB"
             }
 
 

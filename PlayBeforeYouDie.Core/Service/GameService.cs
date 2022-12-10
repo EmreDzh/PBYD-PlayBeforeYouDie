@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;
+using PlayBeforeYouDie.Core.Models.Genre;
 using PlayBeforeYouDie.Infrastructure.Data;
 using PlayBeforeYouDie.Infrastructure.Data.Common;
 using PlayBeforeYouDie.Infrastructure.Data.Models;
@@ -100,17 +102,24 @@ public class GameService : IGameService
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<GenreModel>> AllGenres()
+    {
+        return await repo.AllReadonly<Genre>()
+            .OrderBy(g => g.Category)
+            .Select(c => new GenreModel()
+            {
+                Id = c.Id,
+                Category = c.Category
+            })
+            .ToListAsync();
+    }
+
     public async Task<bool> Exists(int id)
     {
         return await repo.AllReadonly<Game>()
             .AnyAsync(g => g.Id == id && g.IsGameActive);
     }
 
-    public async Task<int> GetGameId(int gameId)
-    {
-        return (await repo.AllReadonly<Game>()
-            .FirstOrDefaultAsync(g => g.Id == gameId))?.Id ?? 0;
-    }
     
     public async Task AddGameToMyLibrary(int id, string userId)
     {
@@ -151,10 +160,73 @@ public class GameService : IGameService
             }
         }
     }
-    
-    
 
-    public async Task<IEnumerable<GameServiceModel>> GetMyLibraryAsync(string userId)
+    public async Task AddGame(AddGameModel model)
+    {
+        
+
+        var game = new Game()
+        {
+            Id = model.Id,
+            GameTitle = model.GameTitle,
+            ImageUrl = model.ImageUrl,
+            Rating = model.Rating,
+            Summary = model.Summary,
+            GenreId = model.GenreId,
+            SystemRequirement = new SystemRequirement()
+            {
+                Id = model.SystemRequirementId,
+                Os = model.Os,
+                Graphics = model.Graphics,
+                Memory = model.Memory,
+                AdditionalNotes = model.AdditionalNotes,
+                Network = model.Network,
+                Processor = model.Processor,
+                Storage = model.Storage
+            },
+            HowLongToBeat = new List<HowLongToBeat>()
+            {
+                new HowLongToBeat()
+                {
+                    GameId = model.Id,
+                    MainStory = "00h 00s",
+                    HundredPercentComplete = "00h 00s",
+                    MainPlusSides = "00h 00s",
+                    SpeedRunAny = "00h 00s",
+                    SpeedRunOneHundredPercent = "00h 00s"
+                }
+            },
+            Mods = new List<Mod>()
+            {
+                new Mod()
+                {
+                    GameId = model.Id,
+                    Description = "Empty Description",
+                    DownloadModLink = "N/A",
+                    ModName = "Empty ModName",
+                    ModPicture = new ModPicture()
+                    {
+                        ModImageOne = "N/A"
+                    }
+                }
+            }
+            
+        };
+
+        try
+        {
+            await repo.AddAsync(game);
+            await repo.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to save the info", e);
+        }
+
+    }
+
+
+    public async Task<IEnumerable<GameModel>> GetMyLibraryAsync(string userId)
     {
         var user = await context.Users
             .Where(u => u.Id == userId)
@@ -168,7 +240,7 @@ public class GameService : IGameService
         }
 
         return user.ApplicationUserGames
-            .Select(g => new GameServiceModel()
+            .Select(g => new GameModel()
             {
                 Id = g.Game.Id,
                 GameTitle = g.Game.GameTitle,
@@ -208,5 +280,38 @@ public class GameService : IGameService
         }
 
 
+    }
+
+    public async Task<GameServiceModel> DeleteGameById(int gameId)
+    {
+        return await repo.AllReadonly<Game>()
+            .Where(g => g.IsGameActive)
+            .Where(g => g.Id == gameId)
+            .Select(g => new GameServiceModel()
+            {
+                Id = g.Id,
+                GameTitle = g.GameTitle,
+                ImageUrl = g.ImageUrl,
+                Rating = g.Rating,
+                Summary = g.Summary
+
+            })
+            .FirstAsync();
+    }
+
+    public async Task DeleteGame(int id)
+    {
+        var game = await repo.GetByIdAsync<Game>(id);
+        
+        game.IsGameActive = false;
+
+        try
+        {
+            await repo.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to remove the game", e);
+        }
     }
 }

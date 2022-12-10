@@ -80,6 +80,17 @@ internal class GameConfiguration : IEntityTypeConfiguration<Game>
                 GenreId = 2,
                 SystemRequirementId = 5,
                 
+            },
+            new Game()
+            {
+                Id = 6,
+                GameTitle = "Elden Ring",
+                Summary = "Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice.",
+                ImageUrl = "https://xboxplay.games/uploadStream/28009.jpg",
+                Rating = 96,
+                GenreId = 3,
+                SystemRequirementId = 10
+
             }
 
         };

@@ -5,116 +5,135 @@
 }
 
 
-<h1 align="center">How Long To Beat</h1>
-<div class="col-md-4" style="width:550px; margin:0 auto;">
-    <div class="card mb-3">
-        <div class="card-body text-center">
-            <img class="card-img-top "
-                 src="@Model.FirstOrDefault().ImageUrl" alt="Game Image">
-            <div class="card-body">
-
-                <h5 class="card-title mt-1">@Model.FirstOrDefault().GamesTitle</h5>
-                
-                <div class="text-center" style="color:white">
-                    When focusing on the main objectives, <strong>@Model.FirstOrDefault().GamesTitle</strong> is about <strong>@Model.FirstOrDefault().MainStory</strong> in length. 
-                    If you're a gamer that strives to see all aspects of the game, you are likely to spend around <strong>@Model.FirstOrDefault().HundredPercentComplete</strong> to obtain 100% completion.
-                </div>
-                
-            </div>
-           
-        </div>
-    </div>
-</div>
-
-@foreach (var howLongToBeat in Model)
-{
-    
-
-    <table class="table table-dark table-hover">
-        <thead>
-        <tr>
-            <th scope="col">How Long To Beat Chart</th>
-            <th scope="col">Main Story</th>
-            <th scope="col">Main + Sides</th>
-            <th scope="col">Completionist</th>
-            <th scope="col">Speedrun</th>
-            <th scope="col">Speedrun 100%</th>
-        </tr>tb
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">@number</th>
-            <td>@howLongToBeat.MainStory</td>
-            <td>@howLongToBeat.MainPlusSides</td>
-            <td>@howLongToBeat.HundredPercentComplete</td>
-            <td>@howLongToBeat.SpeedRunAny</td>
-            <td>@howLongToBeat.SpeedRunOneHundredPercent</td>
-        </tr>
-        </tbody>
-    </table>
-
-    number++;
-
-}
-
-
-<style>
-    .chart-container {
-        width: 50%;
-        height: 50%;
-        margin: auto;
-    }
-</style>
-
-<body>
-<div class="card chart-container">
-    <canvas id="chart"></canvas>
-</div>
-
-</body>
-
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js">
-</script>
-<script>
-      const ctx = document.getElementById("chart").getContext('2d');
-      const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["MainStory", "MainPlusSides", "HundredPercentComplete", "SpeedRunAny",
-          "SpeedRunOneHundredPercent"],
-          datasets: [{
-            label: 'Avarage Played Overall',
-            backgroundColor: 'rgba(161, 198, 247, 1)',
-            borderColor: 'rgb(47, 128, 237)',
-            data: [35, 40, 50, 60, 80],
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-              }
-            }]
-          }
-        },
-      });
-</script>
-
-
-@if (User?.Identity?.IsAuthenticated ?? false)
+@if (@Model.Any())
 {
     <div class="text-center">
         <a class="btn btn-primary btn-lg" asp-area="" asp-controller="HowLongToBeat" asp-action="Submit" asp-route-gameId="@Model.FirstOrDefault().GameId">Submit Your Time</a>
     </div>
+
+    <h1 align="center">How Long To Beat</h1>
+    <div class="col-md-4" style="width:550px; margin:0 auto;">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <img class="card-img-top "
+                 src="@Model.FirstOrDefault().ImageUrl" alt="Game Image">
+                <div class="card-body">
+
+                    <h5 class="card-title mt-1">@Model.FirstOrDefault().GamesTitle</h5>
+
+                    <div class="text-center" style="color:white">
+                        When focusing on the main objectives, <strong>@Model.FirstOrDefault().GamesTitle</strong> is about <strong>@Model.FirstOrDefault().MainStory</strong> in length. 
+                        If you're a gamer that strives to see all aspects of the game, you are likely to spend around <strong>@Model.FirstOrDefault().HundredPercentComplete</strong> to obtain 100% completion.
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @foreach (var howLongToBeat in Model)
+    {
+
+
+            <table class="table table-dark table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">How Long To Beat Chart</th>
+                    <th scope="col">Main Story</th>
+                    <th scope="col">Main + Sides</th>
+                    <th scope="col">Completionist</th>
+                    <th scope="col">Speedrun</th>
+                    <th scope="col">Speedrun 100%</th>
+                </tr>tb
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">@number</th>
+                    <td>@howLongToBeat.MainStory</td>
+                    <td>@howLongToBeat.MainPlusSides</td>
+                    <td>@howLongToBeat.HundredPercentComplete</td>
+                    <td>@howLongToBeat.SpeedRunAny</td>
+                    <td>@howLongToBeat.SpeedRunOneHundredPercent</td>
+                </tr>
+                </tbody>
+            </table>
+
+        number++;
+
+    }
+
+
+    <style>
+        .chart-container {
+            width: 50%;
+            height: 50%;
+            margin: auto;
+        }
+    </style>
+
+    <body>
+    <div class="card chart-container">
+        <canvas id="chart"></canvas>
+    </div>
+
+    </body>
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js">
+    </script>
+    <script>
+          const ctx = document.getElementById("chart").getContext('2d');
+          const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["MainStory", "MainPlusSides", "HundredPercentComplete", "SpeedRunAny",
+              "SpeedRunOneHundredPercent"],
+              datasets: [{
+                label: 'Avarage Played Overall',
+                backgroundColor: 'rgba(161, 198, 247, 1)',
+                borderColor: 'rgb(47, 128, 237)',
+                data: [35, 40, 50, 60, 80],
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                  }
+                }]
+              }
+            },
+          });
+    </script>
 }
 else
 {
-    <div class="text-center">
-        <a class="btn btn-primary btn-lg" asp-controller="User" asp-action="Login">Please login to submit your playtime!</a>
-    </div>
+    <h2 class="text-center">No Playtime for found!</h2>
 
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+
+            <div class="text-center">
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="HowLongToBeat" asp-action="Submit" asp-route-gameId="">Submit Your Time</a>
+            </div>
+
+
+    }
+    else
+    {
+            <div class="text-center">
+                <a class="btn btn-primary btn-lg" asp-controller="User" asp-action="Login">Please login to submit your playtime!</a>
+            </div>
+
+    }
+
+        
 }
+
+
+
+
 
 

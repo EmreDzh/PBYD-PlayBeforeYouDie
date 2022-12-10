@@ -11,5 +11,9 @@ public interface ISystemRequirementsService
 
     Task Edit(int systemRequirementsId, SystemRequirementsModel model);
 
-    Task<bool> Exists(int systemRequirementsId);
+    Task<bool> SystemRequirementsExists(int systemRequirementsId);
+
+    Task<IEnumerable<SystemRequirementsGame>> AllSystemRequirements();
+
+    
 }

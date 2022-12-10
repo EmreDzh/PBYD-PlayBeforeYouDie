@@ -69,6 +69,16 @@ public class HowLongToBeatConfiguration : IEntityTypeConfiguration<HowLongToBeat
                 SpeedRunOneHundredPercent = "63h 20m",
                 GameId = 5
                 //ReviewId = 1
+            },
+            new HowLongToBeat()
+            {
+                Id = 9,
+                MainStory = "53h 46m",
+                MainPlusSides = "102h 28m",
+                HundredPercentComplete = "136h 37m",
+                SpeedRunAny = "4h 23m 18s",
+                SpeedRunOneHundredPercent = "8h 30m 5s",
+                GameId = 6
             }
         };
 

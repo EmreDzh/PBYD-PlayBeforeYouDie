@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayBeforeYouDie.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221210185726_AddedApplicationUserToTheGame")]
+    partial class AddedApplicationUserToTheGame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -256,17 +258,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Rating = 93m,
                             Summary = "With the Empire attacking the Kingdoms of the North and the Wild Hunt, a cavalcade of ghastly riders, breathing down your neck, the only way to survive is to fight back. As Geralt of Rivia, a master swordsman and monster hunter, leave none of your enemies standing. Explore a gigantic open world, slay beasts and decide the fates of whole communities with your actions, all in a genuine next generation format.",
                             SystemRequirementId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            GameTitle = "Elden Ring",
-                            GenreId = 3,
-                            ImageUrl = "https://xboxplay.games/uploadStream/28009.jpg",
-                            IsGameActive = true,
-                            Rating = 96m,
-                            Summary = "Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice.",
-                            SystemRequirementId = 10
                         });
                 });
 
@@ -425,16 +416,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             MainStory = "52h 33m",
                             SpeedRunAny = "16h 48m 48s",
                             SpeedRunOneHundredPercent = "63h 20m"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            GameId = 6,
-                            HundredPercentComplete = "136h 37m",
-                            MainPlusSides = "102h 28m",
-                            MainStory = "53h 46m",
-                            SpeedRunAny = "4h 23m 18s",
-                            SpeedRunOneHundredPercent = "8h 30m 5s"
                         });
                 });
 
@@ -523,16 +504,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             ModName = "The Witcher 3 HD Reworked Project",
                             ModPictureId = 5,
                             YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Description = "An overhaul of the legendary Sword of Night and Flame to be cooler, stronger, and maybe just a little OP. Download to get an all new moveset and Ash of War!",
-                            DownloadModLink = "https://www.nexusmods.com/eldenring/mods/2618",
-                            GameId = 6,
-                            ModName = "Sword of Night and Flame - Unbound",
-                            ModPictureId = 8,
-                            YoutubeVideoModComparison = "https://youtube/embed/Gkd5h9VYGXE"
                         });
                 });
 
@@ -595,14 +566,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             ModImageOne = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600548166-1660518323.jpeg",
                             ModImageThree = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600594030-2005225404.jpeg",
                             ModImageTwo = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600594032-1731970147.jpeg"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ModImageFour = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061310-466516695.jpeg",
-                            ModImageOne = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061311-1458428997.jpeg",
-                            ModImageThree = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061321-366436897.jpeg",
-                            ModImageTwo = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061316-1509434001.jpeg"
                         });
                 });
 
@@ -704,16 +667,6 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Os = "64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10 / PS3 / PS4",
                             Processor = "Intel CPU Core i5-2500K 3.3GHz / AMD CPU Phenom II X4 940",
                             Storage = "35 GB available space"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Graphics = "NVIDIA GEFORCE GTX 1060 3 GB or AMD RADEON RX 580 4 GB.",
-                            Memory = "12 GB RAM",
-                            Network = "N/A",
-                            Os = "Windows 10",
-                            Processor = "INTEL CORE I5-8400 or AMD RYZEN 3 3300X",
-                            Storage = "60 GB"
                         });
                 });
 
@@ -788,15 +741,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b3b9ab8e-66bf-4ca2-bc37-a88250b73e84",
+                            ConcurrencyStamp = "b47006f8-4d4f-421b-a087-7bd30ab920c3",
                             Email = "modder@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "modder@mail.com",
                             NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAELRdvbUL7Oif2B66uQoTJgPuBIfHxxht35qiv5El785//XD9+pLToT+3OSZLDFH+JA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOETioBSMQWKdv2k5heRmpq6/osqulLd7R7MQGVKWl7JaunrxaQghOdyxP3DcpPVjA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2d93f61b-069e-4f2e-aa2d-9cab28618044",
+                            SecurityStamp = "ce145187-96b8-4587-af6b-9a6db7c713be",
                             TwoFactorEnabled = false,
                             UserName = "modder@mail.com"
                         },
@@ -804,15 +757,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c146b40-7fec-4b19-a8f5-c82766a5de8f",
+                            ConcurrencyStamp = "c7db67e0-a457-487f-ae58-26aa26c41b81",
                             Email = "Admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "Admin@mail.com",
                             NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJJ5+q8Xfu711VfnyfpMduxGgCUJCuuK9Jhhg8PVOQdARlBf8oU6coMzO2MhcKmwXQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECv4L4Aph7kD63k18D2l/77Tp2MgQCZabiBMRmSeSjtQptPWM8UiuwlclDoqqPlLpQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1f30542f-0f47-40b5-a1ce-e85b087d3e6c",
+                            SecurityStamp = "4f31070e-2ff4-43c1-a205-bd37ac3892f0",
                             TwoFactorEnabled = false,
                             UserName = "Admin@mail.com"
                         },
@@ -820,15 +773,15 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3a541de5-d230-40bd-8962-5f10204eb1f1",
+                            ConcurrencyStamp = "81b3dc14-607a-4cb1-8f77-3d6a5e98a4dc",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAECKCxbCZk/0nVz38D9AT8KUrdfyanKpHDBwUaDz56gQ2y4B7cuqynNaK/QDJtEU+yw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECsQUiNaYYFvm/GoQ7/n7q18dE9rQBGyPlgg54MMZuUQo4tFdiuQ6X/lBGyCScSivQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "013a5eea-4d6e-427a-9662-c54c79964300",
+                            SecurityStamp = "33417e6b-a859-41fa-8687-0d1e37aac715",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });

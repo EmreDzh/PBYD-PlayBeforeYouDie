@@ -1,7 +1,7 @@
 # Welcome to Play Before You Die!
 
-Play Before You Die is a ASP.NET MVC Application that stores Games with all their details, data, information and modifications to make the selected game understandable to play! 
- > The idea of this project came from me because as a gamer: before you play any game you have to research it, see if its playable on your platform and check a lot of websites for a specific mod that might improve the game by alot. This makes the process a lot easier and sums up everything in 1 application.
+Play Before You Die is an ASP.NET MVC application that stores games with all their details, data, information and modifications to make the selected games understandable! 
+ > The idea for this project came from me, because as a gamer, before you play a game, you have to research if it's playable on your platform and search many websites for a specific mod that could improve the functionality and graphics of the game by a lot. This makes the process much easier and puts everything into 1 application.
 
 ## Product Documentation
 
@@ -15,8 +15,8 @@ Step 1
 - Clone the repo and open the PBYD - PlayBeforeYoyDie.sln project file in the 'PBYD - PlayBeforeYouDie' folder
 
 Step 2
-- Initialize user secrets for the project
-The Keys needed for the project to work properly are:
+Initialize user secrets for the project
+- The Keys needed for the project to work properly are:
 - "DbUser"
 - "DbPassword"
 - "DbConfiguration:ConnectionString"
@@ -27,11 +27,11 @@ Step 3
 ## Technical Documentation
 
 - The application uses SqlServer DbContext + Identity for the user control.
-- The application uses Repository pattern and DB Context for getting data from the database.
+- The application uses Repository and In Memory DB pattern for getting data from the database.
 
 
 
-## Tech Stack:
+## Tech Tools:
 
 API
 
@@ -48,6 +48,12 @@ Front End
 
 Database
 - MSSQL Server
+
+Tests
+-NUnit 3.13.3
+-NUnit3TestAdapter 4.3.1
+-Moq 4.18.2
+-Microsoft.EntityFrameworkCore.InMemory 6.0.11
 
 Git tools
 - GitHub

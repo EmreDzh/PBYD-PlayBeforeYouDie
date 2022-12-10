@@ -36,25 +36,26 @@ public class ModService : IModService
             .Include(g => g.Mods)
             .ThenInclude(g => g.ModPicture)
             .FirstOrDefaultAsync(g => g.Id == id);
+        
+            var modsCollection = game.Mods
+                .Select(g => new ModModel()
+                {
+                    Id = g.Id,
+                    GamesTitle = g.Game.GameTitle,
+                    ModName = g.ModName,
+                    Description = g.Description,
+                    DownloadModLink = g.DownloadModLink!,
+                    YoutubeVideoModComparison = g.YoutubeVideoModComparison,
+                    ModImageOne = g.ModPicture.ModImageOne,
+                    ModImageTwo = g.ModPicture.ModImageTwo,
+                    ModImageThree = g.ModPicture.ModImageThree,
+                    ModImageFour = g.ModPicture.ModImageFour,
+                    GameId = g.GameId
+                })
+                .ToList();
 
-        var modsCollection = game.Mods
-            .Select(g => new ModModel()
-            {
-                Id = g.Id,
-                GamesTitle = g.Game.GameTitle,
-                ModName = g.ModName,
-                Description = g.Description,
-                DownloadModLink = g.DownloadModLink!,
-                YoutubeVideoModComparison = g.YoutubeVideoModComparison,
-                ModImageOne = g.ModPicture.ModImageOne,
-                ModImageTwo = g.ModPicture.ModImageTwo,
-                ModImageThree = g.ModPicture.ModImageThree,
-                ModImageFour = g.ModPicture.ModImageFour,
-                GameId = g.GameId
-            })
-            .ToList();
-
-        return modsCollection;
+            return modsCollection;
+       
     }
 
     public async Task SubmitMod(ModModel model)

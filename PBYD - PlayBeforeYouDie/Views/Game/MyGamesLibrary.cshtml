@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GameServiceModel>
+﻿@model IEnumerable<GameModel>
 
 @{
     ViewBag.Title = "My Library of Games";
@@ -6,6 +6,7 @@
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
+
 
 @if (Model.Any())
 {
@@ -59,9 +60,11 @@
 else
 {
     <h3 class="text-center">You have no games added yet! Please visit the Collection to add games:</h3>
-    <div class="text-center">
-        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Game" asp-action="AllGames">View Game Collection</a>
-    </div>
+    
 }
+
+<div class="text-center">
+    <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Game" asp-action="AllGames">View Game Collection</a>
+</div>
 
 

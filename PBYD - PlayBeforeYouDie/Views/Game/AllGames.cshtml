@@ -9,6 +9,8 @@
 
 <hr />
 
+
+
 <form method="get">
     <div class="row" style="width: 130%; display: flex;">
         
@@ -38,6 +40,36 @@
 
     </div>
 </form>
+
+<h2 class="text-center">
+    <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+            View Games Summary
+        </button>
+    </p>
+    <div style="min-height: 15px;">
+        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            @ViewBag.Summary
+
+        </div>
+    </div>
+</h2>
+
+@if (!Model.Games.Any())
+{
+    <h2 class="text-center">No games found!</h2>
+
+    
+}
+
+<div class="row">
+    @foreach (var game in Model.Games)
+    {
+        <partial name="_GamePartial" model="@game" />
+    }
+</div>
+
+
 
 @{
     var previousPage = Model.CurrentPage - 1;
@@ -74,30 +106,7 @@
     </div>
 </div>
 
-<h2 class="text-center">
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-            View Games Summary
-        </button>
-    </p>
-    <div style="min-height: 15px;">
-        <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            @ViewBag.Summary
-
-        </div>
-    </div>
-</h2>
-
-@if (!Model.Games.Any())
-{
-    <h2 class="text-center">No games found!</h2>
-
-    
-}
-
-<div class="row">
-    @foreach (var game in Model.Games)
-    {
-        <partial name="_GamePartial" model="@game" />
-    }
+<div class="text-center">
+    <a asp-controller="Game" asp-action="Add" class="btn btn-primary btn-sm"
+       role="button">Add Game</a>
 </div>

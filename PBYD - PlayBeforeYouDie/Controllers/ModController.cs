@@ -30,7 +30,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ModsGame(int id, ModModel modModel)
+        public async Task<IActionResult> ModsGame(int id)
         {
             if (await gameService.Exists(id) == false)
             {
@@ -65,7 +65,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
             await modService.SubmitMod(model);
 
-            return RedirectToAction(nameof(ModsGame), new { id = model.Id });
+            return RedirectToAction(nameof(ModsGame), new {id = model.GameId});
         }
     }
 }

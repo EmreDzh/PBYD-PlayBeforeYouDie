@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using PlayBeforeYouDie.Infrastructure.Constants.Infrastructure;
+using PlayBeforeYouDie.Infrastructure.Data.Models.Users;
 
 namespace PlayBeforeYouDie.Infrastructure.Data.Models;
 
@@ -10,6 +11,7 @@ public class Game
     {
         HowLongToBeat = new List<HowLongToBeat>();
         Mods = new List<Mod>();
+        ApplicationUserGames = new List<ApplicationUserGame>();
     }
 
     [Key]
@@ -32,6 +34,9 @@ public class Game
     public List<HowLongToBeat> HowLongToBeat { get; set; }
 
     public List<Mod> Mods { get; set; }
+
+    public List<ApplicationUserGame> ApplicationUserGames { get; set; }
+
 
     [Required]
     [ForeignKey(nameof(Genre))]

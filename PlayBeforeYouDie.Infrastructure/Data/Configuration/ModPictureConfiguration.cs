@@ -60,6 +60,14 @@ public class ModPictureConfiguration : IEntityTypeConfiguration<ModPicture>
                     "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600594030-2005225404.jpeg",
                 ModImageFour =
                     "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600612171-1839423964.jpeg"
+            },
+            new ModPicture()
+            {
+                Id = 8,
+                ModImageOne = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061311-1458428997.jpeg",
+                ModImageTwo = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061316-1509434001.jpeg",
+                ModImageThree = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061321-366436897.jpeg",
+                ModImageFour = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061310-466516695.jpeg"
             }
 
         };

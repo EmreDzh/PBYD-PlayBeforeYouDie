@@ -41,6 +41,7 @@
                                     <a class="nav-link text-light" asp-area="" asp-controller="Mod" asp-action="ModsView">Mods</a>
                                     <li><hr class="dropdown-divider"></li>
                                     <a class="nav-link text-light" asp-area="" asp-controller="HowLongToBeat" asp-action="HowLongToBeatView">How Long To Beat</a>
+                                   
                                 }
                                 else
                                 {
@@ -57,19 +58,12 @@
                         </div>
                         <div class="dropdown">
                             <button style="margin:5px" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-                                Genres - Games
+                                Top Games Overall
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">MMOs</a></li>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Game" asp-action="AllGames">Game of the Year Collection</a>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">RPGs</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">FPS</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">VR</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item active" asp-area="" asp-controller="Game" asp-action="AllGames">Top Rated Games According to Metacritic</a></li>
-                                
+                                <a class="nav-link text-light" asp-area="" asp-controller="Game" asp-action="AllGames">Top Rated Games According to Metacritic</a>
                             </ul>
                         </div>
                     </ul>

@@ -45,19 +45,19 @@ public class ModelsConstants
     public const int OsMinLength = 5;
 
     public const int ProcessorMaxLength = 150;
-    public const int ProcessorMinLength = 10;
+    public const int ProcessorMinLength = 2;
 
     public const int MemoryMaxLength = 150;
-    public const int MemoryMinLength = 10;
+    public const int MemoryMinLength = 2;
 
     public const int GraphicsMaxLength = 150;
-    public const int GraphicsMinLength = 5;
+    public const int GraphicsMinLength = 0;
 
     public const int NetworkMaxLength = 150;
     public const int NetworkMinLength = 5;
 
     public const int StorageMaxLength = 150;
-    public const int StorageMinLength = 5;
+    public const int StorageMinLength = 2;
 
     public const int AdditionalNotesMaxLength = 100000;
     public const int AdditionalNotesMinLength = 30;

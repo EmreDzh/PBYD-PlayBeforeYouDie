@@ -1,4 +1,4 @@
-﻿@model GameModel
+﻿@model AddGameModel
 
 <div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
@@ -35,29 +35,58 @@
                 </select>
                 <span asp-validation-for="GenreId" class="small text-danger"></span>
             </div>
+            
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleOne" aria-expanded="false" aria-controls="collapseExample">
+                    Click to Add System Requirements for the game!
+                </button>
+            </p>
 
-            <div class="form-group">
-                <label asp-for="ModId"></label>
-                <select asp-for="ModId" class="form-control">
-                    @foreach (var mods in Model.Mods)
-                    {
-                        <option value="@mods.Id">@mods.ModName</option>
-
-                        <option value="@mods.Id">@mods.Description</option>
-
-                        
-
-                        <option value="@mods.Id">@mods.DownloadModLink</option>
-
-                    }
-                </select>
-                <span asp-validation-for="ModId" class="small text-danger"></span>
+            <div class="collapse" id="collapseExampleOne">
+                <div class="form-group">
+                    <label asp-for="@Model.Os"></label>
+                    <input asp-for="@Model.Os" class="form-control" placeholder="Platform...">
+                    <span asp-validation-for="@Model.Os" class="small text-danger"></span>
+                    </div>
+                        <div class="form-group">
+                      <label asp-for="@Model.Processor"></label>
+                       <input asp-for="@Model.Processor" class="form-control" placeholder="Processor...">
+                       <span asp-validation-for="@Model.Processor" class="small text-danger"></span>
+                       </div>
+                       <div class="form-group">
+                      <label asp-for="@Model.Memory"></label>
+                       <input asp-for="@Model.Memory" class="form-control" placeholder="Memory...">
+                        <span asp-validation-for="@Model.Memory" class="small text-danger"></span>
+                        </div>
+                        <div class="form-group"><label asp-for="@Model.Graphics"></label>
+                                <input asp-for="@Model.Graphics" class="form-control" placeholder="Graphics...">
+                                <span asp-validation-for="@Model.Graphics" class="small text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Network"></label>
+                                <input asp-for="@Model.Network" class="form-control" placeholder="Network...">
+                                <span asp-validation-for="@Model.Network" class="small text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Storage"></label>
+                                <input asp-for="@Model.Storage" class="form-control" placeholder="Storage...">
+                                <span asp-validation-for="@Model.Storage" class="small text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.AdditionalNotes"></label>
+                                <input asp-for="@Model.AdditionalNotes" class="form-control" placeholder="AdditionalNotes...">
+                                <span asp-validation-for="@Model.AdditionalNotes" class="small text-danger"></span>
+                                </div>
             </div>
-
-
+            
+             
             <div class="text-center">
-                <input class="btn btn-primary mt-3" type="submit" value="Save"/>
-            </div>
+                <input class="btn btn-primary mt-3" type="submit" value="Add"/>
+            </div>          
+              
+
         </form>
+        
+        
     </div>
 </div>

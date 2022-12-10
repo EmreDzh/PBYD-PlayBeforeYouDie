@@ -35,6 +35,9 @@
                       asp-action="AddToCollection" asp-route-id="@Model.Id" method="post">
                     <input class="btn btn-primary" type="submit" value="AddToCollection" />
                 </form>
+
+                <a style="margin: 40px" asp-area="" asp-controller="Game" asp-action="Delete" asp-route-id="@Model.Id"
+                   class="btn btn-primary btn-sm">Delete</a>
             }
             
         </div>

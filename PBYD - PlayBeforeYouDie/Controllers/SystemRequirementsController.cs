@@ -40,7 +40,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int systemRequirementsId)
         {
-            if (await systemRequirementsService.Exists(systemRequirementsId) == false)
+            if (await systemRequirementsService.SystemRequirementsExists(systemRequirementsId) == false)
             {
                 return RedirectToAction(nameof(SystemRequirementsGame));
             }
@@ -65,7 +65,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(SystemRequirementsModel model, int systemRequirementsId)
         {
-            if (await systemRequirementsService.Exists(systemRequirementsId) == false)
+            if (await systemRequirementsService.SystemRequirementsExists(systemRequirementsId) == false)
             {
                 return RedirectToAction(nameof(SystemRequirementsGame));
             }

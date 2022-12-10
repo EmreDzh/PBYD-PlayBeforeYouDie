@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlayBeforeYouDie.Core.Contracts;
+using PlayBeforeYouDie.Core.Models.Genre;
 using PlayBeforeYouDie.Core.Models.HowLongToBeat;
 using PlayBeforeYouDie.Core.Models.SystemRequirement;
 using PlayBeforeYouDie.Infrastructure.Data.Common;
@@ -81,9 +82,36 @@ public class SystemRequirementsService : ISystemRequirementsService
         }
     }
 
+    public async Task<bool> SystemRequirementsExists(int systemRequirementsId)
+    {
+        return await repo.AllReadonly<SystemRequirement>()
+            .AnyAsync(c => c.Id == systemRequirementsId);
+
+    }
+
     public async Task<bool> Exists(int systemRequirementsId)
     {
         return await repo.AllReadonly<SystemRequirement>()
             .AnyAsync(h => h.Id == systemRequirementsId);
+    }
+
+    public async Task<IEnumerable<SystemRequirementsGame>> AllSystemRequirements()
+    {
+
+        return await repo.AllReadonly<SystemRequirement>()
+            .OrderBy(s => s.Id)
+            .Select(r => new SystemRequirementsGame()
+            {
+                Id = r.Id,
+                Graphics = r.Graphics,
+                AdditionalNotes = r.AdditionalNotes,
+                Memory = r.Memory,
+                Network = r.Network,
+                Os = r.Os,
+                Processor = r.Processor,
+                Storage = r.Storage
+
+            })
+            .ToListAsync();
     }
 }

@@ -63,6 +63,11 @@ namespace PlayBeforeYouDie.Infrastructure.Data
                 .WithMany(g => g.Mods)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<Game>()
+                .HasOne(g => g.SystemRequirement)
+                .WithMany(g => g.Games)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             base.OnModelCreating(builder);
         }
