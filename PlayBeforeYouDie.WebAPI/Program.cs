@@ -8,7 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices();
-builder.Services.AddHouseRentingDbContext(builder.Configuration);
+builder.Services.AddPlayBeforeYouDieRentingDbContext(builder.Configuration);
 
 var app = builder.Build();
 

@@ -15,7 +15,7 @@ public static class PlayBeforeYouDieApiServiceExtension
         return services;
     }
 
-    public static IServiceCollection AddHouseRentingDbContext(this IServiceCollection service, IConfiguration config)
+    public static IServiceCollection AddPlayBeforeYouDieRentingDbContext(this IServiceCollection service, IConfiguration config)
     {
         var connectionString = config.GetConnectionString("DefaultConnection");
         service.AddDbContext<ApplicationDbContext>(options =>
