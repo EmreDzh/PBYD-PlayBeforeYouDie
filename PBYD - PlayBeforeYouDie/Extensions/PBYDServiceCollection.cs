@@ -16,6 +16,7 @@ public static class PBYDServiceCollection
         services.AddScoped<IHowLongToBeatService, HowLongToBeatService>();
         services.AddScoped<ISystemRequirementsService, SystemRequirementsService>();
         services.AddScoped<IModService, ModService>();
+        services.AddScoped<IGameOfTheYearService, GameOfTheYearService>();
 
         return services;
     }

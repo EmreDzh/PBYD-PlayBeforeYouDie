@@ -1,0 +1,176 @@
+﻿@model IEnumerable<GameOfTheYearModel>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/CSS/images3.css" />
+</head>
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">2014</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">2015</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">2016</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-three-tab" data-bs-toggle="pill" data-bs-target="#pills-three" type="button" role="tab" aria-controls="pills-three" aria-selected="false">2017</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-four-tab" data-bs-toggle="pill" data-bs-target="#pills-four" type="button" role="tab" aria-controls="pills-four" aria-selected="false">2018</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-five-tab" data-bs-toggle="pill" data-bs-target="#pills-five" type="button" role="tab" aria-controls="pills-five" aria-selected="false">2019</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-six-tab" data-bs-toggle="pill" data-bs-target="#pills-six" type="button" role="tab" aria-controls="pills-six" aria-selected="false">2020</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-seven-tab" data-bs-toggle="pill" data-bs-target="#pills-seven" type="button" role="tab" aria-controls="pills-seven" aria-selected="false">2021</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-eight-tab" data-bs-toggle="pill" data-bs-target="#pills-eight" type="button" role="tab" aria-controls="pills-eight" aria-selected="false">2022</button>
+    </li>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2014))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+           
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2015))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+               src="@test.ImageUrl" alt="Game Image">
+            
+            
+        }
+        
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2016))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+            
+            
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-three" role="tabpanel" aria-labelledby="pills-three-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2017))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+            
+
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-four" role="tabpanel" aria-labelledby="pills-four-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2018))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+            
+
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-five" role="tabpanel" aria-labelledby="pills-five-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2019))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+            
+
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-six" role="tabpanel" aria-labelledby="pills-six-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2020))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+            
+
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-seven" role="tabpanel" aria-labelledby="pills-seven-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2021))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+            
+
+        }
+    </div>
+    <div class="tab-pane fade" id="pills-eight" role="tabpanel" aria-labelledby="pills-eight-tab">
+        @foreach (var test in @Model.Where(g => g.Year == 2022))
+        {
+            <div class="card-body">
+
+                <h4 class="card-title mt-1">@test.GameTitle</h4>
+                <p class="m-1" style="color: red;">Publisher: @test.Developers</p>
+
+            </div>
+            <img class="card-img-top "
+                 src="@test.ImageUrl" alt="Game Image">
+            
+
+        }
+    </div>
+
+</div>

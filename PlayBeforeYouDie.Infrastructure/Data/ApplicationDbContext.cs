@@ -25,6 +25,8 @@ namespace PlayBeforeYouDie.Infrastructure.Data
 
         public DbSet<ModPicture> ModPictures { get; set; }
 
+        public DbSet<GameOfTheYear> GameOfTheYears { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -35,6 +37,7 @@ namespace PlayBeforeYouDie.Infrastructure.Data
             builder.ApplyConfiguration(new SystemRequirementConfiguration());
             builder.ApplyConfiguration(new ModConfiguration());
             builder.ApplyConfiguration(new ModPictureConfiguration());
+            builder.ApplyConfiguration(new GameOfTheYearConfiguration());
 
             builder.Entity<ApplicationUserGame>()
                 .HasKey(x => new
