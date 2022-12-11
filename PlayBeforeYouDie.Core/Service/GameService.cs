@@ -22,35 +22,50 @@ public class GameService : IGameService
 
     public async Task<IEnumerable<GameHomeModel>> GetInitialGames()
     {
-        return await repo.AllReadonly<Game>()
-            .Where(g => g.IsGameActive)
-            .OrderByDescending(g => g.Id)
-            .Select(h => new GameHomeModel()
-            {
-                Id = h.Id,
-                GameTitle = h.GameTitle,
-                ImageUrl = h.ImageUrl,
-                Summary = h.Summary
-            })
-            .ToListAsync();
-
+        try
+        {
+            return await repo.AllReadonly<Game>()
+                .Where(g => g.IsGameActive)
+                .OrderByDescending(g => g.Id)
+                .Select(h => new GameHomeModel()
+                {
+                    Id = h.Id,
+                    GameTitle = h.GameTitle,
+                    ImageUrl = h.ImageUrl,
+                    Summary = h.Summary
+                })
+                .ToListAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or game returned null", e);
+        }
+       
     }
 
     public async Task<IEnumerable<GameServiceModel>> GetAll()
     {
-        return await repo.AllReadonly<Game>()
-            .Where(g => g.IsGameActive)
-            .OrderByDescending(g => g.Id)
-            .Select(g => new GameServiceModel()
-            {
-                GameTitle = g.GameTitle,
-                Summary = g.Summary,
-                Id = g.Id,
-                ImageUrl = g.ImageUrl,
-                Rating = g.Rating
-            })
-            .Take(6)
-            .ToListAsync();
+        try
+        {
+            return await repo.AllReadonly<Game>()
+                .Where(g => g.IsGameActive)
+                .OrderByDescending(g => g.Id)
+                .Select(g => new GameServiceModel()
+                {
+                    GameTitle = g.GameTitle,
+                    Summary = g.Summary,
+                    Id = g.Id,
+                    ImageUrl = g.ImageUrl,
+                    Rating = g.Rating
+                })
+                .Take(6)
+                .ToListAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or game returned null", e);
+        }
+        
     }
 
     public async Task<GamesQueryModel> All(string? genre, string? searchTerm = null, int currentPage = 1, int gamePerPage = 1)
@@ -95,28 +110,52 @@ public class GameService : IGameService
 
     public async Task<IEnumerable<string>> AllGenreNames()
     {
-        return await repo.AllReadonly<Genre>()
-            .Select(g => g.Category)
-            .Distinct()
-            .ToListAsync();
+        try
+        {
+            return await repo.AllReadonly<Genre>()
+                .Select(g => g.Category)
+                .Distinct()
+                .ToListAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or genre returned null", e);
+        }
+        
     }
 
     public async Task<IEnumerable<GenreModel>> AllGenres()
     {
-        return await repo.AllReadonly<Genre>()
-            .OrderBy(g => g.Category)
-            .Select(c => new GenreModel()
-            {
-                Id = c.Id,
-                Category = c.Category
-            })
-            .ToListAsync();
+        try
+        {
+            return await repo.AllReadonly<Genre>()
+                .OrderBy(g => g.Category)
+                .Select(c => new GenreModel()
+                {
+                    Id = c.Id,
+                    Category = c.Category
+                })
+                .ToListAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or genre returned null", e);
+        }
+       
     }
 
     public async Task<bool> Exists(int id)
     {
-        return await repo.AllReadonly<Game>()
-            .AnyAsync(g => g.Id == id && g.IsGameActive);
+        try
+        {
+            return await repo.AllReadonly<Game>()
+                .AnyAsync(g => g.Id == id && g.IsGameActive);
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get the game", e);
+        }
+        
     }
 
     
@@ -283,19 +322,27 @@ public class GameService : IGameService
 
     public async Task<GameServiceModel> DeleteGameById(int gameId)
     {
-        return await repo.AllReadonly<Game>()
-            .Where(g => g.IsGameActive)
-            .Where(g => g.Id == gameId)
-            .Select(g => new GameServiceModel()
-            {
-                Id = g.Id,
-                GameTitle = g.GameTitle,
-                ImageUrl = g.ImageUrl,
-                Rating = g.Rating,
-                Summary = g.Summary
+        try
+        {
+            return await repo.AllReadonly<Game>()
+                .Where(g => g.IsGameActive)
+                .Where(g => g.Id == gameId)
+                .Select(g => new GameServiceModel()
+                {
+                    Id = g.Id,
+                    GameTitle = g.GameTitle,
+                    ImageUrl = g.ImageUrl,
+                    Rating = g.Rating,
+                    Summary = g.Summary
 
-            })
-            .FirstAsync();
+                })
+                .FirstAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get the game", e);
+        }
+       
     }
 
     public async Task DeleteGame(int id)

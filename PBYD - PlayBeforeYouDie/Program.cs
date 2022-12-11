@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PBYD___PlayBeforeYouDie.ModelBinders;
 using PlayBeforeYouDie.Infrastructure.Data;
@@ -16,8 +17,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     {
         options.SignIn.RequireConfirmedPhoneNumber = false;
         options.SignIn.RequireConfirmedEmail = false;
-        options.SignIn.RequireConfirmedAccount = false;
-        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:RequiredLength");
+        options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:RequireNonAlphanumeric");
     })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -30,6 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {
+        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
         options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
     });
 
@@ -43,7 +45,7 @@ builder.Services.AddAuthorization(options =>
     {
         policy.RequireAuthenticatedUser();
         policy.RequireRole("GameMaster");
-        policy.RequireRole("Admin");
+        policy.RequireRole("Administrator");
     });
 });
 

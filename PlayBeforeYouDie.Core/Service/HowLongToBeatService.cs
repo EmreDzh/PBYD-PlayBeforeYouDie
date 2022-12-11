@@ -24,26 +24,33 @@ public class HowLongToBeatService : IHowLongToBeatService
     public async Task<List<HowLongToBeatModel>> GameHowLongToBeatById(int id)
     {
         
-        var game = await repo.AllReadonly<Game>()
-            .Include(g => g.HowLongToBeat)
-            .FirstOrDefaultAsync(g => g.Id == id);
+        try
+        {
+            var game = await repo.AllReadonly<Game>()
+                .Include(g => g.HowLongToBeat)
+                .FirstOrDefaultAsync(g => g.Id == id);
 
-        var howLongToBeatCollection = game.HowLongToBeat
-            .Select(h => new HowLongToBeatModel()
-            {
-                Id = h.Id,
-                GamesTitle = h.Game.GameTitle,
-                ImageUrl = h.Game.ImageUrl,
-                HundredPercentComplete = h.HundredPercentComplete,
-                MainPlusSides = h.MainPlusSides,
-                MainStory = h.MainStory,
-                SpeedRunAny = h.SpeedRunAny,
-                SpeedRunOneHundredPercent = h.SpeedRunOneHundredPercent,
-                GameId = h.GameId
-            })
-            .ToList();
+            var howLongToBeatCollection = game!.HowLongToBeat
+                .Select(h => new HowLongToBeatModel()
+                {
+                    Id = h.Id,
+                    GamesTitle = h.Game.GameTitle,
+                    ImageUrl = h.Game.ImageUrl,
+                    HundredPercentComplete = h.HundredPercentComplete,
+                    MainPlusSides = h.MainPlusSides,
+                    MainStory = h.MainStory,
+                    SpeedRunAny = h.SpeedRunAny,
+                    SpeedRunOneHundredPercent = h.SpeedRunOneHundredPercent,
+                    GameId = h.GameId
+                })
+                .ToList();
 
-        return howLongToBeatCollection;
+            return howLongToBeatCollection;
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or game returned incorrect data", e);
+        }
 
 
     }

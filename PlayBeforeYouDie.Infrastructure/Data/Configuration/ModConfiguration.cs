@@ -71,7 +71,7 @@ public class ModConfiguration : IEntityTypeConfiguration<Mod>
                 ModName = "Sword of Night and Flame - Unbound",
                 Description = "An overhaul of the legendary Sword of Night and Flame to be cooler, stronger, and maybe just a little OP. Download to get an all new moveset and Ash of War!",
                 DownloadModLink = "https://www.nexusmods.com/eldenring/mods/2618",
-                YoutubeVideoModComparison = "https://youtube/embed/Gkd5h9VYGXE",
+                YoutubeVideoModComparison = "https://youtube.com/embed/Gkd5h9VYGXE",
                 ModPictureId = 8,
                 GameId = 6
             }

@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Constants.Core\AdminAreaConstants\" />
-    <Folder Include="Models\Game\Enums\" />
     <Folder Include="Models\Genre\" />
     <Folder Include="Models\HowLongToBeat\" />
     <Folder Include="Models\Review\" />

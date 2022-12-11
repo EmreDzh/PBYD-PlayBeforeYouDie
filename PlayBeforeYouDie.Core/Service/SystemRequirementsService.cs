@@ -19,45 +19,61 @@ public class SystemRequirementsService : ISystemRequirementsService
 
     public async Task<SystemRequirementsModel> SystemRequirementsGameById(int id)
     {
-        return await repo.AllReadonly<Game>()
-            .Where(g => g.IsGameActive)
-            .Where(g => g.Id == id)
-            .Include(g => g.SystemRequirement)
-            .Select(s => new SystemRequirementsModel()
-                {
-                    Id = s.Id,
-                    GamesTitle = s.GameTitle,
-                    ImageUrl = s.ImageUrl,
-                    systemRequirementsId = s.SystemRequirement.Id,
-                    Graphics = s.SystemRequirement.Graphics,
-                    Memory = s.SystemRequirement.Memory,
-                    Network = s.SystemRequirement.Network,
-                    Os = s.SystemRequirement.Os,
-                    Processor = s.SystemRequirement.Processor,
-                    Storage = s.SystemRequirement.Storage,
-                    AdditionalNotes = s.SystemRequirement.AdditionalNotes
-                }
-            )
-            .FirstAsync();
+        try
+        {
+            return await repo.AllReadonly<Game>()
+                .Where(g => g.IsGameActive)
+                .Where(g => g.Id == id)
+                .Include(g => g.SystemRequirement)
+                .Select(s => new SystemRequirementsModel()
+                    {
+                        Id = s.Id,
+                        GamesTitle = s.GameTitle,
+                        ImageUrl = s.ImageUrl,
+                        systemRequirementsId = s.SystemRequirement.Id,
+                        Graphics = s.SystemRequirement.Graphics,
+                        Memory = s.SystemRequirement.Memory,
+                        Network = s.SystemRequirement.Network,
+                        Os = s.SystemRequirement.Os,
+                        Processor = s.SystemRequirement.Processor,
+                        Storage = s.SystemRequirement.Storage,
+                        AdditionalNotes = s.SystemRequirement.AdditionalNotes
+                    }
+                )
+                .FirstAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or game returned incorrect data", e);
+        }
+        
     }
 
     public async Task<SystemRequirementsDetails> SystemRequirementsDetailsById(int id)
     {
-        return await repo.AllReadonly<SystemRequirement>()
-            .Where(g => g.Id == id)
-            .Select(s => new SystemRequirementsDetails()
-                {
-                    Id = s.Id,
-                    Graphics = s.Graphics,
-                    Memory = s.Memory,
-                    Network = s.Network,
-                    Os = s.Os,
-                    Processor = s.Processor,
-                    Storage = s.Storage,
-                    AdditionalNotes = s.AdditionalNotes
-                }
-            )
-            .FirstAsync();
+        
+        try
+        {
+            return await repo.AllReadonly<SystemRequirement>()
+                .Where(g => g.Id == id)
+                .Select(s => new SystemRequirementsDetails()
+                    {
+                        Id = s.Id,
+                        Graphics = s.Graphics,
+                        Memory = s.Memory,
+                        Network = s.Network,
+                        Os = s.Os,
+                        Processor = s.Processor,
+                        Storage = s.Storage,
+                        AdditionalNotes = s.AdditionalNotes
+                    }
+                )
+                .FirstAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or system requirements returned incorrect data", e);
+        }
     }
 
     public async Task Edit(int systemRequirementsId, SystemRequirementsModel model)
@@ -98,21 +114,28 @@ public class SystemRequirementsService : ISystemRequirementsService
 
     public async Task<IEnumerable<SystemRequirementsGame>> AllSystemRequirements()
     {
+        try
+        {
+            return await repo.AllReadonly<SystemRequirement>()
+                .OrderBy(s => s.Id)
+                .Select(r => new SystemRequirementsGame()
+                {
+                    Id = r.Id,
+                    Graphics = r.Graphics,
+                    AdditionalNotes = r.AdditionalNotes,
+                    Memory = r.Memory,
+                    Network = r.Network,
+                    Os = r.Os,
+                    Processor = r.Processor,
+                    Storage = r.Storage
 
-        return await repo.AllReadonly<SystemRequirement>()
-            .OrderBy(s => s.Id)
-            .Select(r => new SystemRequirementsGame()
-            {
-                Id = r.Id,
-                Graphics = r.Graphics,
-                AdditionalNotes = r.AdditionalNotes,
-                Memory = r.Memory,
-                Network = r.Network,
-                Os = r.Os,
-                Processor = r.Processor,
-                Storage = r.Storage
-
-            })
-            .ToListAsync();
+                })
+                .ToListAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or system requirements returned incorrect data", e);
+        }
+        
     }
 }

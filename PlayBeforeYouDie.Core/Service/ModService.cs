@@ -32,12 +32,15 @@ public class ModService : IModService
 
     public async Task<List<ModModel>> ModsByGameById(int id)
     {
-        var game = await repo.AllReadonly<Game>()
-            .Include(g => g.Mods)
-            .ThenInclude(g => g.ModPicture)
-            .FirstOrDefaultAsync(g => g.Id == id);
         
-            var modsCollection = game.Mods
+        try
+        {
+            var game = await repo.AllReadonly<Game>()
+                .Include(g => g.Mods)
+                .ThenInclude(g => g.ModPicture)
+                .FirstOrDefaultAsync(g => g.Id == id);
+
+            var modsCollection = game!.Mods
                 .Select(g => new ModModel()
                 {
                     Id = g.Id,
@@ -55,6 +58,11 @@ public class ModService : IModService
                 .ToList();
 
             return modsCollection;
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or game returned incorrect data", e);
+        }
        
     }
 
