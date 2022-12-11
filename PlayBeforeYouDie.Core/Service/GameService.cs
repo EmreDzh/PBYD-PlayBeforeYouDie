@@ -158,7 +158,21 @@ public class GameService : IGameService
         
     }
 
-    
+    public async Task<bool> GenreExists(int genreId)
+    {
+        try
+        {
+            return await repo.AllReadonly<Genre>()
+                .AnyAsync(g => g.Id == genreId);
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get the genre", e);
+        }
+        
+    }
+
+
     public async Task AddGameToMyLibrary(int id, string userId)
     {
         var user = await context.Users
@@ -178,7 +192,7 @@ public class GameService : IGameService
             throw new ArgumentException("Invalid Game Id");
         }
 
-        if (!user.ApplicationUserGames.Any(g => g.GameId == id))
+        if (user.ApplicationUserGames.All(g => g.GameId != id))
         {
             user.ApplicationUserGames.Add(new ApplicationUserGame()
             {

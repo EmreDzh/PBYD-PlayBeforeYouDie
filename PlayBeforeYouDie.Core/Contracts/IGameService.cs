@@ -18,6 +18,8 @@ public interface IGameService
 
     Task<bool> Exists(int id);
 
+    Task<bool> GenreExists(int genreId);
+
 
     Task AddGameToMyLibrary(int gameId, string userId);
 

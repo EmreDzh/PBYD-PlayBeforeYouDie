@@ -50,10 +50,10 @@ Database
 - MSSQL Server
 
 Tests
--NUnit 3.13.3
--NUnit3TestAdapter 4.3.1
--Moq 4.18.2
--Microsoft.EntityFrameworkCore.InMemory 6.0.11
+- NUnit 3.13.3
+- NUnit3TestAdapter 4.3.1
+- Moq 4.18.2
+- Microsoft.EntityFrameworkCore.InMemory 6.0.11
 
 Git tools
 - GitHub

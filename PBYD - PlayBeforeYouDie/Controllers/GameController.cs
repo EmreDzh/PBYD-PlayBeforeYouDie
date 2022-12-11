@@ -4,8 +4,7 @@ using PBYD___PlayBeforeYouDie.Extensions;
 using PBYD___PlayBeforeYouDie.Models;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;
-using PlayBeforeYouDie.Core.Models.SystemRequirement;
-using PlayBeforeYouDie.Infrastructure.Data.Models;
+
 
 namespace PBYD___PlayBeforeYouDie.Controllers
 {
@@ -96,6 +95,11 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Add(AddGameModel model)
         {
+            if (await gameService.GenreExists(model.GenreId) == false)
+            {
+                ModelState.AddModelError(nameof(model.GenreId), "Database is down or genre does not exists");
+            }
+
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Wrong model!";
@@ -104,7 +108,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
                 
                 return View(model);
             }
-
+            
             try
             {
                 await gameService.AddGame(model);
@@ -132,7 +136,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
                 return View("MyGamesLibrary", model);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ModelState.AddModelError("", "Database is down or games does not exists");
 
