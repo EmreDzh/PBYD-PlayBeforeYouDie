@@ -54,7 +54,7 @@ public class ModelsConstants
     public const int GraphicsMinLength = 0;
 
     public const int NetworkMaxLength = 150;
-    public const int NetworkMinLength = 5;
+    public const int NetworkMinLength = 2;
 
     public const int StorageMaxLength = 150;
     public const int StorageMinLength = 2;

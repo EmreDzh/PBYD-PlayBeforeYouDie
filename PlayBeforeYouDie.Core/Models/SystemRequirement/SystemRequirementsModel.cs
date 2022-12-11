@@ -12,6 +12,8 @@ public class SystemRequirementsModel
     public string? GamesTitle { get; set; }
 
     public string? ImageUrl { get; set; }
+
+    public int systemRequirementsId { get; set; }
     
     [Required]
     [StringLength(ModelsConstants.OsMaxLength, MinimumLength = ModelsConstants.OsMinLength)]

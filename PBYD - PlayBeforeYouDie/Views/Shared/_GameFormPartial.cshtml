@@ -47,36 +47,104 @@
                     <label asp-for="@Model.Os"></label>
                     <input asp-for="@Model.Os" class="form-control" placeholder="Platform...">
                     <span asp-validation-for="@Model.Os" class="small text-danger"></span>
-                    </div>
-                        <div class="form-group">
-                      <label asp-for="@Model.Processor"></label>
-                       <input asp-for="@Model.Processor" class="form-control" placeholder="Processor...">
-                       <span asp-validation-for="@Model.Processor" class="small text-danger"></span>
-                       </div>
-                       <div class="form-group">
-                      <label asp-for="@Model.Memory"></label>
-                       <input asp-for="@Model.Memory" class="form-control" placeholder="Memory...">
-                        <span asp-validation-for="@Model.Memory" class="small text-danger"></span>
-                        </div>
-                        <div class="form-group"><label asp-for="@Model.Graphics"></label>
-                                <input asp-for="@Model.Graphics" class="form-control" placeholder="Graphics...">
-                                <span asp-validation-for="@Model.Graphics" class="small text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="@Model.Network"></label>
-                                <input asp-for="@Model.Network" class="form-control" placeholder="Network...">
-                                <span asp-validation-for="@Model.Network" class="small text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="@Model.Storage"></label>
-                                <input asp-for="@Model.Storage" class="form-control" placeholder="Storage...">
-                                <span asp-validation-for="@Model.Storage" class="small text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="@Model.AdditionalNotes"></label>
-                                <input asp-for="@Model.AdditionalNotes" class="form-control" placeholder="AdditionalNotes...">
-                                <span asp-validation-for="@Model.AdditionalNotes" class="small text-danger"></span>
-                                </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Processor"></label>
+                    <input asp-for="@Model.Processor" class="form-control" placeholder="Processor...">
+                    <span asp-validation-for="@Model.Processor" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Memory"></label>
+                    <input asp-for="@Model.Memory" class="form-control" placeholder="Memory...">
+                    <span asp-validation-for="@Model.Memory" class="small text-danger"></span>
+                </div>
+                <div class="form-group"><label asp-for="@Model.Graphics"></label>
+                    <input asp-for="@Model.Graphics" class="form-control" placeholder="Graphics...">
+                    <span asp-validation-for="@Model.Graphics" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Network"></label>
+                    <input asp-for="@Model.Network" class="form-control" placeholder="Network...">
+                    <span asp-validation-for="@Model.Network" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Storage"></label>
+                    <input asp-for="@Model.Storage" class="form-control" placeholder="Storage...">
+                    <span asp-validation-for="@Model.Storage" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.AdditionalNotes"></label>
+                    <input asp-for="@Model.AdditionalNotes" class="form-control" placeholder="AdditionalNotes...">
+                    <span asp-validation-for="@Model.AdditionalNotes" class="small text-danger"></span>
+                </div>
+            </div>
+            
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleTwo" aria-expanded="false" aria-controls="collapseExample">
+                    Click to Add Mods for the Game!
+                </button>
+            </p>
+
+            <div class="collapse" id="collapseExampleTwo">
+                <div class="form-group">
+                    <label asp-for="ModName"></label>
+                    <input asp-for="ModName" class="form-control" placeholder="Mod Name...">
+                    <span asp-validation-for="ModName" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" class="form-control" placeholder="Mod Description...">
+                    <span asp-validation-for="Description" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DownloadModLink"></label>
+                    <input asp-for="DownloadModLink" class="form-control" placeholder="Download Mod Link...">
+                    <span asp-validation-for="DownloadModLink" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="YoutubeVideoModComparison"></label>
+                    <input asp-for="YoutubeVideoModComparison" class="form-control" placeholder="Optional Add Youtube Vid Comparing the mod...">
+                    <span asp-validation-for="YoutubeVideoModComparison" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModImageOne"></label>
+                    <input asp-for="ModImageOne" class="form-control" placeholder="Mod Image One Link...">
+                    <span asp-validation-for="ModImageOne" class="small text-danger"></span>
+                </div>
+            </div>
+            
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleThree" aria-expanded="false" aria-controls="collapseExample">
+                    Click to Add Mods for the Game!
+                </button>
+            </p>
+            
+            <div class="collapse" id="collapseExampleThree">
+                <div class="form-group">
+                    <label asp-for="MainStory"></label>
+                    <input asp-for="MainStory" class="form-control" placeholder="00h 00m 00s...">
+                    <span asp-validation-for="MainStory" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MainPlusSides"></label>
+                    <input asp-for="MainPlusSides" class="form-control" placeholder="00h 00m 00s...">
+                    <span asp-validation-for="MainPlusSides" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HundredPercentComplete"></label>
+                    <input asp-for="HundredPercentComplete" class="form-control" placeholder="00h 00m 00s...">
+                    <span asp-validation-for="HundredPercentComplete" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SpeedRunAny"></label>
+                    <input asp-for="SpeedRunAny" class="form-control" placeholder="00h 00m 00s...">
+                    <span asp-validation-for="SpeedRunAny" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SpeedRunOneHundredPercent"></label>
+                    <input asp-for="SpeedRunOneHundredPercent" class="form-control" placeholder="00h 00m 00s...">
+                    <span asp-validation-for="SpeedRunOneHundredPercent" class="small text-danger"></span>
+                </div>
             </div>
             
              

@@ -133,7 +133,8 @@ namespace PBYD___PlayBeforeYouDie.Controllers
             {
                 GameTitle = game.GameTitle,
                 ImageUrl = game.ImageUrl,
-                Description = game.Summary
+                Description = game.Summary,
+                Rating = game.Rating
             };
             
             return View(model);

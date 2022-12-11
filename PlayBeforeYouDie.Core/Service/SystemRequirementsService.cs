@@ -28,6 +28,7 @@ public class SystemRequirementsService : ISystemRequirementsService
                     Id = s.Id,
                     GamesTitle = s.GameTitle,
                     ImageUrl = s.ImageUrl,
+                    systemRequirementsId = s.SystemRequirement.Id,
                     Graphics = s.SystemRequirement.Graphics,
                     Memory = s.SystemRequirement.Memory,
                     Network = s.SystemRequirement.Network,

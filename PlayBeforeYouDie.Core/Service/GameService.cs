@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;
 using PlayBeforeYouDie.Core.Models.Genre;
@@ -175,7 +174,6 @@ public class GameService : IGameService
             GenreId = model.GenreId,
             SystemRequirement = new SystemRequirement()
             {
-                Id = model.SystemRequirementId,
                 Os = model.Os,
                 Graphics = model.Graphics,
                 Memory = model.Memory,
@@ -188,12 +186,13 @@ public class GameService : IGameService
             {
                 new HowLongToBeat()
                 {
+
                     GameId = model.Id,
-                    MainStory = "00h 00s",
-                    HundredPercentComplete = "00h 00s",
-                    MainPlusSides = "00h 00s",
-                    SpeedRunAny = "00h 00s",
-                    SpeedRunOneHundredPercent = "00h 00s"
+                    MainStory = model.MainStory,
+                    HundredPercentComplete = model.HundredPercentComplete,
+                    MainPlusSides = model.MainPlusSides,
+                    SpeedRunAny = model.SpeedRunAny,
+                    SpeedRunOneHundredPercent = model.SpeedRunOneHundredPercent
                 }
             },
             Mods = new List<Mod>()
@@ -201,12 +200,12 @@ public class GameService : IGameService
                 new Mod()
                 {
                     GameId = model.Id,
-                    Description = "Empty Description",
-                    DownloadModLink = "N/A",
-                    ModName = "Empty ModName",
+                    Description = model.Description,
+                    DownloadModLink = model.DownloadModLink,
+                    ModName = model.ModName,
                     ModPicture = new ModPicture()
                     {
-                        ModImageOne = "N/A"
+                        ModImageOne = model.ModImageOne
                     }
                 }
             }

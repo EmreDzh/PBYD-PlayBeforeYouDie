@@ -1,12 +1,13 @@
 ﻿@model SystemRequirementsModel
 
+
 <div class="col-md-4" style="width:700px; margin:0 auto;">
     <div class="card mb-3">
         <div class="card-body text-center">
             <img class="img-fluid"
                  src="@Model.ImageUrl" alt="Game Image">
             <div class="text-center">
-                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="SystemRequirements" asp-action="Edit" asp-route-systemRequirementsId="@Model.Id">Edit the requirements!</a>
+                <a class="btn btn-primary btn-lg" asp-area="" asp-controller="SystemRequirements" asp-action="Edit" asp-route-systemRequirementsId="@Model.systemRequirementsId">Edit the requirements!</a>
             </div>
         </div>
     </div>

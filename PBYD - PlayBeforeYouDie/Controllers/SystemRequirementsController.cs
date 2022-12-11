@@ -78,7 +78,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
 
             await systemRequirementsService.Edit(model.Id = systemRequirementsId, model);
 
-            return RedirectToAction(nameof(SystemRequirementsGame), new { id = model.Id });
+            return RedirectToAction(nameof(SystemRequirementsGame));
         }
     }
 }
