@@ -7,9 +7,20 @@
 
 @if (@Model.Any())
 {
-    <div class="text-center">
-        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="HowLongToBeat" asp-action="Submit" asp-route-gameId="@Model.FirstOrDefault().GameId">Submit Your Time</a>
-    </div>
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <div class="text-center">
+            <a class="btn btn-primary btn-lg" asp-area="" asp-controller="HowLongToBeat" asp-action="Submit" asp-route-gameId="@Model.FirstOrDefault().GameId">Submit Your Time</a>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <a class="btn btn-primary btn-lg" asp-controller="User" asp-action="Login">Please login to submit your playtime!</a>
+        </div>
+
+    }
+    
 
     <h1 align="center">How Long To Beat</h1>
     <div class="col-md-4" style="width:550px; margin:0 auto;">

@@ -4,6 +4,7 @@ using PBYD___PlayBeforeYouDie.Extensions;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;
 using PlayBeforeYouDie.Core.Models.HowLongToBeat;
+using PlayBeforeYouDie.Infrastructure.Data.Models;
 
 namespace PBYD___PlayBeforeYouDie.Controllers
 {
@@ -38,23 +39,53 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         {
             if (await gameService.Exists(id) == false)
             {
+                TempData["ErrorMessage"] = "Wrong game id!";
                 return RedirectToAction("AllGames", "Game");
             }
 
-            var model = await howLongToBeat.GameHowLongToBeatById(id);
+            try
+            {
+                var model = await howLongToBeat.GameHowLongToBeatById(id);
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(nameof(id), "Game id does not exists");
+
+                return View(nameof(HowLongToBeatView));
+            }
+
+            
         }
 
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Submit(int gameId)
         {
-            var model = new HowLongToBeatModel();
+            if (await gameService.Exists(gameId) == false)
+            {
+                TempData["ErrorMessage"] = "Wrong game id!";
 
-            model.GameId = gameId;
+                return RedirectToAction("AllGames", "Game");
+            }
 
-            return View(model);
+            try
+            {
+                var model = new HowLongToBeatModel();
+
+                model.GameId = gameId;
+
+                return View(model);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(nameof(gameId), "Game id does not exists");
+
+                return View(nameof(HowLongGame));
+            }
+
+            
         }
 
         [AllowAnonymous]
@@ -64,12 +95,25 @@ namespace PBYD___PlayBeforeYouDie.Controllers
             
             if (!ModelState.IsValid)
             {
+                TempData["ErrorMessage"] = "Wrong model";
                 return View(model);
             }
-           
-            await howLongToBeat.SubmitPlayTime(model);
 
-            return RedirectToAction(nameof(HowLongGame), new {id = model.GameId});
+            try
+            {
+                await howLongToBeat.SubmitPlayTime(model);
+
+                return RedirectToAction(nameof(HowLongGame), new { id = model.GameId });
+            }
+
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Game model does not exists");
+
+                return View(nameof(HowLongGame));
+            }
+
+            
 
         }
     }

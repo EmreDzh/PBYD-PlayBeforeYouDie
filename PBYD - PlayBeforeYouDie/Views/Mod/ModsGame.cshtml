@@ -6,11 +6,20 @@
 
 @if (Model.Any())
 {
-    <div class="text-center">
-        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Mod" asp-action="Create" asp-route-gameId="@Model.FirstOrDefault().GameId">Create a Mod!</a>
-    </div>
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <div class="text-center">
+            <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Mod" asp-action="Create" asp-route-gameId="@Model.FirstOrDefault().GameId">Create a Mod!</a>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <a class="btn btn-primary btn-lg" asp-controller="User" asp-action="Login">Please login to create a mod for the game!</a>
+        </div>
 
-
+    }
+    
     @foreach (var mods in Model)
     {
 

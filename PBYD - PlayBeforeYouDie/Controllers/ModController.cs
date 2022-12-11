@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Mod;
+using PlayBeforeYouDie.Infrastructure.Data.Models;
 
 
 namespace PBYD___PlayBeforeYouDie.Controllers
@@ -34,12 +35,25 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         {
             if (await gameService.Exists(id) == false)
             {
+                TempData["ErrorMessage"] = "Wrong game id!";
+                
                 return RedirectToAction("AllGames", "Game");
             }
 
-            var model = await modService.ModsByGameById(id);
+            try
+            {
+                var model = await modService.ModsByGameById(id);
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(nameof(id), "Game id does not exists");
+
+                return View(nameof(ModsView));
+            }
+
+            
         }
 
 
@@ -47,11 +61,28 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create(int gameId)
         {
-            var model = new ModModel();
+            if (await gameService.Exists(gameId) == false)
+            {
+                TempData["ErrorMessage"] = "Wrong game id!";
+                return RedirectToAction("AllGames", "Game");
+            }
 
-            model.GameId = gameId;
+            try
+            {
+                var model = new ModModel();
 
-            return View(model);
+                model.GameId = gameId;
+
+                return View(model);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(nameof(gameId), "Game id does not exists");
+
+                return View(nameof(ModsView));
+            }
+
+            
         }
 
         [HttpPost]
@@ -60,12 +91,23 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData["ErrorMessage"] = "Wrong model!";
                 return View(model);
             }
 
-            await modService.SubmitMod(model);
+            try
+            {
+                await modService.SubmitMod(model);
 
-            return RedirectToAction(nameof(ModsGame), new {id = model.GameId});
+                return RedirectToAction(nameof(ModsGame), new { id = model.GameId });
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Game model does not exists");
+
+                return View(nameof(ModsView));
+            }
+            
         }
     }
 }

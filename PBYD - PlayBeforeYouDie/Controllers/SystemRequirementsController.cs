@@ -28,12 +28,25 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         {
             if (await gameService.Exists(id) == false)
             {
+                TempData["ErrorMessage"] = "Wrong game id!";
+                
                 return RedirectToAction("AllGames", "Game");
             }
 
-            var model = await systemRequirementsService.SystemRequirementsGameById(id);
+            try
+            {
+                var model = await systemRequirementsService.SystemRequirementsGameById(id);
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(nameof(id), "game id does not exists");
+
+                return View("_Layout");
+            }
+
+            
         }
 
         [AllowAnonymous]
@@ -42,23 +55,36 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         {
             if (await systemRequirementsService.SystemRequirementsExists(systemRequirementsId) == false)
             {
+                TempData["ErrorMessage"] = "Wrong systemRequirements id!";
+
                 return RedirectToAction(nameof(SystemRequirementsGame));
             }
-            
-            var game = await systemRequirementsService.SystemRequirementsDetailsById(systemRequirementsId);
 
-            var model = new SystemRequirementsModel()
+            try
             {
-                Os = game.Os,
-                Graphics = game.Os,
-                Memory = game.Memory,
-                Processor = game.Processor,
-                Network = game.Network,
-                Storage = game.Storage,
-                AdditionalNotes = game.AdditionalNotes
-            };
+                var game = await systemRequirementsService.SystemRequirementsDetailsById(systemRequirementsId);
 
-            return View(model);
+                var model = new SystemRequirementsModel()
+                {
+                    Os = game.Os,
+                    Graphics = game.Os,
+                    Memory = game.Memory,
+                    Processor = game.Processor,
+                    Network = game.Network,
+                    Storage = game.Storage,
+                    AdditionalNotes = game.AdditionalNotes
+                };
+
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(nameof(systemRequirementsId), "System Requirements id does not exists or game is empty");
+
+                return View(nameof(SystemRequirementsGame));
+            }
+            
+            
         }
 
         [AllowAnonymous]
@@ -67,18 +93,31 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         {
             if (await systemRequirementsService.SystemRequirementsExists(systemRequirementsId) == false)
             {
+                TempData["ErrorMessage"] = "Wrong systemRequirements id!";
+                
                 return RedirectToAction(nameof(SystemRequirementsGame));
             }
 
             if (ModelState.IsValid == false)
             {
+                TempData["ErrorMessage"] = "Wrong model!";
+                
                 return View(model);
             }
-            
 
-            await systemRequirementsService.Edit(model.Id = systemRequirementsId, model);
+            try
+            {
+                await systemRequirementsService.Edit(model.Id = systemRequirementsId, model);
 
-            return RedirectToAction(nameof(SystemRequirementsGame));
+                return RedirectToAction(nameof(SystemRequirementsGame));
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(nameof(systemRequirementsId), "System Requirements id does not exists");
+
+                return View(nameof(SystemRequirementsGame));
+            }
+
         }
     }
 }
