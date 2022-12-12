@@ -6,7 +6,7 @@
         <div class="card-body text-center">
             <img class="img-fluid"
                  src="@Model.ImageUrl" alt="Game Image">
-            @if (User?.Identity?.IsAuthenticated ?? false)
+            @if (User.IsInRole("Administrator"))
             {
                 <div class="text-center">
                     <a class="btn btn-primary btn-lg" asp-area="" asp-controller="SystemRequirements" asp-action="Edit" asp-route-systemRequirementsId="@Model.systemRequirementsId">Edit the requirements!</a>

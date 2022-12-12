@@ -38,11 +38,14 @@
 
                 
             }
-            @if (User.IsInRole("Administrator"))
+            @if (User!.IsInRole("Administrator"))
             {
 
-                    <a style="margin: 40px" asp-area="Admin" asp-controller="Game" asp-action="Delete" asp-route-id="@Model.Id"
+                <a style="margin: 40px" asp-area="Admin" asp-controller="Game" asp-action="Delete" asp-route-id="@Model.Id"
                    class="btn btn-primary btn-sm">Delete</a>
+
+                <a style="margin: 40px" asp-area="Admin" asp-controller="Game" asp-action="Edit" asp-route-id="@Model.Id"
+                   class="btn btn-primary btn-sm">Edit</a>
             }
             
         </div>

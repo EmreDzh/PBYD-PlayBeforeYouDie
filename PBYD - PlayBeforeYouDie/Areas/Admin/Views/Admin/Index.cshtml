@@ -12,7 +12,7 @@
 </head>
 
 <div class="text-center" >
-<h1 style="color: yellow">Welcome to Play Before You Die Admin World ! <span class="badge bg-secondary">PBYD</span></h1>
+<h1 style="color: #b58900">Welcome to Play Before You Die Admin World ! <span class="badge bg-secondary">PBYD</span></h1>
 <h4 style="color: aqua">This is the Admin View where you can delete/edit/change anything and improve the website for the best needs of the users
 </h4>
 </div>
@@ -21,7 +21,7 @@
     <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Game" asp-action="AllGames">View Game Collection</a>
 </div>
 
-<h4 style="color: yellow">Games Summary:</h4>
+<h4 style="color: #b58900">Games Summary:</h4>
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -35,7 +35,12 @@
                     <h5>
                         <a class="btn btn-primary" asp-controller="Game" asp-action="Delete" asp-route-id="@games.Id"
                            asp-route-id="@games.Id">
-                                Delete - @games.GameTitle</a>
+                            Delete - @games.GameTitle</a>
+                    </h5>
+                    <h5>
+                        <a class="fs-6 btn btn-success mb-3 p-2" asp-controller="Game" asp-action="Edit" asp-route-id="@games.Id"
+                           asp-route-id="@games.Id">
+                            Edit - @games.GameTitle</a>
                     </h5>
                 </div>
             </div>

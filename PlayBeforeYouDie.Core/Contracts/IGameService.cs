@@ -20,10 +20,15 @@ public interface IGameService
 
     Task<bool> GenreExists(int genreId);
 
+    Task<int> GetGameGenreById(int id);
 
     Task AddGameToMyLibrary(int gameId, string userId);
 
     Task AddGame(AddGameModel model);
+
+    Task EditGame(GameModel model, int id);
+
+    Task<GameServiceModel> GameEditModelById(int id);
 
     Task<IEnumerable<GameModel>> GetMyLibraryAsync(string userId);
 

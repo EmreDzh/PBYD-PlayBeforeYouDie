@@ -26,6 +26,11 @@ public class GameModel
     [Display(Name = "Game Rating")]
     [Range(0.0, ModelsConstants.RatingMaxValue, ErrorMessage = "Rating must be between 0 and 100!")]
     public decimal Rating { get; set; }
-    
-    
+
+    [Display(Name = "Genre")]
+    public int GenreId { get; set; }
+
+    public IEnumerable<GenreModel> Genres { get; set; } = new List<GenreModel>();
+
+
 }

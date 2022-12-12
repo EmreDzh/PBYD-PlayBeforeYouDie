@@ -5,12 +5,9 @@ Play Before You Die is an ASP.NET MVC application that stores games with all the
 
 ## Product Documentation
 
--The Administrator of the page has an area of its own:
-![Imgur](https://i.imgur.com/U6X4lPm.png)
+- The Administrator of the page has an area of its own and can manage the website by editing deleting and submiting changes:
+![Imgur](https://i.imgur.com/n5vfTKA.png)
 
-Credentials for the admin user:
-username: Admin@mail.com
-password: admin123
 
 -A basic user - registered or not a different view
 ![Imgur](https://i.imgur.com/B3lcGUj.png)
@@ -45,8 +42,6 @@ API
 
 - ASP.Net Core 6.0
 - EntityFramework Core 6.0.1
-- Z.EntityFramework.Extensions.EFCore 6.16.1
-- LinqKit 1.2.2
 - Microsoft.AspNetCore.Identity 6.0.1
 - Microsoft.AspNetCore.Authentication.JwtBearer 6.0.9
 

@@ -91,6 +91,11 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(SystemRequirementsModel model, int systemRequirementsId)
         {
+            if (systemRequirementsId != model.systemRequirementsId)
+            {
+                return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
+            }
+
             if (await systemRequirementsService.SystemRequirementsExists(systemRequirementsId) == false)
             {
                 TempData["ErrorMessage"] = "Wrong systemRequirements id!";

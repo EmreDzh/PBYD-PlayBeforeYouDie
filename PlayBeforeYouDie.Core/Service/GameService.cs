@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;
 using PlayBeforeYouDie.Core.Models.Genre;
@@ -172,6 +173,19 @@ public class GameService : IGameService
         
     }
 
+    public async Task<int> GetGameGenreById(int id)
+    {
+        try
+        {
+            return (await repo.GetByIdAsync<Game>(id)).GenreId;
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get the genre", e);
+        }
+        
+    }
+
 
     public async Task AddGameToMyLibrary(int id, string userId)
     {
@@ -216,7 +230,6 @@ public class GameService : IGameService
     public async Task AddGame(AddGameModel model)
     {
         
-
         var game = new Game()
         {
             Id = model.Id,
@@ -275,6 +288,53 @@ public class GameService : IGameService
             throw new ApplicationException("Database is down or failed to save the info", e);
         }
 
+    }
+
+    public async Task EditGame(GameModel model, int id)
+    {
+        var games = await repo.GetByIdAsync<Game>(id);
+
+        games.GameTitle = model.GameTitle;
+        games.GenreId = model.GenreId;
+        games.ImageUrl = model.ImageUrl;
+        games.Summary = model.Summary;
+        games.Rating = model.Rating;
+
+        await repo.SaveChangesAsync();
+        
+        try
+        {
+            await repo.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to save the info", e);
+        }
+        
+    }
+
+    public async Task<GameServiceModel> GameEditModelById(int id)
+    {
+        try
+        {
+            return await repo.AllReadonly<Game>()
+                .Where(g => g.IsGameActive)
+                .Where(g => g.Id == id)
+                .Select(g => new GameServiceModel()
+                {
+                    Id = g.Id,
+                    GameTitle = g.GameTitle,
+                    ImageUrl = g.ImageUrl,
+                    Rating = g.Rating,
+                    Summary = g.Summary
+                })
+                .FirstAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or wrong game id", e);
+        }
+        
     }
 
 

@@ -41,6 +41,71 @@ namespace PBYD___PlayBeforeYouDie.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (await gameService.Exists(id) == false)
+            {
+                TempData["ErrorMessage"] = "Wrong game id!";
+
+                return RedirectToAction(nameof(AllGames));
+            }
+
+            var game = await gameService.GameEditModelById(id);
+            var genreId = await gameService.GetGameGenreById(id);
+
+            var model = new GameModel()
+            {
+                Id = game.Id,
+                GameTitle = game.GameTitle,
+                Rating = game.Rating,
+                Summary = game.Summary,
+                ImageUrl = game.ImageUrl,
+                GenreId = genreId,
+                Genres = await gameService.AllGenres()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, GameModel model)
+        {
+            if (id != model.Id)
+            {
+                return RedirectToPage("/Account/AccessDenied", new { area = "Identity" });
+            }
+
+            if (await gameService.Exists(model.Id) == false)
+            {
+                ModelState.AddModelError("", "Database is down or games does not exists");
+                model.Genres = await gameService.AllGenres();
+
+                return View(model);
+            }
+
+            if (await gameService.GenreExists(model.GenreId) == false)
+            {
+                ModelState.AddModelError("", "Database is down or genre does not exists");
+
+                model.Genres = await gameService.AllGenres();
+
+                return View(model);
+            }
+
+            if (ModelState.IsValid == false)
+            {
+                TempData["ErrorMessage"] = "Wrong model!";
+                model.Genres = await gameService.AllGenres();
+
+                return View(model);
+            }
+
+            await gameService.EditGame(model, model.Id);
+
+            return RedirectToAction(nameof(AllGames), new { id = model.Id });
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             if (await gameService.Exists(id) == false)
