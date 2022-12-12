@@ -9,7 +9,7 @@ Play Before You Die is an ASP.NET MVC application that stores games with all the
 ![Imgur](https://i.imgur.com/n5vfTKA.png)
 
 
--A basic user - registered or not a different view
+- Simple users can use the website as intended:
 ![Imgur](https://i.imgur.com/B3lcGUj.png)
 
 ## Application setup
