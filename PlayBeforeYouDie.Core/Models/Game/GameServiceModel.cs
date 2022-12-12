@@ -21,7 +21,7 @@ public class GameServiceModel
     
     public decimal Rating { get; set; }
 
-    public int SystemRequirementsId { get; set; }
+   
 
     
 }

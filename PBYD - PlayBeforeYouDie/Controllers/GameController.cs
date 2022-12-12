@@ -6,27 +6,25 @@ using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;
 
 
+
 namespace PBYD___PlayBeforeYouDie.Controllers
 {
     [Authorize]
     public class GameController : Controller
     {
         private readonly IGameService gameService;
-        private readonly ISystemRequirementsService systemRequirementsService;
         private readonly ILogger logger;
-
 
 
         public GameController
             (
             ILogger<GameController> _logger,
-            IGameService _gameService,
-            ISystemRequirementsService _systemRequirementsService
+            IGameService _gameService
             )
         {
             logger = _logger;
             gameService = _gameService;
-            systemRequirementsService = _systemRequirementsService;
+            
         }
 
         [HttpGet]
@@ -171,65 +169,6 @@ namespace PBYD___PlayBeforeYouDie.Controllers
             
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> Delete(int id)
-        {
-            if (await gameService.Exists(id) == false)
-            {
-                TempData["ErrorMessage"] = "Wrong game id!";
-
-                return RedirectToAction(nameof(AllGames));
-            }
-
-            try
-            {
-                var game = await gameService.DeleteGameById(id);
-                var model = new GameDeleteViewModel()
-                {
-                    GameTitle = game.GameTitle,
-                    ImageUrl = game.ImageUrl,
-                    Description = game.Summary,
-                    Rating = game.Rating
-                };
-
-                return View(model);
-            }
-            catch (Exception)
-            {
-                ModelState.AddModelError("", "Database is down or games does not exists");
-
-                return View(nameof(AllGames));
-            }
-
-            
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Delete(int id, GameServiceModel model)
-        {
-            if (await gameService.Exists(id) == false)
-            {
-                TempData["ErrorMessage"] = "Wrong game id!";
-
-                return RedirectToAction(nameof(AllGames));
-            }
-
-            try
-            {
-                await gameService.DeleteGame(id);
-
-                return RedirectToAction(nameof(AllGames));
-            }
-            catch (Exception)
-            {
-                ModelState.AddModelError("", "Database is down or games does not exists");
-
-                return View(nameof(AllGames));
-            }
-
-            
-        }
+        
     }
 }

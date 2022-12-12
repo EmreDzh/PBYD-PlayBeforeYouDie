@@ -1,11 +1,55 @@
-﻿@{
+﻿@model IEnumerable<GameHomeModel>
+
+@{
     ViewData["Title"] = "Home Page";
+
+    bool first = true;
 }
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/CSS/AdminImage.css" />
+</head>
 
 <div class="text-center" >
-<h1>Welcome to Play Before You Die Admin World ! <span class="badge bg-secondary">PBYD</span></h1>
-<p>This is the Admin View where you can delete/edit/change anything and improve the website for the best needs of the users
-</p>
-
+<h1 style="color: yellow">Welcome to Play Before You Die Admin World ! <span class="badge bg-secondary">PBYD</span></h1>
+<h4 style="color: aqua">This is the Admin View where you can delete/edit/change anything and improve the website for the best needs of the users
+</h4>
 </div>
-<img src="lib/images/cyberpunk-2077-new-e3-screen-b.jpg" alt="Sample Photo"/>
+
+<div class="text-center">
+    <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Game" asp-action="AllGames">View Game Collection</a>
+</div>
+
+<h4 style="color: yellow">Games Summary:</h4>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @foreach (var games in @Model)
+        {
+            <div class="carousel-item @(first ? "active" : string.Empty)">
+
+                <img class="d-block w-100" style="width:100px; margin:0 auto;"
+                     src="@games.ImageUrl" alt="@games.GameTitle">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>
+                        <a class="btn btn-primary" asp-controller="Game" asp-action="Delete" asp-route-id="@games.Id"
+                           asp-route-id="@games.Id">
+                                Delete - @games.GameTitle</a>
+                    </h5>
+                </div>
+            </div>
+
+            @(first = false)
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+

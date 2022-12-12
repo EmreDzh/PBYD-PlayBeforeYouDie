@@ -1,7 +1,9 @@
-﻿namespace PlayBeforeYouDie.Core.Models.Game;
+﻿namespace PBYD___PlayBeforeYouDie.Areas.Admin.Models;
 
 public class GameDeleteViewModel
 {
+    public int Id { get; set; }
+
     public string GameTitle { get; set; }
 
     public string ImageUrl { get; set; }

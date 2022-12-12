@@ -36,7 +36,12 @@
                     <input class="btn btn-primary" type="submit" value="AddToCollection" />
                 </form>
 
-                <a style="margin: 40px" asp-area="" asp-controller="Game" asp-action="Delete" asp-route-id="@Model.Id"
+                
+            }
+            @if (User.IsInRole("Administrator"))
+            {
+
+                    <a style="margin: 40px" asp-area="Admin" asp-controller="Game" asp-action="Delete" asp-route-id="@Model.Id"
                    class="btn btn-primary btn-sm">Delete</a>
             }
             

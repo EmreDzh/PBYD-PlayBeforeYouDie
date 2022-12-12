@@ -18,9 +18,19 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GotyAllView()
         {
-            var model = await gameOfTheYearService.GetAllGotyAsync();
+            try
+            {
+                var model = await gameOfTheYearService.GetAllGotyAsync();
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Database is down or game of the year does not exists");
+                
+                return View("_Layout", "Index");
+            }
+            
         }
     }
 }

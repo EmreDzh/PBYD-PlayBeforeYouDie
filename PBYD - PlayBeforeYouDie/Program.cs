@@ -44,7 +44,6 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("MyPolicy", policy =>
     {
         policy.RequireAuthenticatedUser();
-        policy.RequireRole("GameMaster");
         policy.RequireRole("Administrator");
     });
 });
