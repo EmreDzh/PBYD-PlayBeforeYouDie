@@ -29,7 +29,7 @@ Step 3
 - The application uses SqlServer DbContext + Identity for the user control.
 - The application uses Repository and In Memory DB pattern for getting data from the database.
 - Database Diagram:
-![alt text](https://ibb.co/Y732qv5)
+![Imgur](https://imgur.com/a/i306EDX)
 
 
 ## Tech Tools:
