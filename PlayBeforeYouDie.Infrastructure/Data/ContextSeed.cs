@@ -16,6 +16,7 @@ public static class ContextSeed
 
     public static async Task SeedAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
     {
+        //Seed gamemaster user into the Administrator Role
         var defaultUser = new ApplicationUser
         {
             UserName = "gamemaster",

@@ -8,8 +8,8 @@ Play Before You Die is an ASP.NET MVC application that stores games with all the
 - The Administrator of the page has an area of its own and can manage the website by editing deleting and submiting changes:
 ![Imgur](https://i.imgur.com/n5vfTKA.png)
 - Admin Credentials are:
-- username: gamemaster
-- password: Admin1234
+username: gamemaster
+password: Admin1234
 
 - Simple users can use the website as intended:
 ![Imgur](https://i.imgur.com/B3lcGUj.png)
@@ -22,11 +22,12 @@ Step 1
 Step 2
 Initialize user secrets for the project
 - The Keys needed for the project to work properly are:
-- "DbUser"
-- "DbPassword"
-- "DbConfiguration:ConnectionString"
+- "ConnectionStrings:DefaultConnection"
 
 Step 3
+- open the package manager console and set the default project as: PlayBeforeYouDie.Infrastructure and run "update-database" as command
+
+Step 4
 - Should be ready to use!
 
 ## Technical Documentation
