@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using PBYD___PlayBeforeYouDie.ModelBinders;
+using PlayBeforeYouDie.Core.Constants.Core;
 using PlayBeforeYouDie.Infrastructure.Data;
 using PlayBeforeYouDie.Infrastructure.Data.Models.Users;
 
@@ -18,15 +19,15 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     {
         options.SignIn.RequireConfirmedPhoneNumber = false;
         options.SignIn.RequireConfirmedEmail = false;
-        options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:RequiredLength");
-        options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:RequireNonAlphanumeric");
+        options.Password.RequiredLength = UserConstants.PasswordMaxLength;
+        options.Password.RequireNonAlphanumeric = true;
     })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/User/Login";
+    options.LoginPath = UserConstants.UserCookieLogin;
 });
 
 builder.Services.AddControllersWithViews()
@@ -105,9 +106,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-
 app.MapRazorPages();
-
-
 
 app.Run();

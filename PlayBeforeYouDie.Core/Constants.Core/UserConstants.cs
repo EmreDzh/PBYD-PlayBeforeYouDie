@@ -16,4 +16,7 @@ public class UserConstants
 
     //Claim Type Constants
     public const string UserName = "urn:emre:playbeforeyoudie:userName";
+
+    //User Login Cookies
+    public const string UserCookieLogin = "/User/Login";
 }
