@@ -7,7 +7,9 @@ Play Before You Die is an ASP.NET MVC application that stores games with all the
 
 - The Administrator of the page has an area of its own and can manage the website by editing deleting and submiting changes:
 ![Imgur](https://i.imgur.com/n5vfTKA.png)
-
+- Admin Credentials are:
+- username: gamemaster
+- password: Admin1234
 
 - Simple users can use the website as intended:
 ![Imgur](https://i.imgur.com/B3lcGUj.png)

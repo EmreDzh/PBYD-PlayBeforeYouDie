@@ -12,8 +12,8 @@ using PlayBeforeYouDie.Infrastructure.Data;
 namespace PlayBeforeYouDie.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221210183107_RequiredForSystemRequirements2")]
-    partial class RequiredForSystemRequirements2
+    [Migration("20221213180014_UserConfigAdded")]
+    partial class UserConfigAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -242,7 +242,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Id = 4,
                             GameTitle = "Red Dead Redemption 2",
                             GenreId = 2,
-                            ImageUrl = "https://assets1.ignimgs.com/2016/10/18/red-dead-redemption-2-buttonjpg-f9ad35.jpg",
+                            ImageUrl = "https://store-images.s-microsoft.com/image/apps.58752.68182501197884443.ac728a87-7bc1-4a0d-8bc6-0712072da93c.0cf58754-9802-46f8-8557-8d3ff32a627a?mode=scale&q=90&h=720&w=1280&background=%23FFFFFF",
                             IsGameActive = true,
                             Rating = 97m,
                             Summary = "Developed by the creators of Grand Theft Auto V and Red Dead Redemption, Red Dead Redemption 2 is an epic tale of life in America’s unforgiving heartland. The game’s vast and atmospheric world also provides the foundation for a brand new online multiplayer experience. America, 1899. The end of the Wild West era has begun. After a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang has to rob, steal and fight their way across the rugged heartland of America in order to survive. As deepening internal fissures threaten to tear the gang apart, Arthur must make a choice between his own ideals and loyalty to the gang that raised him. [Rockstar]",
@@ -258,6 +258,119 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Rating = 93m,
                             Summary = "With the Empire attacking the Kingdoms of the North and the Wild Hunt, a cavalcade of ghastly riders, breathing down your neck, the only way to survive is to fight back. As Geralt of Rivia, a master swordsman and monster hunter, leave none of your enemies standing. Explore a gigantic open world, slay beasts and decide the fates of whole communities with your actions, all in a genuine next generation format.",
                             SystemRequirementId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            GameTitle = "Elden Ring",
+                            GenreId = 3,
+                            ImageUrl = "https://xboxplay.games/uploadStream/28009.jpg",
+                            IsGameActive = true,
+                            Rating = 96m,
+                            Summary = "Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice.",
+                            SystemRequirementId = 10
+                        });
+                });
+
+            modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.GameOfTheYear", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Developers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GameOfTheYears");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Developers = "BioWare",
+                            GameTitle = "Dragon Age: Inquisition",
+                            ImageUrl = "https://image.api.playstation.com/cdn/EP0006/CUSA00503_00/3uJniniN80XZw4jZ7fuXxK3ogaSK3rru.png",
+                            Year = 2014
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Developers = "CD Project Red",
+                            GameTitle = "The Witcher 3 Wild Hunt",
+                            ImageUrl = "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/kh4MUIuMmHlktOHar3lVl6rY.png",
+                            Year = 2015
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Developers = "Blizzard Entertainment",
+                            GameTitle = "Overwatch",
+                            ImageUrl = "https://m.media-amazon.com/images/I/91lid74MqmL.jpg",
+                            Year = 2016
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Developers = "Nintendo",
+                            GameTitle = "The Legend of Zelda: Breath of the Wild ",
+                            ImageUrl = "https://www.zelda.com/breath-of-the-wild/assets/icons/BOTW-Share_icon.jpg",
+                            Year = 2017
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Developers = "Santa Monica Studio",
+                            GameTitle = "God of War",
+                            ImageUrl = "https://s3.gaming-cdn.com/images/products/7325/screenshot/god-of-war-pc-spiel-steam-wallpaper-1.jpg?v=1668157899",
+                            Year = 2018
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Developers = "FormSoftware",
+                            GameTitle = "Sekiro: Shadows Die Twice",
+                            ImageUrl = "https://www.pcgames.de/screenshots/original/2019/03/Sekiro-Review-PS4-1-pc-games1.jpg",
+                            Year = 2019
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Developers = "Naughty Dog",
+                            GameTitle = "The Last of Us Part II",
+                            ImageUrl = "https://www.pcgames.de/screenshots/original/2020/06/The-Last-of-Us-Part-II-Review-Artwork-buffed1.png",
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Developers = "Hazelight Studios",
+                            GameTitle = "It Takes Two",
+                            ImageUrl = "https://www.play3.de/wp-content/uploads/2021/03/It-Takes-Two.jpg",
+                            Year = 2021
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Developers = "FromSoftware",
+                            GameTitle = "Elden Ring",
+                            ImageUrl = "https://www.videogameschronicle.com/files/2022/02/sds5.jpg",
+                            Year = 2022
                         });
                 });
 
@@ -416,6 +529,16 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             MainStory = "52h 33m",
                             SpeedRunAny = "16h 48m 48s",
                             SpeedRunOneHundredPercent = "63h 20m"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            GameId = 6,
+                            HundredPercentComplete = "136h 37m",
+                            MainPlusSides = "102h 28m",
+                            MainStory = "53h 46m",
+                            SpeedRunAny = "4h 23m 18s",
+                            SpeedRunOneHundredPercent = "8h 30m 5s"
                         });
                 });
 
@@ -504,6 +627,16 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             ModName = "The Witcher 3 HD Reworked Project",
                             ModPictureId = 5,
                             YoutubeVideoModComparison = "https://youtube.com/embed/YNKlpvKvKl0"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "An overhaul of the legendary Sword of Night and Flame to be cooler, stronger, and maybe just a little OP. Download to get an all new moveset and Ash of War!",
+                            DownloadModLink = "https://www.nexusmods.com/eldenring/mods/2618",
+                            GameId = 6,
+                            ModName = "Sword of Night and Flame - Unbound",
+                            ModPictureId = 8,
+                            YoutubeVideoModComparison = "https://youtube.com/embed/Gkd5h9VYGXE"
                         });
                 });
 
@@ -566,6 +699,14 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             ModImageOne = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600548166-1660518323.jpeg",
                             ModImageThree = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600594030-2005225404.jpeg",
                             ModImageTwo = "https://staticdelivery.nexusmods.com/mods/952/images/1021/1021-1600594032-1731970147.jpeg"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ModImageFour = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061310-466516695.jpeg",
+                            ModImageOne = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061311-1458428997.jpeg",
+                            ModImageThree = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061321-366436897.jpeg",
+                            ModImageTwo = "https://staticdelivery.nexusmods.com/mods/4333/images/2618/2618-1670061316-1509434001.jpeg"
                         });
                 });
 
@@ -667,6 +808,16 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                             Os = "64-bit Windows 7, 64-bit Windows 8 (8.1) or 64-bit Windows 10 / PS3 / PS4",
                             Processor = "Intel CPU Core i5-2500K 3.3GHz / AMD CPU Phenom II X4 940",
                             Storage = "35 GB available space"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Graphics = "NVIDIA GEFORCE GTX 1060 3 GB or AMD RADEON RX 580 4 GB.",
+                            Memory = "12 GB RAM",
+                            Network = "N/A",
+                            Os = "Windows 10",
+                            Processor = "INTEL CORE I5-8400 or AMD RYZEN 3 3300X",
+                            Storage = "60 GB"
                         });
                 });
 
@@ -741,49 +892,17 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e0a230cf-1628-4a04-b0d2-3421f58f685d",
-                            Email = "modder@mail.com",
+                            ConcurrencyStamp = "35cd0de2-5020-42d0-a8d1-58ad05672b68",
+                            Email = "user@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedEmail = "modder@mail.com",
-                            NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL3WdgKP6u3A3seUYnK7uC121Pmud3SvLGE25vJuSayqYJYm2vo7icRJtt8HmzSeTA==",
+                            NormalizedEmail = "user@mail.com",
+                            NormalizedUserName = "user@mail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKl4MIfPb8DUOPvXJko4uTnlKy3mRTrUv1wLaLOcT1k/3sasmNYLwGzBedwunfxCUg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b2b58be4-b14f-4306-8a62-c4bfe5441018",
+                            SecurityStamp = "b675c9ea-ea6b-42e2-92f4-63608ba0fb01",
                             TwoFactorEnabled = false,
-                            UserName = "modder@mail.com"
-                        },
-                        new
-                        {
-                            Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "d083bcb0-15d1-4a32-a8a6-4fdbf7b8ed11",
-                            Email = "Admin@mail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "Admin@mail.com",
-                            NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDWrXylsYD2HEjLY8V/+7ZpihCmmU2hvYeym5MixNp+aZjfjZRT5GbJ0A8pqATIC6Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "02e797a2-7a71-4af5-a121-253e71a2c275",
-                            TwoFactorEnabled = false,
-                            UserName = "Admin@mail.com"
-                        },
-                        new
-                        {
-                            Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "430f429d-a5b9-4740-a3cb-b56b490117ba",
-                            Email = "guest@mail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "guest@mail.com",
-                            NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN9S7RkQyDfk0DO2vyrNOrIPgdivWUEXYKj8aIhFTH1lkh4wHu/ckMgY70V0lM+AVg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "a973e820-cdb2-4694-b58a-e4bbc5953bb9",
-                            TwoFactorEnabled = false,
-                            UserName = "guest@mail.com"
+                            UserName = "user@mail.com"
                         });
                 });
 
@@ -911,7 +1030,7 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("PlayBeforeYouDie.Infrastructure.Data.Models.Game", "Game")
-                        .WithMany()
+                        .WithMany("ApplicationUserGames")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -923,6 +1042,8 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
 
             modelBuilder.Entity("PlayBeforeYouDie.Infrastructure.Data.Models.Game", b =>
                 {
+                    b.Navigation("ApplicationUserGames");
+
                     b.Navigation("HowLongToBeat");
 
                     b.Navigation("Mods");

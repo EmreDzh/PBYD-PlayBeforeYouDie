@@ -890,33 +890,17 @@ namespace PlayBeforeYouDie.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1caff42a-07d5-47db-bef0-34f5af8ccacb",
-                            Email = "modder@mail.com",
+                            ConcurrencyStamp = "35cd0de2-5020-42d0-a8d1-58ad05672b68",
+                            Email = "user@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            NormalizedEmail = "modder@mail.com",
-                            NormalizedUserName = "modder@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE3A6idUvZJl2OTXo8cPlzqkfD9absDEY+huG4sHxDRqVgok4pfZViEQA/5WE/943g==",
+                            NormalizedEmail = "user@mail.com",
+                            NormalizedUserName = "user@mail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKl4MIfPb8DUOPvXJko4uTnlKy3mRTrUv1wLaLOcT1k/3sasmNYLwGzBedwunfxCUg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9f13246e-7510-4ce6-b1e4-d38882b5352b",
+                            SecurityStamp = "b675c9ea-ea6b-42e2-92f4-63608ba0fb01",
                             TwoFactorEnabled = false,
-                            UserName = "modder@mail.com"
-                        },
-                        new
-                        {
-                            Id = "b1b89182-68ed-489c-93be-a108b9cb5aad",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b26ef264-2d88-4207-a82d-96328fd4b309",
-                            Email = "Admin@mail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "Admin@mail.com",
-                            NormalizedUserName = "Admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJzCp1KNhGPJKs/lfjVLGvzq4Oi0qvDslRpKuSOdDAKdX2iUDB31vKEGHouLAK2eZw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "d9d0ec8d-7e2f-4da5-85d8-4e665cca2149",
-                            TwoFactorEnabled = false,
-                            UserName = "Admin@mail.com"
+                            UserName = "user@mail.com"
                         });
                 });
 
