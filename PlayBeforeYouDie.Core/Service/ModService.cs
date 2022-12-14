@@ -96,5 +96,57 @@ public class ModService : IModService
             throw new ApplicationException("Database is down or failed to submit the info!", e);
         }
     }
+
+    public async Task<bool> Exists(int id)
+    {
+        try
+        {
+            return await repo.AllReadonly<Mod>()
+                .AnyAsync(m => m.Id == id);
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get the mod", e);
+        }
+    }
+
+    public async Task<ModModel> DeleteModById(int id)
+    {
+        try
+        {
+            return await repo.AllReadonly<Mod>()
+                .Where(m => m.Id == id)
+                .Select(m => new ModModel()
+                {
+                    Id = m.Id,
+                    Description = m.Description,
+                    ModName = m.ModName,
+                    DownloadModLink = m.DownloadModLink!
+                })
+                .FirstAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get the mod", e);
+        }
+    }
+
+    public async Task DeleteMod(int id)
+    {
+
+        try
+        {
+            var mod = await repo.GetByIdAsync<Mod>(id);
+
+            repo.Delete(mod);
+
+            await repo.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get the mod", e);
+        }
+        
+    }
 }   
 

@@ -1,4 +1,4 @@
-﻿namespace PBYD___PlayBeforeYouDie.Areas.Admin.Models;
+﻿namespace PBYD___PlayBeforeYouDie.Areas.Admin.Models.Game;
 
 public class GameDeleteViewModel
 {

@@ -9,7 +9,11 @@ public interface IHowLongToBeatService
 
     Task SubmitPlayTime(HowLongToBeatModel model);
 
-    Task<int> GetHowLongToBeatId(string userId);
+    Task<bool> Exists(int id);
+
+    Task<HowLongToBeatModel> DeleteHowLongToBeatById(int id);
+
+    Task DeleteHowLongToBeat(int id);
 
 
 

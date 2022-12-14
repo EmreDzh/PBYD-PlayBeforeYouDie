@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\Mod\" />
     <Folder Include="Views\UserBenchmark\" />
   </ItemGroup>
 

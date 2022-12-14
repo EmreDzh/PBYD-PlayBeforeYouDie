@@ -92,7 +92,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="@Model.AdditionalNotes"></label>
-                    <input asp-for="@Model.AdditionalNotes" class="form-control" placeholder="AdditionalNotes...">
+                    <input asp-for="@Model.AdditionalNotes" class="form-control" placeholder="Optional AdditionalNotes...">
                     <span asp-validation-for="@Model.AdditionalNotes" class="small text-danger"></span>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="YoutubeVideoModComparison"></label>
-                    <input asp-for="YoutubeVideoModComparison" class="form-control" placeholder="Optional Youtube Vid for Mod, Format Example: https://youtube/embed/urlcode..">
+                    <input asp-for="YoutubeVideoModComparison" class="form-control" style="color: red" placeholder="Optional Youtube Vid for Mod, Format Example: https://youtube/embed/urlcode..">
                     <span asp-validation-for="YoutubeVideoModComparison" class="small text-danger"></span>
                 </div>
                 <div class="form-group">

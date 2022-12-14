@@ -103,7 +103,7 @@ namespace PBYD___PlayBeforeYouDie.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("", "Game model does not exists");
+                ModelState.AddModelError("", "Mod model does not exists");
 
                 return View(nameof(ModsView));
             }

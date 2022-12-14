@@ -56,6 +56,10 @@
                     <th scope="col">Completionist</th>
                     <th scope="col">Speedrun</th>
                     <th scope="col">Speedrun 100%</th>
+                    @if (User!.IsInRole("Administrator"))
+                    {
+                        <th scope="col">Delete HowLongToBeat!</th>
+                    }
                 </tr>
                 </thead>
                 <tbody>
@@ -66,6 +70,13 @@
                     <td>@howLongToBeat.HundredPercentComplete</td>
                     <td>@howLongToBeat.SpeedRunAny</td>
                     <td>@howLongToBeat.SpeedRunOneHundredPercent</td>
+                    @if (User!.IsInRole("Administrator"))
+                    {
+                        <td>
+                            <a asp-area="Admin" asp-controller="HowLongToBeat" asp-action="Delete" asp-route-id="@howLongToBeat.Id"
+                               class="btn btn-primary btn-sm">Delete</a>
+                        </td>
+                    }
                 </tr>
                 </tbody>
             </table>

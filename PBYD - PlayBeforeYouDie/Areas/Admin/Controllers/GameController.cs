@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PBYD___PlayBeforeYouDie.Areas.Admin.Models;
+using PBYD___PlayBeforeYouDie.Areas.Admin.Models.Game;
 using PBYD___PlayBeforeYouDie.Models;
 using PlayBeforeYouDie.Core.Contracts;
 using PlayBeforeYouDie.Core.Models.Game;

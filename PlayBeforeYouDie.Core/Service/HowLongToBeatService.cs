@@ -82,10 +82,53 @@ public class HowLongToBeatService : IHowLongToBeatService
 
     }
 
-    public async Task<int> GetHowLongToBeatId(string userId)
+    public async Task<bool> Exists(int id)
     {
-        return (await repo.AllReadonly<ApplicationUserGame>()
-            .FirstOrDefaultAsync(x => x.ApplicationUserId == userId))?.GameId ?? 0;
+        try
+        {
+            return await repo.AllReadonly<HowLongToBeat>()
+                .AnyAsync(h => h.Id == id);
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get howlongtobeat", e);
+        }
     }
-    
+
+    public async Task<HowLongToBeatModel> DeleteHowLongToBeatById(int id)
+    {
+        try
+        {
+            return await repo.AllReadonly<HowLongToBeat>()
+                .Where(h => h.Id == id)
+                .Select(h => new HowLongToBeatModel()
+                {
+                    Id = h.Id,
+                    MainStory = h.MainStory,
+                    MainPlusSides = h.MainPlusSides,
+                    HundredPercentComplete = h.HundredPercentComplete
+                })
+                .FirstAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get howlongtobeat", e);
+        }
+    }
+
+    public async Task DeleteHowLongToBeat(int id)
+    {
+        try
+        {
+            var howLongToBeat = await repo.GetByIdAsync<HowLongToBeat>(id);
+
+            repo.Delete(howLongToBeat);
+
+            await repo.SaveChangesAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or failed to get howlongtobeat", e);
+        }
+    }
 }

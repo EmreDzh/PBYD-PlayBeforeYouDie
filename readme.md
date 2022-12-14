@@ -16,6 +16,8 @@ password: Admin1234
 
 ## Application setup
 
+- The project requires Microsoft SQL Server to run!
+
 Step 1
 - Clone the repo and open the PBYD - PlayBeforeYoyDie.sln project file in the 'PBYD - PlayBeforeYouDie' folder
 

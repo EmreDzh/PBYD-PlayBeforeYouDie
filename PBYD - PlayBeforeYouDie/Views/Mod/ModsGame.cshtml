@@ -31,30 +31,30 @@
                         <div id="carouselExampleIndicator-@number" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            @if (@mods.ModImageTwo != null || @mods.ModImageThree != null || @mods.ModImageFour != null)
-                            {
-                                        <button type="button" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                            }
+                                @if (@mods.ModImageTwo != null || @mods.ModImageThree != null || @mods.ModImageFour != null)
+                                {
+                                    <button type="button" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                }
 
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src="@mods.ModImageOne" class="d-block w-100" alt="...">
                                 </div>
-                            @if (@mods.ModImageTwo != null || @mods.ModImageThree != null || @mods.ModImageFour != null)
-                            {
-                                        <div class="carousel-item">
-                                            <img src="@mods.ModImageTwo" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="@mods.ModImageThree" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="@mods.ModImageFour" class="d-block w-100" alt="...">
-                                        </div>
-                            }
+                                @if (@mods.ModImageTwo != null || @mods.ModImageThree != null || @mods.ModImageFour != null)
+                                {
+                                    <div class="carousel-item">
+                                        <img src="@mods.ModImageTwo" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="@mods.ModImageThree" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="@mods.ModImageFour" class="d-block w-100" alt="...">
+                                    </div>
+                                }
                             </div>
                             <button class="carousel-control-prev" type="button" style="color: aqua" data-bs-target="#carouselExampleIndicator-@number" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -67,6 +67,15 @@
                         </div>
 
                     </div>
+                    
+                    @if (User!.IsInRole("Administrator"))
+                    {
+
+                        <a style="margin: 40px" asp-area="Admin" asp-controller="Mod" asp-action="Delete" asp-route-id="@mods.Id"
+                           class="btn btn-primary btn-sm">Delete @mods.ModName!</a>
+                    }
+
+
                 </div>
             </div>
 

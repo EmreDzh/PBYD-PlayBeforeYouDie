@@ -1,0 +1,27 @@
+﻿@model ModDeleteViewModel
+
+
+<h2 class="text-center">Are you sure you want to Delete @Model.ModName?</h2>
+<hr />
+
+<form asp-action="Delete">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="ModName" class="control-label"></label>
+                <input asp-for="ModName" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DownloadModLink" class="control-label"></label>
+                <input asp-for="DownloadModLink" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

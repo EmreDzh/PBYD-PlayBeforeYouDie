@@ -55,24 +55,6 @@
                             </ul>
                         </div>
                     </ul>
-                    @if (User?.Identity?.IsAuthenticated ?? false)
-                    {
-                            <ul class="nav justify-content-end">
-                                <p>
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                        PC UserBenchmark
-
-                                    </button>
-                                </p>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body ">
-                                        <p style="color:white;">Submit your PC Parts to see what games you will be able to run:</p>
-                                            <a class="btn btn-primary"style="background-color: #839496" asp-area="" asp-controller="Home" asp-action="Index">Submit</a>
-                                    </div>
-                                </div>
-
-                            </ul>
-                    }
 
                     <partial name="_LoginPartial" />
                 </div>

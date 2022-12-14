@@ -16,7 +16,6 @@ namespace PBYD___PlayBeforeYouDie.Controllers
         private readonly IHowLongToBeatService howLongToBeat;
         private readonly IGameService gameService;
 
-
         public HowLongToBeatController(
             ILogger<HowLongToBeatController> _logger, IHowLongToBeatService _howLongToBeat, IGameService _gameService)
         {

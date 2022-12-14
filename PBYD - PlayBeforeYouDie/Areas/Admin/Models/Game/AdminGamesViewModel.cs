@@ -1,7 +1,7 @@
 ﻿using PlayBeforeYouDie.Core.Models.Game;
 using System.ComponentModel.DataAnnotations;
 
-namespace PBYD___PlayBeforeYouDie.Areas.Admin.Models;
+namespace PBYD___PlayBeforeYouDie.Areas.Admin.Models.Game;
 
 public class AdminGamesViewModel
 {

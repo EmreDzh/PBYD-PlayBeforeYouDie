@@ -1,0 +1,27 @@
+﻿@model HowLongToBeatDeleteViewModel
+
+
+<h2 class="text-center">Are you sure you want to Delete this submitted Playtime?</h2>
+<hr />
+
+<form asp-action="Delete">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="MainStory" class="control-label"></label>
+                <input asp-for="MainStory" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="MainPlusSides" class="control-label"></label>
+                <input asp-for="MainPlusSides" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="HundredPercentComplete" class="control-label"></label>
+                <input asp-for="HundredPercentComplete" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
