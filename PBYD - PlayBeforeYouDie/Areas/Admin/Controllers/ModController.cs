@@ -7,13 +7,12 @@ namespace PBYD___PlayBeforeYouDie.Areas.Admin.Controllers
 {
     public class ModController : BaseController
     {
-        private readonly ILogger logger;
+        
         private readonly IModService modService;
         
-
-        public ModController(ILogger<ModController> _logger, IModService _modService)
+        public ModController(IModService _modService)
         {
-            logger = _logger;
+            
             modService = _modService;
         }
 

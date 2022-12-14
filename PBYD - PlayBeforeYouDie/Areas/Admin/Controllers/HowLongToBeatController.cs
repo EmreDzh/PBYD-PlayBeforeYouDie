@@ -7,14 +7,11 @@ namespace PBYD___PlayBeforeYouDie.Areas.Admin.Controllers
 {
     public class HowLongToBeatController : BaseController
     {
-        private readonly ILogger logger;
         private readonly IHowLongToBeatService howLongToBeat;
         
-
-        public HowLongToBeatController(
-            ILogger<HowLongToBeatController> _logger, IHowLongToBeatService _howLongToBeat)
+        public HowLongToBeatController(IHowLongToBeatService _howLongToBeat)
         {
-            logger = _logger;
+            
             howLongToBeat = _howLongToBeat;
         }
 
