@@ -15,20 +15,7 @@ public class ModService : IModService
         repo = _repo;
     }
 
-    public async Task<IEnumerable<ModImageModel>> AllImages()
-    {
-        return await repo.AllReadonly<ModPicture>()
-            .Select(c => new ModImageModel()
-            {
-                Id = c.Id,
-                ModImageOne = c.ModImageOne,
-                ModImageTwo = c.ModImageTwo,
-                ModImageThree = c.ModImageThree,
-                ModImageFour = c.ModImageFour,
-            })
-            .ToListAsync();
-
-    }
+    
 
     public async Task<List<ModModel>> ModsByGameById(int id)
     {

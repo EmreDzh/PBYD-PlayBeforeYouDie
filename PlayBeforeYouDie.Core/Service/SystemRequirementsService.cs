@@ -105,12 +105,7 @@ public class SystemRequirementsService : ISystemRequirementsService
             .AnyAsync(c => c.Id == systemRequirementsId);
 
     }
-
-    public async Task<bool> Exists(int systemRequirementsId)
-    {
-        return await repo.AllReadonly<SystemRequirement>()
-            .AnyAsync(h => h.Id == systemRequirementsId);
-    }
+    
 
     public async Task<IEnumerable<SystemRequirementsGame>> AllSystemRequirements()
     {

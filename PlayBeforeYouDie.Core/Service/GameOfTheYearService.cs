@@ -19,16 +19,24 @@ public class GameOfTheYearService : IGameOfTheYearService
 
     public async Task<IEnumerable<GameOfTheYearModel>> GetAllGotyAsync()
     {
-        return await repo.AllReadonly<GameOfTheYear>()
-            .OrderBy(g => g.Id)
-            .Select(g => new GameOfTheYearModel()
-            {
-                Id = g.Id,
-                Developers = g.Developers,
-                GameTitle = g.GameTitle,
-                ImageUrl = g.ImageUrl,
-                Year = g.Year
-            })
-            .ToListAsync();
+        try
+        {
+            return await repo.AllReadonly<GameOfTheYear>()
+                .OrderBy(g => g.Id)
+                .Select(g => new GameOfTheYearModel()
+                {
+                    Id = g.Id,
+                    Developers = g.Developers,
+                    GameTitle = g.GameTitle,
+                    ImageUrl = g.ImageUrl,
+                    Year = g.Year
+                })
+                .ToListAsync();
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("Database is down or cannot get game of the year!", e);
+        }
+        
     }
 }
